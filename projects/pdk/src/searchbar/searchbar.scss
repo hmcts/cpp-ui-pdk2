@@ -1,0 +1,87 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-searchbar';
+
+pdk-searchbar {
+  .#{$module} {
+    position: relative;
+
+    &__input {
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: middle;
+      min-width: auto;
+      position: relative;
+      width: calc(100% - 40px);
+      font-size: inherit;
+      z-index: 1;
+
+      &::placeholder {
+        color: govuk-colour('black');
+      }
+
+      &:focus {
+        z-index: 2;
+      }
+
+      &--borderless {
+        border: 0;
+        height: 38px;
+      }
+    }
+
+    &__label {
+      color: govuk-colour('white');
+    }
+
+    &__button {
+      background-color: govuk-colour('blue');
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      cursor: pointer;
+      display: inline-block;
+      height: 40px;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      vertical-align: top;
+      width: 40px;
+      z-index: 1;
+
+      @include pdk-focusable-button;
+
+      &:focus {
+        &:active,
+        &:hover {
+          box-shadow: inset 0 0 0 2px $govuk-focus-colour;
+        }
+
+        &:not(:active):not(:hover) {
+          height: 38px;
+        }
+      }
+
+      &--borderless {
+        border: 0;
+        height: 38px;
+        width: 38px;
+      }
+    }
+
+    &--secondary {
+      .#{$module}__input {
+        border-color: govuk-colour('black');
+        background: govuk-colour('white');
+        color: govuk-colour('black');
+      }
+
+      .#{$module}__button {
+        background-color: govuk-colour('black');
+
+        &:focus:not(:active):not(:hover) {
+          height: 36px;
+        }
+      }
+    }
+  }
+}

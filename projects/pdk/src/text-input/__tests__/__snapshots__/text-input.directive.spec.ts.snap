@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-text-input should display an error when submitted with an invalid model 1`] = `
+<pdk-text-input-test>
+  <form
+    class="ng-untouched ng-pristine ng-invalid ng-submitted"
+    novalidate=""
+  >
+    <input
+      ariadescribedby="ARIA_DESCRIBED_BY"
+      class="govuk-input ng-untouched ng-pristine ng-invalid"
+      id="TEXT_INPUT_ID"
+      name="test"
+      ngmodel=""
+      pdk-text-input=""
+      required=""
+    />
+    <button
+      type="submit"
+    />
+  </form>
+</pdk-text-input-test>
+`;
+
+exports[`pdk-text-input should render 1`] = `
+<pdk-text-input-test>
+  <form
+    class="ng-untouched ng-pristine ng-valid"
+    novalidate=""
+  >
+    <input
+      ariadescribedby="ARIA_DESCRIBED_BY"
+      class="govuk-input ng-untouched ng-pristine ng-valid"
+      id="TEXT_INPUT_ID"
+      name="test"
+      ngmodel=""
+      pdk-text-input=""
+      required=""
+    />
+    <button
+      type="submit"
+    />
+  </form>
+</pdk-text-input-test>
+`;

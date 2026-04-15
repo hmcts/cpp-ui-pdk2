@@ -1,0 +1,1716 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-accordion should display summary of content section when provide 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+  summary={[Function String]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="false"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Open all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-describedby="govuk-accordion-GENERATED_ID-summary"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+            <div
+              class="govuk-accordion__section-summary govuk-body-m"
+              id="govuk-accordion-GENERATED_ID-summary"
+              pdk-typography="body"
+            >
+               Summary for content 
+            </div>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should expand the sections according to the indexes in the \`open\` prop 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+  open={[Function Array]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="false"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Open all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should render the closed accordion 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="false"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Open all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should render the fully closed accordion when the \`closeAll\` button is clicked 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+  open={[Function Array]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="false"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Open all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should render the fully open accordion when the \`openAll\` button is clicked 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="true"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Close all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should show \`closeAll\` button once all accordion items are individually opened 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="true"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Close all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should show \`openAll\` button once all accordion items are individually closed 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+  open={[Function Array]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="false"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Open all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;
+
+exports[`pdk-accordion should trigger the expanded state of a section when clicking its title 1`] = `
+<pdk-accordion-test
+  onOpenChange={[Function Function]}
+>
+  <pdk-accordion>
+    <div
+      class="govuk-accordion"
+    >
+      <div
+        class="govuk-accordion__controls"
+      >
+        <button
+          aria-expanded="false"
+          class="govuk-accordion__show-all"
+          type="button"
+        >
+          <span
+            class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+          />
+          <span
+            class="govuk-accordion__show-all-text"
+          >
+             Open all
+            <span
+              class="govuk-visually-hidden"
+              pdk-visually-hidden=""
+            >
+               sections
+            </span>
+          </span>
+        </button>
+      </div>
+      <pdk-accordion-item
+        title="Item #1"
+      >
+        <div
+          class="govuk-accordion__section govuk-accordion__section--expanded"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="true"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #1 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Hide 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #1
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #2"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #2 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #2
+          </div>
+        </div>
+      </pdk-accordion-item>
+      <pdk-accordion-item
+        title="Item #3"
+      >
+        <div
+          class="govuk-accordion__section"
+        >
+          <div
+            class="govuk-accordion__section-header"
+          >
+            <h2
+              class="govuk-accordion__section-heading"
+            >
+              <button
+                aria-controls="govuk-accordion-GENERATED_ID-content"
+                aria-expanded="false"
+                class="govuk-accordion__section-button"
+                id="govuk-accordion-GENERATED_ID-heading"
+                type="button"
+              >
+                <span
+                  class="govuk-accordion__section-heading-text"
+                >
+                  <span
+                    class="govuk-accordion__section-heading-text-focus"
+                  >
+                     Item #3 
+                  </span>
+                </span>
+                <span
+                  class="govuk-accordion__section-toggle"
+                  data-nosnippet=""
+                >
+                  <span
+                    class="govuk-accordion__section-toggle-focus"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+                    />
+                    <span
+                      class="govuk-accordion__section-toggle-text"
+                    >
+                       Show 
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </div>
+          <div
+            aria-labelledby="govuk-accordion-GENERATED_ID-heading"
+            class="govuk-accordion__section-content"
+            hidden="until-found"
+            id="govuk-accordion-GENERATED_ID-content"
+          >
+            Accordion item #3
+          </div>
+        </div>
+      </pdk-accordion-item>
+    </div>
+  </pdk-accordion>
+</pdk-accordion-test>
+`;

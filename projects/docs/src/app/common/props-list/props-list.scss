@@ -1,0 +1,38 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+@import 'govuk-frontend/dist/govuk/components/table/table';
+
+.govuk-table [role='row'] {
+  display: flex;
+}
+
+.docs-props-list__caption {
+  font-weight: 700;
+  display: block;
+  text-align: left;
+}
+
+.docs-props-list__cell {
+  @extend .govuk-table__cell;
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  &--unicode {
+    @include govuk-font(14);
+    font-family: Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+
+  &--name {
+    width: 120px;
+  }
+  &--type {
+    width: 90px;
+  }
+  &--default {
+    width: 80px;
+  }
+  &--description {
+    flex: 1;
+  }
+}

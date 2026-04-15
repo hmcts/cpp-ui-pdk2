@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-error-message should accept custom error messages 1`] = `
+<pdk-error-message-test
+  errorMessages={[Function Array]}
+  errors={[Function Object]}
+>
+  <pdk-error-message
+    class="govuk-error-message"
+  >
+     A postcode is required 
+  </pdk-error-message>
+</pdk-error-message-test>
+`;
+
+exports[`pdk-error-message should fallback to a default error message when the type is unknown 1`] = `
+<pdk-error-message-test
+  errors={[Function Object]}
+>
+  <pdk-error-message
+    class="govuk-error-message"
+  >
+     Invalid input 
+  </pdk-error-message>
+</pdk-error-message-test>
+`;
+
+exports[`pdk-error-message should render a single error message from the \`errors\` provided 1`] = `
+<pdk-error-message-test
+  errors={[Function Object]}
+>
+  <pdk-error-message
+    class="govuk-error-message"
+  >
+     Enter this information 
+  </pdk-error-message>
+</pdk-error-message-test>
+`;
+
+exports[`pdk-error-message should render an custom error message 1`] = `
+<pdk-error-message-test
+  errorMessages={[Function Array]}
+  errors={[Function Object]}
+>
+  <pdk-error-message
+    class="govuk-error-message"
+  >
+     Expected 5 but got 10 
+  </pdk-error-message>
+</pdk-error-message-test>
+`;

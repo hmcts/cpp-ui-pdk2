@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-inset-text should render 1`] = `
+<pdk-inset-text-test>
+  <pdk-inset-text>
+    <div
+      class="govuk-inset-text"
+    >
+      My content
+    </div>
+  </pdk-inset-text><pdk-inset-text
+    compound=""
+  >
+    <div
+      class="govuk-inset-text"
+      style="padding-right: 0px;"
+    >
+      My content
+    </div>
+  </pdk-inset-text>
+</pdk-inset-text-test>
+`;

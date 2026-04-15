@@ -1,0 +1,8 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+
+.docs-pane {
+  display: flex;
+  background-color: map-get($govuk-colours, 'light-grey');
+  flex-direction: column;
+  flex: 1 0 auto;
+}

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-tabs-navigation should render 1`] = `
+<pdk-tabs-navigation-test>
+  <pdk-tabs-navigation>
+    <pdk-tabs-container>
+      <div
+        class="js-enabled govuk-tabs"
+      >
+        <div
+          class="govuk-tabs__list"
+          role="list"
+        >
+          <pdk-tabs-nav-item
+            class="govuk-tabs__list-item govuk-tabs__list-item--selected"
+            role="listitem"
+          >
+            <a
+              class="govuk-tabs__tab"
+              href="#"
+              pdk-tabs-link=""
+            >
+              Tab one
+            </a>
+          </pdk-tabs-nav-item>
+          <pdk-tabs-nav-item
+            class="govuk-tabs__list-item"
+            role="listitem"
+          >
+            <a
+              class="govuk-tabs__tab"
+              href="#"
+              pdk-tabs-link=""
+            >
+              Tab two
+            </a>
+          </pdk-tabs-nav-item>
+        </div>
+      </div>
+    </pdk-tabs-container>
+  </pdk-tabs-navigation>
+</pdk-tabs-navigation-test>
+`;

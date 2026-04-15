@@ -1,0 +1,7 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/phase-banner/phase-banner';
+
+pdk-phase-banner {
+  display: block;
+  @extend .govuk-phase-banner;
+}

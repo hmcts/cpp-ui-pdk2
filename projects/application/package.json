@@ -1,0 +1,12 @@
+{
+  "name": "@cpp/application",
+  "version": "0.0.0-PLACEHOLDER",
+  "peerDependencies": {
+    "@cpp/core": "*",
+    "@cpp/users-groups": "*",
+    "@cpp/pdk": "^0.0.0-PLACEHOLDER",
+    "@ngrx/effects": "^19.0.0",
+    "@ngrx/store": "^19.0.0"
+  },
+  "peerDepenciesComment": "Do not modify placeholders in this file"
+}

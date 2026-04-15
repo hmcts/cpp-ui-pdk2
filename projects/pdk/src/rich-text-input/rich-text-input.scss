@@ -1,0 +1,39 @@
+@import '../styles/toolkit';
+
+$govuk-secondary-button-colour: govuk-colour('light-grey', $legacy: 'grey-3');
+$govuk-secondary-button-hover-colour: govuk-shade($govuk-secondary-button-colour, 10%);
+
+.angular-editor-toolbar {
+  font-family: $govuk-font-family !important;
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0px !important;
+
+  .angular-editor-toolbar-set {
+    margin-right: 0 !important;
+
+    .angular-editor-button {
+      background: $govuk-secondary-button-colour !important;
+      border: none !important;
+      cursor: pointer;
+      height: 35px !important;
+      width: 35px !important;
+      padding: 5px 5px !important;
+      margin-right: 5px !important;
+    }
+
+    .angular-editor-button.active {
+      background: $govuk-secondary-button-hover-colour !important;
+    }
+  }
+}
+
+.angular-editor-textarea {
+  border: $govuk-border-width-form-element solid $govuk-input-border-colour !important;
+
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+  }
+}

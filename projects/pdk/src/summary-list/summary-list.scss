@@ -1,0 +1,47 @@
+@import '../styles/toolkit';
+
+.pdk-summary-list {
+  &__row {
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+  }
+  &__key,
+  &__value,
+  &__actions {
+    border-bottom: 1px solid #b1b4b6;
+    margin: 0;
+    padding-top: govuk-spacing(2);
+    padding-right: govuk-spacing(4);
+    padding-bottom: govuk-spacing(2);
+  }
+  &--borderless {
+    .pdk-summary-list {
+      &__key,
+      &__value,
+      &__actions {
+        border-bottom: none;
+        padding-top: govuk-spacing(1);
+        padding-bottom: govuk-spacing(2);
+      }
+    }
+  }
+
+  &__value:last-child {
+    grid-column: 2 / span 2;
+  }
+  &__key {
+    font-weight: bold;
+  }
+  &__actions {
+    padding-right: 0;
+    text-align: right;
+  }
+}
+
+.govuk-visually-hidden + .pdk-summary-list__value {
+  grid-column: 1 / span 2;
+
+  &:last-child {
+    grid-column: 1 / span 3;
+  }
+}

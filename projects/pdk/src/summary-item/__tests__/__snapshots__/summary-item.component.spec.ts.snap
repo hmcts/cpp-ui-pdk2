@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-summary-item should render 1`] = `
+<pdk-summary-item-test>
+  <pdk-summary-item
+    count="2"
+    label="Items"
+  >
+    <dl
+      class="pdk-summary-item"
+    >
+      <dt
+        class="pdk-summary-item__number"
+      >
+         2 
+      </dt>
+      <dd
+        class="pdk-summary-item__label"
+      >
+        Items
+      </dd>
+    </dl>
+  </pdk-summary-item><pdk-summary-item
+    count="2"
+    hero=""
+    inline=""
+    label="Items"
+  >
+    <dl
+      class="pdk-summary-item pdk-summary-item--inline"
+    >
+      <dt
+        class="pdk-summary-item__number pdk-summary-item__number--hero"
+      >
+         2 
+      </dt>
+      <dd
+        class="pdk-summary-item__label"
+      >
+        Items
+      </dd>
+    </dl>
+  </pdk-summary-item>
+</pdk-summary-item-test>
+`;

@@ -1,0 +1,45 @@
+@import '../../../../pdk/src/styles/toolkit';
+
+.cpp-system-announcement {
+  display: block;
+
+  .announcement-item {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.cpp-system-announcement--critical {
+    pdk-notification-banner {
+      border-color: govuk-colour('red');
+
+      ::ng-deep .govuk-notification-banner__header {
+        background-color: govuk-colour('red') !important;
+      }
+    }
+  }
+
+  &.cpp-system-announcement--warning {
+    pdk-notification-banner {
+      border-color: govuk-colour('orange');
+
+      ::ng-deep .govuk-notification-banner__header {
+        background-color: govuk-colour('orange') !important;
+      }
+    }
+  }
+
+  &.cpp-system-announcement--information {
+    pdk-notification-banner {
+      border-color: govuk-colour('blue');
+
+      ::ng-deep .govuk-notification-banner__header {
+        background-color: govuk-colour('blue') !important;
+      }
+    }
+  }
+
+  ::ng-deep .govuk-notification-banner__heading {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,7 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/notification-banner/notification-banner';
+
+pdk-notification-banner {
+  display: block;
+  @extend .govuk-notification-banner;
+}

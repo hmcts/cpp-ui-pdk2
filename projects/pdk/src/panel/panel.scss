@@ -1,0 +1,11 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/panel/panel';
+
+:host {
+  @include govuk-responsive-margin(3, 'bottom');
+  display: block;
+}
+
+.govuk-panel {
+  margin: 0;
+}

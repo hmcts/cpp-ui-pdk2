@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-label should render 1`] = `
+<pdk-label-test>
+  <label
+    class="govuk-label"
+    pdk-label=""
+  /><label
+    class="govuk-label govuk-label--s"
+    pdk-label="small"
+  /><label
+    class="govuk-label govuk-label--m"
+    pdk-label="medium"
+  /><label
+    class="govuk-label govuk-label--l"
+    pdk-label="large"
+  /><label
+    class="govuk-label govuk-label--xl"
+    pdk-label="xlarge"
+  />
+</pdk-label-test>
+`;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-breadcrumb-list should render the active breadcrumb 1`] = `
+<pdk-breadcrumbs-test
+  breadcrumb={[Function String]}
+>
+  <ol
+    class="govuk-breadcrumbs govuk-breadcrumbs__list"
+    pdk-breadcrumb-list=""
+  >
+    <li
+      class="govuk-breadcrumbs__list-item"
+      pdk-breadcrumb-list-item=""
+    >
+      <a
+        aria-current="page"
+        class="govuk-breadcrumbs__link"
+      >
+        My breadcrumb!
+      </a>
+    </li>
+  </ol>
+</pdk-breadcrumbs-test>
+`;
+
+exports[`pdk-breadcrumb-list should render with the default props 1`] = `
+<pdk-breadcrumbs-test
+  breadcrumb="null"
+>
+  <ol
+    class="govuk-breadcrumbs govuk-breadcrumbs__list"
+    pdk-breadcrumb-list=""
+  >
+    <li
+      class="govuk-breadcrumbs__list-item"
+      pdk-breadcrumb-list-item=""
+    >
+      <a
+        class="govuk-breadcrumbs__link"
+      >
+        My breadcrumb!
+      </a>
+    </li>
+  </ol>
+</pdk-breadcrumbs-test>
+`;

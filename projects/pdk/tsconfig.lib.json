@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "types": ["node"],
+    "lib": ["dom", "es2024"],
+    "skipLibCheck": true
+  },
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "strictTemplates": true,
+    "strictInputTypes": false,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": true,
+    "compilationMode": "partial"
+  },
+  "exclude": ["**/*.spec.ts"]
+}

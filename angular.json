@@ -1,0 +1,156 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "pdk": {
+      "root": "projects/pdk",
+      "sourceRoot": "projects/pdk/src",
+      "projectType": "library",
+      "prefix": "pdk",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/pdk/tsconfig.lib.json",
+            "project": "projects/pdk/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "./tsconfig.spec.json",
+            "configPath": "jest.config.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/pdk/**/*.ts", "projects/pdk/**/*.html"]
+          }
+        }
+      }
+    },
+    "docs": {
+      "root": "projects/docs/",
+      "sourceRoot": "projects/docs/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": ["lodash", "uuid/v4", "prismjs"],
+            "outputPath": "dist/docs",
+            "index": "projects/docs/src/index.html",
+            "polyfills": ["projects/docs/src/polyfills.ts"],
+            "tsConfig": "projects/docs/tsconfig.app.json",
+            "assets": ["projects/docs/src/favicon.ico", "projects/docs/src/assets"],
+            "styles": ["projects/docs/src/styles.css"],
+            "scripts": [
+              {
+                "input": "projects/docs/src/polyfills/dynatrace.min.js",
+                "bundleName": "dynatrace",
+                "inject": true
+              }
+            ],
+            "main": "projects/docs/src/main.ts"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/docs/src/environments/environment.ts",
+                  "with": "projects/docs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "docs:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "docs:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/docs//**/*.ts", "projects/docs//**/*.html"]
+          }
+        }
+      }
+    },
+    "application": {
+      "root": "projects/application",
+      "sourceRoot": "projects/application/src",
+      "projectType": "library",
+      "prefix": "pdk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/application/tsconfig.lib.json",
+            "project": "projects/application/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "./tsconfig.spec.json",
+            "configPath": "jest.config.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/application/**/*.ts", "projects/application/**/*.html"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "schematicCollections": ["@angular-eslint/schematics"]
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
+  }
+}

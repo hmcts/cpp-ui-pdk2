@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cpp-application-service-unavailable-error-page should render page 1`] = `
+<cpp-application-service-unavailable-error-page-test>
+  <cpp-application-service-unavailable-error-page>
+    <h1
+      class="govuk-heading-xl"
+      pdk-typography="heading-xlarge"
+    >
+      Sorry this service is 
+      <br />
+      currently unavailable
+    </h1>
+    <div>
+      <p
+        class="govuk-body-s"
+        pdk-typography="body-small"
+      >
+         We're working hard to get the service back up as soon as possible. 
+      </p>
+      <p
+        class="govuk-body-s"
+        pdk-typography="body-small"
+      >
+        Contact the help desk if you need to speak to someone.
+      </p>
+    </div>
+  </cpp-application-service-unavailable-error-page>
+</cpp-application-service-unavailable-error-page-test>
+`;

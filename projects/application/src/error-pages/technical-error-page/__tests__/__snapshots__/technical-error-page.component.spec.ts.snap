@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cpp-application-technical-error-page should render page 1`] = `
+<cpp-application-technical-error-page-test>
+  <cpp-application-technical-error-page>
+    <h1
+      class="govuk-heading-xl"
+      pdk-typography="heading-xlarge"
+    >
+       Technical error 
+      <br />
+      <span
+        class="govuk-heading-l"
+        pdk-typography="heading-large"
+      >
+        There was a problem 
+      </span>
+    </h1>
+    <div>
+      <p
+        class="govuk-body-s"
+        pdk-typography="body-small"
+      >
+         Check you’ve entered the web address correctly or 
+        <a
+          class="govuk-link"
+          href="/"
+          pdk-link=""
+        >
+          go to the home page
+        </a>
+         - any unsaved changes may be lost. 
+      </p>
+    </div>
+  </cpp-application-technical-error-page>
+</cpp-application-technical-error-page-test>
+`;

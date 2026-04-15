@@ -1,0 +1,11 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/details/details';
+
+pdk-details-text,
+pdk-details-content {
+  display: block;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,66 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-foldable';
+$max-height: 1.4rem;
+
+@mixin foldable-line-clamp($selector) {
+  @for $i from 1 to 4 {
+    @if $i == 1 {
+      .#{$selector}.#{$selector}__single {
+        white-space: nowrap;
+        max-height: $max-height;
+      }
+    } @else {
+      .#{$selector}.#{$selector}__multiple {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        /* autoprefixer: off */
+
+        &.#{$selector}__multiple-#{$i} {
+          -webkit-line-clamp: $i;
+          max-height: calc($max-height * $i);
+        }
+      }
+    }
+  }
+}
+
+.#{$module} {
+  display: flex;
+  align-items: flex-end;
+  @include foldable-line-clamp(#{$module}__content);
+
+  &.#{$module}--expanded {
+    display: inline;
+  }
+
+  &__content {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  &--reference {
+    height: 0;
+  }
+
+  &__toggle {
+    flex: 0 0 55px;
+    text-align: center;
+  }
+
+  &--expanded {
+    .#{$module}__content {
+      white-space: normal;
+    }
+  }
+
+  &--overflowed {
+    &.#{$module}--expanded {
+      .#{$module}__content,
+      .#{$module}__toggle {
+        display: inline;
+      }
+    }
+  }
+}

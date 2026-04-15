@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-table should render 1`] = `
+<pdk-table-test>
+  <table
+    class="govuk-table"
+    pdk-table=""
+  >
+    <caption
+      class="govuk-table__caption"
+      pdk-table-caption=""
+    >
+       Dates and amounts 
+    </caption>
+    <thead
+      class="govuk-table__head"
+      pdk-table-head=""
+    >
+      <tr
+        class="govuk-table__row"
+        pdk-table-row=""
+      >
+        <th
+          class="govuk-table__cell"
+          pdk-table-header=""
+          scope="col"
+        >
+          Date
+        </th>
+        <th
+          class="govuk-table__cell"
+          pdk-table-header=""
+          scope="col"
+        >
+          Amount
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="govuk-table__body"
+      pdk-table-body=""
+    >
+      <tr
+        class="govuk-table__row"
+        pdk-table-row=""
+      >
+        <th
+          class="govuk-table__cell"
+          pdk-table-header="row"
+          scope="row"
+        >
+          First 6 weeks
+        </th>
+        <td
+          class="govuk-table__cell"
+          pdk-table-cell=""
+        >
+          £109.80 per week
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</pdk-table-test>
+`;

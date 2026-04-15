@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-margin should render 1`] = `
+<pdk-margin-test>
+  <div
+    class="govuk-!-margin-1"
+    pdk-margin="1"
+  /><div
+    class="govuk-!-margin-top-1"
+    pdk-margin-top="1"
+  /><div
+    class="govuk-!-margin-right-1"
+    pdk-margin-right="1"
+  /><div
+    class="govuk-!-margin-bottom-1"
+    pdk-margin-bottom="1"
+  /><div
+    class="govuk-!-margin-left-1"
+    pdk-margin-left="1"
+  /><div
+    class="govuk-!-margin-left-1 govuk-!-margin-right-1"
+    pdk-margin-horizontal="1"
+  /><div
+    class="govuk-!-margin-top-1 govuk-!-margin-bottom-1"
+    pdk-margin-vertical="1"
+  /><div
+    class="pdk-!-negative-margin-1"
+    pdk-margin="-1"
+  /><div
+    class="pdk-!-negative-margin-top-1"
+    pdk-margin-top="-1"
+  /><div
+    class="pdk-!-negative-margin-right-1"
+    pdk-margin-right="-1"
+  /><div
+    class="pdk-!-negative-margin-bottom-1"
+    pdk-margin-bottom="-1"
+  /><div
+    class="pdk-!-negative-margin-left-1"
+    pdk-margin-left="-1"
+  /><div
+    class="pdk-!-negative-margin-left-1 pdk-!-negative-margin-right-1"
+    pdk-margin-horizontal="-1"
+  /><div
+    class="pdk-!-negative-margin-top-1 pdk-!-negative-margin-bottom-1"
+    pdk-margin-vertical="-1"
+  />
+</pdk-margin-test>
+`;
+
+exports[`pdk-padding should render 1`] = `
+<pdk-padding-test>
+  <div
+    class="govuk-!-padding-1"
+    pdk-padding="1"
+  /><div
+    class="govuk-!-padding-top-1"
+    pdk-padding-top="1"
+  /><div
+    class="govuk-!-padding-right-1"
+    pdk-padding-right="1"
+  /><div
+    class="govuk-!-padding-bottom-1"
+    pdk-padding-bottom="1"
+  /><div
+    class="govuk-!-padding-left-1"
+    pdk-padding-left="1"
+  /><div
+    class="govuk-!-padding-left-1 govuk-!-padding-right-1"
+    pdk-padding-horizontal="1"
+  /><div
+    class="govuk-!-padding-top-1 govuk-!-padding-bottom-1"
+    pdk-padding-vertical="1"
+  />
+</pdk-padding-test>
+`;

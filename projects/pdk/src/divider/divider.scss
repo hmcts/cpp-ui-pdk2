@@ -1,0 +1,27 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/helpers/spacing';
+
+$module: 'pdk-divider';
+
+#{$module} {
+  @include govuk-responsive-margin(6, 'top');
+  @include govuk-responsive-margin(6, 'bottom');
+
+  background-color: govuk-colour('mid-grey');
+  border: 0;
+  display: block;
+  height: govuk-em(1, 16);
+  padding: 0;
+
+  .#{$module} {
+    margin: 0;
+
+    &--dark {
+      background-color: govuk-colour('black');
+    }
+
+    &--thick {
+      height: govuk-em(5, 16);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-container should render 1`] = `
+<pdk-container-test>
+  <div
+    class="govuk-width-container"
+    pdk-container=""
+    style="display: block;"
+  />
+</pdk-container-test>
+`;
+
+exports[`pdk-main should render 1`] = `
+<pdk-main-test>
+  <pdk-main
+    contentid="id!"
+  >
+    <main
+      class="govuk-main-wrapper govuk-!-margin-bottom-9 govuk-width-container"
+      id="id!"
+      pdk-container=""
+      pdk-margin-bottom="9"
+      style="display: block;"
+      tabindex="-1"
+    />
+  </pdk-main>
+</pdk-main-test>
+`;

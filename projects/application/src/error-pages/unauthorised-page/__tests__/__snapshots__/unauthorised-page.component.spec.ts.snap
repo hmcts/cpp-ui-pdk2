@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cpp-application-unauthorised-page should render page 1`] = `
+<cpp-application-unauthorised-page-test>
+  <cpp-application-unauthorised-page>
+    <h1
+      class="govuk-heading-xl"
+      pdk-typography="heading-xlarge"
+    >
+       Error 403 - Forbidden 
+      <br />
+      <span
+        class="govuk-heading-l"
+        pdk-typography="heading-large"
+      >
+        You’re not authorised to view this page 
+      </span>
+    </h1>
+    <div>
+      <p
+        class="govuk-body-s"
+        pdk-typography="body-small"
+      >
+         You don't have access to this role. Contact your Common Platform administrator If you think you should. 
+      </p>
+    </div>
+  </cpp-application-unauthorised-page>
+</cpp-application-unauthorised-page-test>
+`;

@@ -1,0 +1,29 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/button/button';
+
+$button-secondary-colour: #dee0e2;
+$button-secondary-hover-colour: darken($button-secondary-colour, 5%);
+$button-secondary-shadow-colour: darken($button-secondary-colour, 15%);
+$button-secondary-text-colour: govuk-colour('black');
+
+$button-shadow-size: $govuk-border-width-form-element;
+
+.pdk-filter-button {
+  border: 0;
+  background: none;
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: inherit;
+  padding: 0;
+  color: govuk-colour('blue');
+  padding-right: 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 3px;
+  margin-left: 3px;
+  margin-right: 2px;
+
+  &:focus {
+    @include pdk-focusable-button;
+  }
+}

@@ -1,0 +1,43 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/select/select';
+
+.pdk-select {
+  &--justified {
+    width: 100%;
+  }
+
+  &--width-30 {
+    width: 100%;
+    max-width: 59ex;
+  }
+
+  &--width-20 {
+    width: 100%;
+    max-width: 41ex;
+  }
+
+  &--width-10 {
+    width: 100%;
+    max-width: 23ex;
+  }
+
+  &--width-5 {
+    width: 100%;
+    max-width: 10.8ex;
+  }
+
+  &--width-4 {
+    width: 100%;
+    max-width: 9ex;
+  }
+
+  &--width-3 {
+    width: 100%;
+    max-width: 7.2ex;
+  }
+
+  &--width-2 {
+    width: 100%;
+    max-width: 5.4ex;
+  }
+}

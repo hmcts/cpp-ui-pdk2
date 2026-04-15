@@ -1,0 +1,47 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/checkboxes/checkboxes';
+
+pdk-checkbox-group {
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+pdk-checkbox {
+  @include govuk-clearfix;
+  // Hand off margin from .govuk-checkboxes__item to containing element to allow
+  // changing the margin from the outside via the style attribute
+  &:not(.govuk-checkboxes--small) {
+    margin-bottom: govuk-spacing(2);
+  }
+  display: block;
+
+  .govuk-checkboxes__item {
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Although this exists on this class, create a stricter scoping due to
+  // external .govuk-input leakage
+  .govuk-checkboxes__label {
+    margin-bottom: 0;
+  }
+}
+
+pdk-checkbox-conditional {
+  // Hand off margin from .govuk-checkboxes__conditional to the containing
+  // element to allow changing the margin from the outside via the style
+  // attribute
+  @include govuk-responsive-margin(4, 'bottom');
+  display: block;
+
+  &.govuk-checkboxes--small {
+    @include govuk-responsive-margin(2, 'bottom');
+  }
+  .govuk-checkboxes__conditional {
+    margin-bottom: 0;
+  }
+}

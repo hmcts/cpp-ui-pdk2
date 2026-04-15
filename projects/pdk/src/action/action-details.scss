@@ -1,0 +1,98 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-action-details';
+
+#{$module} {
+  @include govuk-responsive-margin(2, 'bottom');
+  display: block;
+
+  .#{$module} {
+    &__header {
+      @include govuk-responsive-padding(2);
+      box-sizing: border-box;
+    }
+
+    &__content {
+      @include govuk-font(14);
+      @include govuk-responsive-padding(2);
+      padding: govuk-em(10, 16);
+      box-sizing: border-box;
+    }
+
+    &__title {
+      display: block;
+      font-weight: 700;
+    }
+
+    &--completed {
+      @include govuk-responsive-margin(3, 'bottom');
+      @include govuk-responsive-padding(2, 'left');
+      @include govuk-responsive-padding(2, 'right');
+
+      .#{$module}__header {
+        @include govuk-font(16);
+        display: table;
+        padding: 0;
+        width: 100%;
+      }
+
+      .#{$module}__content {
+        padding: 0;
+      }
+
+      .#{$module}__title {
+        @include govuk-responsive-padding(4, 'right');
+        @include govuk-font(16, bold);
+        font-weight: normal;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .#{$module}__options {
+        @include govuk-font(16);
+        display: table-cell;
+        text-align: right;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+
+      .#{$module}__action {
+        @include govuk-responsive-margin(2, 'left');
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: middle;
+      }
+
+      .#{$module}__status {
+        background-color: govuk-colour('white');
+        border: 2px solid govuk-colour('white');
+        display: inline-block;
+        font-weight: bold;
+        padding: govuk-em(3, 16) govuk-em(6, 16);
+        vertical-align: middle;
+
+        &::before {
+          content: attr(data-status-title);
+        }
+
+        &::after {
+          @include govuk-responsive-margin(1, 'left');
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAAAXNSR0IArs4c6QAAALZJREFUKBVjZiAS/P//n/Hjzz9zLWzsjU4cOXSAkRh9IE2FlTVz/v9nSAKpZ2RkbGQipBFdE0T9f1m8NmLTxMjIMK+/vSUFbGNBRU1DQUX1XJBCmAvwaQI69T8LSBNQUT1IA9AfDEB2CpQN9xOID7MJpAnEZ2Fg+C8LYoAAyPMgzTA2mAEk0DWBxBmxOQmmAawA6ieYTTA5sJ9wacZmE4pGEAddMz5NMM1wGqQZFLroIQxXgMQAANGWftCBURRMAAAAAElFTkSuQmCC');
+          content: '';
+          display: inline-block;
+          height: 11px;
+          width: 14px;
+        }
+
+        &--highlighted {
+          border-color: govuk-colour('green');
+          color: govuk-colour('green');
+
+          &::after {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAAAXNSR0IArs4c6QAAALBJREFUKBWNkMsRwjAMRFchXTA0wTBJP0xwG4E2GEIbXLlyoAwoA5GV87PHhOgkyXrWaldYGqqC963Bbr3F83WXRRwhV16gurf5TE7ZXzCGCCg28xtTkMgV50flN7riiEPRtFLGj2YgiGgOQh+tTbIrWxladfl4ExvdJkIsc+plYsHjCTN6I5hHkLVM3tQxdqeRgPjsb0rdY6/eiF5e8N9QxPCPTcN8kBCmu7HDwZAvvgLJYkpItKrGAAAAAElFTkSuQmCC');
+          }
+        }
+      }
+    }
+  }
+}

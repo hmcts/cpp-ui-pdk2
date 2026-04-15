@@ -1,0 +1,155 @@
+@import '../styles/toolkit';
+
+@import '@angular/cdk/overlay-prebuilt';
+@import 'govuk-frontend/dist/govuk/base';
+@import 'govuk-frontend/dist/govuk/core/links';
+@import 'govuk-frontend/dist/govuk/core/lists';
+@import 'govuk-frontend/dist/govuk/core/section-break';
+@import 'govuk-frontend/dist/govuk/core/typography';
+@import 'govuk-frontend/dist/govuk/overrides/spacing';
+@import 'govuk-frontend/dist/govuk/overrides/typography';
+@import 'govuk-frontend/dist/govuk/utilities/all';
+@import 'govuk-frontend/dist/govuk/helpers/focused';
+@import 'govuk-frontend/dist/govuk/objects/width-container';
+@import 'govuk-frontend/dist/govuk/components/button/button';
+
+// Applied to the <html> element
+html {
+  // Set the overall page background colour to the same colour as used by the
+  // footer to give the illusion of a long footer.
+  background-color: $_govuk-rebrand-template-background-colour;
+}
+
+// Applied to the <body> element
+body {
+  // The default margins set by user-agents are not required since we have our
+  // own containers.
+  margin: 0;
+  // Set the overall body of the page back to the typical background colour.
+  background-color: $govuk-body-background-colour;
+}
+
+.pdk--focused {
+  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline-offset: 0;
+}
+
+.pdk-focusable {
+  &:focus {
+    @extend .pdk--focused;
+    color: $govuk-focus-text-colour !important;
+    background: $govuk-focus-colour !important;
+  }
+}
+
+.govuk-width-container {
+  max-width: var(--container-width) !important;
+}
+
+@mixin build-colours {
+  @each $key, $value in $govuk-colours {
+    // todo: convert to modifier syntax in major update
+    .pdk-\!-fill-color-#{$key} {
+      background-color: $value !important;
+    }
+    .pdk-\!-fill-color-#{$key}-tint-25 {
+      background-color: mix(white, $value, 25%);
+    }
+    .pdk-\!-fill-color-#{$key}-tint-50 {
+      background-color: mix(white, $value, 50%);
+    }
+
+    .pdk-\!-fill-color-hover-#{$key} {
+      &:hover {
+        background-color: $value !important;
+      }
+    }
+
+    // todo: convert to modifier syntax in major update
+    .pdk-\!-text-color-#{$key} {
+      color: $value !important;
+    }
+    .pdk-\!-text-color-#{$key}-tint-25 {
+      color: mix(white, $value, 25%);
+    }
+    .pdk-\!-text-color-#{$key}-tint-50 {
+      color: mix(white, $value, 50%);
+    }
+    .pdk-\!-text-color-hover-#{$key} {
+      &:hover {
+        color: $value !important;
+      }
+    }
+
+    // todo: convert to modifier syntax in major update
+    .pdk-\!-border-color-#{$key} {
+      border-color: $value !important;
+    }
+    .pdk-\!-border-color-#{$key}-tint-25 {
+      border-color: mix(white, $value, 25%);
+    }
+    .pdk-\!-border-color-#{$key}-tint-50 {
+      border-color: mix(white, $value, 50%);
+    }
+  }
+}
+
+@include build-colours;
+
+.pdk-media--mobile-visible {
+  @include mq($from: tablet) {
+    display: none;
+  }
+}
+
+.pdk-media--mobile-hidden {
+  display: none;
+  @include mq($from: tablet) {
+    display: initial;
+  }
+}
+
+@mixin pdk-responsive-negative-margin(
+  $responsive-spacing-point,
+  $direction: 'all',
+  $important: false
+) {
+  $property: 'margin';
+  $scale-map: map-get($govuk-spacing-responsive-scale, $responsive-spacing-point);
+  $actual-map-type: type-of($scale-map);
+
+  @each $breakpoint, $breakpoint-value in $scale-map {
+    $breakpoint-value: $breakpoint-value - (2 * $breakpoint-value);
+
+    @if $breakpoint == null {
+      @if $direction == all {
+        #{$property}: $breakpoint-value if($important, !important, null);
+      } @else {
+        #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
+      }
+    } @else {
+      @include govuk-media-query($from: $breakpoint) {
+        @if $direction == all {
+          #{$property}: $breakpoint-value if($important, !important, null);
+        } @else {
+          #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
+        }
+      }
+    }
+  }
+}
+
+// For each point in the spacing scale (defined in settings), create an
+// override that affects all margins negatively
+@each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
+  .pdk-\!-negative-margin-#{$scale-point} {
+    @include pdk-responsive-negative-margin($scale-point, 'all', true);
+  }
+
+  // ... and then an override for each individual direction
+  @each $direction in $_spacing-directions {
+    .pdk-\!-negative-margin-#{$direction}-#{$scale-point} {
+      @include pdk-responsive-negative-margin($scale-point, $direction, true);
+    }
+  }
+}

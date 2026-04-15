@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-service-nav should render 1`] = `
+<pdk-service-nav-test>
+  <nav
+    aria-label="Menu"
+    class="govuk-template--rebranded"
+    pdk-service-nav=""
+  >
+    <div
+      class="govuk-service-navigation"
+    >
+      <div
+        class="govuk-service-navigation__container"
+      >
+        <div
+          class="govuk-service-navigation__wrapper"
+        >
+          <ul
+            class="govuk-service-navigation__list"
+            pdk-service-nav-list=""
+          >
+            <li
+              class="pdk-service-nav-list-item govuk-service-navigation__item govuk-service-navigation__item--active"
+              pdk-service-nav-list-item=""
+            >
+              <a
+                href="javascript:void(0)"
+              >
+                Service item 1
+              </a>
+            </li>
+            <li
+              class="pdk-service-nav-list-item govuk-service-navigation__item"
+              pdk-service-nav-list-item=""
+            >
+              <a
+                href="javascript:void(0)"
+              >
+                Service item 2
+              </a>
+            </li>
+            <li
+              class="pdk-service-nav-list-item govuk-service-navigation__item"
+              pdk-service-nav-list-item=""
+            >
+              <a
+                href="javascript:void(0)"
+              >
+                Service item 3
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</pdk-service-nav-test>
+`;

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-document-icon should render 1`] = `
+<pdk-document-icon-test
+  size={[Function Number]}
+>
+  <pdk-document-icon
+    style="display: inline-block; vertical-align: middle;"
+  >
+    <div
+      style="display: flex; align-items: center; justify-content: center;"
+    >
+      <i
+        style="height: 33.599999999999994px; width: 24px;"
+      >
+        <svg
+          height="100%"
+          viewBox="0 0 198 280"
+          width="100%"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="none"
+            stroke-width="1"
+          >
+            <rect
+              fill="#FFFFFF"
+              height="280"
+              width="198"
+              x="0"
+              y="0"
+            />
+            <g
+              fill="#BFC1C3"
+              transform="translate(24.000000, 24.000000)"
+            >
+              <g
+                transform="translate(0.000000, 202.000000)"
+              >
+                <rect
+                  height="18"
+                  width="18"
+                  x="0"
+                  y="0"
+                />
+                <rect
+                  height="18"
+                  width="96"
+                  x="36"
+                  y="0"
+                />
+              </g>
+              <g
+                transform="translate(0.000000, 166.000000)"
+              >
+                <rect
+                  height="18"
+                  width="18"
+                  x="0"
+                  y="0"
+                />
+                <rect
+                  height="18"
+                  width="114"
+                  x="36"
+                  y="0"
+                />
+              </g>
+              <g
+                transform="translate(0.000000, 130.000000)"
+              >
+                <rect
+                  height="18"
+                  width="18"
+                  x="0"
+                  y="0"
+                />
+                <rect
+                  height="18"
+                  width="78"
+                  x="36"
+                  y="0"
+                />
+              </g>
+              <g
+                transform="translate(0.000000, 94.000000)"
+              >
+                <rect
+                  height="18"
+                  width="18"
+                  x="0"
+                  y="0"
+                />
+                <rect
+                  height="18"
+                  width="114"
+                  x="36"
+                  y="0"
+                />
+              </g>
+              <rect
+                height="54"
+                width="150"
+                x="0"
+                y="0"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </pdk-document-icon>
+</pdk-document-icon-test>
+`;

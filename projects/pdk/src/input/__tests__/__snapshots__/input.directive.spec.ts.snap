@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-input should render 1`] = `
+<pdk-input-test>
+  <input
+    class="govuk-input"
+    pdk-input=""
+  /><input
+    class="govuk-input"
+    pdk-input="2"
+  /><input
+    class="govuk-input"
+    pdk-input="3"
+  /><input
+    class="govuk-input"
+    pdk-input="4"
+  /><input
+    class="govuk-input"
+    pdk-input="5"
+  /><input
+    class="govuk-input"
+    pdk-input="10"
+  /><input
+    class="govuk-input"
+    pdk-input="20"
+  /><input
+    class="govuk-input"
+    pdk-input="30"
+  /><input
+    class="govuk-input govuk-input--error"
+    pdk-input=""
+  />
+</pdk-input-test>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-hint should render a default date hint 1`] = `
+<pdk-hint-test
+  hintType={[Function String]}
+>
+  <pdk-hint
+    class="govuk-hint"
+  >
+    <div>
+       For example, 23 10 2017 
+    </div>
+  </pdk-hint>
+</pdk-hint-test>
+`;
+
+exports[`pdk-hint should render a default time hint 1`] = `
+<pdk-hint-test
+  hintType={[Function String]}
+>
+  <pdk-hint
+    class="govuk-hint"
+  >
+    <div>
+       For example, 10 30 
+    </div>
+  </pdk-hint>
+</pdk-hint-test>
+`;
+
+exports[`pdk-hint should render a hint 1`] = `
+<pdk-hint-test>
+  <pdk-hint
+    class="govuk-hint"
+  >
+    <div>
+      This is a hint!
+    </div>
+  </pdk-hint>
+</pdk-hint-test>
+`;

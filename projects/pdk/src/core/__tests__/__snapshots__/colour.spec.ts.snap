@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-border-colour should render the provided border colour 1`] = `
+<pdk-border-colour-test
+  colour={[Function String]}
+>
+  <p
+    class="pdk-!-border-color-purple"
+  />
+</pdk-border-colour-test>
+`;
+
+exports[`pdk-border-colour should render the provided border colour 2`] = `
+<pdk-border-colour-test
+  colour={[Function String]}
+>
+  <p
+    class="pdk-!-border-color-red"
+  />
+</pdk-border-colour-test>
+`;
+
+exports[`pdk-fill-colour should render the provided fill colour 1`] = `
+<pdk-fill-colour-test
+  colour={[Function String]}
+>
+  <div
+    class="pdk-!-fill-color-purple"
+  />
+</pdk-fill-colour-test>
+`;
+
+exports[`pdk-fill-colour should render the provided fill colour 2`] = `
+<pdk-fill-colour-test
+  colour={[Function String]}
+>
+  <div
+    class="pdk-!-fill-color-red"
+  />
+</pdk-fill-colour-test>
+`;
+
+exports[`pdk-text-colour should render the provided text colour 1`] = `
+<pdk-text-colour-test
+  colour={[Function String]}
+>
+  <p
+    class="pdk-!-text-color-purple"
+  />
+</pdk-text-colour-test>
+`;
+
+exports[`pdk-text-colour should render the provided text colour 2`] = `
+<pdk-text-colour-test
+  colour={[Function String]}
+>
+  <p
+    class="pdk-!-text-color-red"
+  />
+</pdk-text-colour-test>
+`;

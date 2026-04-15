@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-back-link should render 1`] = `
+<pdk-back-link-test>
+  <a
+    class="govuk-back-link"
+    href="#"
+    pdk-back-link=""
+  >
+    Back
+  </a>
+</pdk-back-link-test>
+`;

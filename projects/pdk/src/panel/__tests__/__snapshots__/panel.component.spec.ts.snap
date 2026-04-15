@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-panel should render a confirmation panel 1`] = `
+<pdk-panel-test
+  type={[Function String]}
+>
+  <pdk-panel
+    title="Panel title!"
+  >
+    <div
+      class="govuk-panel govuk-panel--confirmation"
+    >
+      <h1
+        class="govuk-panel__title"
+      >
+        Panel title!
+      </h1>
+      <div
+        class="govuk-panel__body"
+      >
+         Panel body 
+      </div>
+    </div>
+  </pdk-panel>
+</pdk-panel-test>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cpp-application-not-found-page should render page 1`] = `
+<cpp-application-not-found-page-test>
+  <cpp-application-not-found-page>
+    <h1
+      class="govuk-heading-xl"
+      pdk-typography="heading-xlarge"
+    >
+       Error 404 - Not found 
+      <br />
+      <span
+        class="govuk-heading-l"
+        pdk-typography="heading-large"
+      >
+        There was a problem 
+      </span>
+    </h1>
+    <div>
+      <p
+        class="govuk-body-s"
+        pdk-typography="body-small"
+      >
+         Make sure you’ve entered the web address correctly. Contact the help desk if this doesn’t work. 
+      </p>
+    </div>
+  </cpp-application-not-found-page>
+</cpp-application-not-found-page-test>
+`;

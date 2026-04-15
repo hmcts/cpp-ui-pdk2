@@ -1,0 +1,45 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+
+$module: 'docs-navigation';
+
+.#{$module} {
+  @include govuk-font(19, 'bold');
+  background-color: #f8f8f8;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 -15px;
+
+    > li {
+      box-sizing: border-box;
+      height: 50px;
+      line-height: 50px;
+
+      > a {
+        color: map-get($govuk-colours, 'blue');
+        margin: 0 15px;
+        line-height: 50px;
+        text-decoration: none;
+
+        &:focus {
+          @include govuk-focused-text;
+        }
+      }
+
+      &:not(.#{$module}--current-page) {
+        > a:hover:not(:focus) {
+          text-decoration: underline;
+        }
+      }
+
+      &.#{$module}--current-page {
+        border-bottom: 4px solid map-get($govuk-colours, 'blue');
+      }
+    }
+  }
+}

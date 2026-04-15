@@ -1,0 +1,18 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+@import 'govuk-frontend/dist/govuk/objects/grid';
+
+pdk-grid {
+  display: block;
+
+  @each $width in map-keys($govuk-grid-widths) {
+    .pdk-grid-column-offset-#{$width} {
+      margin-left: 0;
+
+      @include mq($from: mobile) {
+        margin-left: govuk-grid-width($width);
+      }
+    }
+  }
+}

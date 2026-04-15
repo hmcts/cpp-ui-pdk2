@@ -1,0 +1,46 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-dropdown';
+
+#{$module} {
+  position: relative;
+  display: inline-block;
+
+  .#{$module} {
+    &__navigation-item {
+      display: inline-block;
+    }
+
+    &__nav-submenu {
+      color: map-get($govuk-colours, 'black');
+      background: white;
+      margin: 10px -14px -10px -14px;
+      border-radius: 4px;
+      border-width: 1px;
+      border-style: solid;
+      margin: 4px auto auto auto;
+      position: absolute;
+      left: -3px;
+      padding: govuk-spacing(2) 0;
+      z-index: 10000;
+      min-width: 150px;
+
+      .#{$module}__navigation-item {
+        display: block;
+        padding: 3px govuk-spacing(3);
+        margin-right: 0;
+        white-space: nowrap;
+        border: 0;
+
+        a {
+          font-weight: 400;
+        }
+      }
+
+      &.pdk-header__nav-submenu--right {
+        left: auto;
+        right: -3px;
+      }
+    }
+  }
+}

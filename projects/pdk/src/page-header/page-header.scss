@@ -1,0 +1,66 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-page-header';
+
+.#{$module} {
+  @include govuk-font(16);
+  background-color: govuk-colour('blue');
+  color: govuk-colour('white');
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  a {
+    color: govuk-colour('white');
+    display: block;
+    overflow: hidden;
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+
+  &__links {
+    display: block;
+    overflow: hidden;
+
+    > [role='listitem'] {
+      float: left;
+      margin: govuk-em(5, 16) govuk-em(10, 16) govuk-em(10, 16);
+    }
+  }
+
+  &__marker {
+    background-color: govuk-colour('yellow');
+    display: flex;
+    align-items: center;
+    padding: 0 govuk-em(10, 14);
+
+    &-text {
+      @include govuk-font(14);
+      text-transform: uppercase;
+      font-weight: 700;
+      color: govuk-colour('black');
+    }
+  }
+
+  &__content {
+    margin: govuk-em(5, 16);
+    display: flex;
+  }
+
+  &__reference,
+  &__title {
+    margin: govuk-em(5, 16);
+    color: govuk-colour('white');
+  }
+
+  // desktop and up
+  @include mq($from: desktop) {
+    &__links {
+      > [role='listitem'] {
+        margin-top: govuk-em(10, 16);
+      }
+    }
+  }
+}

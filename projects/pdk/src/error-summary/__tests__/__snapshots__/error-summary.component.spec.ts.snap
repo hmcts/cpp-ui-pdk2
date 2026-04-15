@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-error-summary should render 1`] = `
+<pdk-error-message-test
+  errors={[Function Array]}
+>
+  <pdk-error-summary>
+    <div
+      class="govuk-error-summary"
+      tabindex="-1"
+    >
+      <div
+        aria-labelledby="pdk-error-sumamry-GENERATED_ID"
+        role="alert"
+      >
+        <h2
+          class="govuk-error-summary__title"
+          id="pdk-error-sumamry-GENERATED_ID"
+        >
+        </h2>
+        <div
+          class="govuk-error-summary__body"
+        >
+          <ul
+            class="govuk-list govuk-error-summary__list"
+          >
+            <li>
+              <a
+                href="javascript:void(0)"
+              >
+                 First error 
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+              >
+                 Second error 
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </pdk-error-summary>
+</pdk-error-message-test>
+`;
+
+exports[`pdk-error-summary should render with a custom title 1`] = `
+<pdk-error-message-test
+  errors={[Function Array]}
+  title={[Function String]}
+>
+  <pdk-error-summary>
+    <div
+      class="govuk-error-summary"
+      tabindex="-1"
+    >
+      <div
+        aria-labelledby="pdk-error-sumamry-GENERATED_ID"
+        role="alert"
+      >
+        <h2
+          class="govuk-error-summary__title"
+          id="pdk-error-sumamry-GENERATED_ID"
+        >
+          Custom title!
+        </h2>
+        <div
+          class="govuk-error-summary__body"
+        >
+          <ul
+            class="govuk-list govuk-error-summary__list"
+          >
+            <li>
+              <a
+                href="javascript:void(0)"
+              >
+                 First error 
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+              >
+                 Second error 
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </pdk-error-summary>
+</pdk-error-message-test>
+`;

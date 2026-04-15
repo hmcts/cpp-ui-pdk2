@@ -1,0 +1,52 @@
+.date-picker-navigation {
+  align-items: center;
+  display: flex;
+}
+.date-picker-navigation_justify-between {
+  justify-content: space-between;
+}
+.date-picker-navigation_justify-center {
+  justify-content: center;
+}
+.date-picker-navigation__arrow {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.date-picker-navigation__month_and_year {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.date-picker-navigation__arrow-icon {
+  height: 20px;
+  width: 20px;
+  fill: #0b0c0c;
+  transform: scale(0.9);
+}
+.date-picker-navigation_arrow--disabled .date-picker-navigation__arrow-icon {
+  fill: #bfc1c3;
+}
+.date-picker-navigation__year:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+.date-picker-navigation__year_closed::after,
+.date-picker-navigation__year_opened::after {
+  font-size: 0.6em;
+  position: relative;
+  left: -4px;
+  top: -1px;
+}
+.date-picker-navigation__year_closed::after {
+  content: '\25bc';
+}
+.date-picker-navigation__year_opened::after {
+  content: ' \25b2';
+}

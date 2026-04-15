@@ -1,0 +1,15 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/tag/tag';
+
+pdk-tag {
+  display: inline-block;
+
+  .govuk-tag {
+    display: block;
+    max-width: 240px;
+    &.pdk-tag--condensed {
+      font-size: govuk-px-to-rem(14px);
+      letter-spacing: normal;
+    }
+  }
+}

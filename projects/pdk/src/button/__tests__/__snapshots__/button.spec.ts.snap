@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-button should render a default button 1`] = `
+<pdk-button-test
+  disabled="false"
+>
+  <button
+    class="govuk-button"
+    pdk-button=""
+    type="submit"
+  />
+</pdk-button-test>
+`;
+
+exports[`pdk-button should render a disabled button 1`] = `
+<pdk-button-test
+  disabled="undefined"
+>
+  <button
+    class="govuk-button"
+    pdk-button=""
+    type="submit"
+  />
+</pdk-button-test>
+`;
+
+exports[`pdk-button should render a secondary variation 1`] = `
+<pdk-button-test
+  disabled="false"
+  type={[Function String]}
+>
+  <button
+    class="govuk-button"
+    pdk-button=""
+    type="submit"
+  />
+</pdk-button-test>
+`;
+
+exports[`pdk-button should render a start variation 1`] = `
+<pdk-button-test
+  disabled="false"
+  type={[Function String]}
+>
+  <button
+    class="govuk-button"
+    pdk-button=""
+    type="submit"
+  />
+</pdk-button-test>
+`;

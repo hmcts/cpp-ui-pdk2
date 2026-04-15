@@ -1,0 +1,23 @@
+@use 'sass:map';
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+
+$module: 'docs-header';
+
+.#{$module} {
+  position: relative;
+
+  @include mq($from: tablet) {
+    .#{$module}__tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__tag {
+    background-color: map.get($govuk-colours, 'blue');
+    color: map.get($govuk-colours, 'white');
+  }
+}

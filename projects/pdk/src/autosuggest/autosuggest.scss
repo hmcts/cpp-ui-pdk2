@@ -1,0 +1,49 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-autosuggest';
+
+.#{$module} {
+  position: relative;
+
+  &__suggestions-container {
+    display: none;
+    box-sizing: border-box;
+
+    &--open {
+      display: block;
+      position: absolute;
+      border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+      background-color: #fff;
+      left: 0;
+      right: 0;
+      top: 40px + $govuk-border-width-form-element;
+      z-index: 10000;
+    }
+  }
+
+  &__options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__input {
+    position: relative;
+    padding-right: 40px;
+    z-index: 0;
+
+    &[type='search'] {
+      padding-right: 6px;
+    }
+  }
+
+  &__suggestion {
+    cursor: pointer;
+    display: block;
+    padding: govuk-spacing(1);
+
+    &--highlighted {
+      background-color: #ddd;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-phase-banner should render 1`] = `
+<pdk-phase-banner-test>
+  <pdk-phase-banner
+    type="PHASE_TYPE"
+  >
+    <p
+      class="govuk-phase-banner__content"
+    >
+      <strong
+        class="govuk-tag govuk-phase-banner__content__tag"
+      >
+        PHASE_TYPE
+      </strong>
+      <span
+        class="govuk-phase-banner__text"
+      >
+         Here is the phase banner content! 
+      </span>
+    </p>
+  </pdk-phase-banner>
+</pdk-phase-banner-test>
+`;

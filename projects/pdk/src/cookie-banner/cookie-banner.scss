@@ -1,0 +1,6 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/cookie-banner/cookie-banner';
+
+.pdk-cookie-banner__content > *:first-child {
+  margin-top: 0;
+}

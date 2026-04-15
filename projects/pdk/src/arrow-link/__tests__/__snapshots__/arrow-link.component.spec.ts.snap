@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-arrow-link should render a backwards arrow 1`] = `
+<pdk-arrow-link-test
+  type={[Function String]}
+>
+  <pdk-arrow-link
+    type="type"
+  >
+    <div>
+      <a
+        class="govuk-link govuk-pagination__link pdk-arrow-link"
+        href="javascript:void(0)"
+        rel="Previous"
+      >
+        <span
+          class="govuk-pagination__link-title"
+        >
+          Previous
+        </span>
+        <span
+          class="govuk-pagination__link-label pdk-arrow-link__subtitle"
+        >
+           My arrow link! 
+        </span>
+      </a>
+    </div>
+  </pdk-arrow-link>
+</pdk-arrow-link-test>
+`;
+
+exports[`pdk-arrow-link should render a custom title 1`] = `
+<pdk-arrow-link-test
+  title={[Function String]}
+>
+  <pdk-arrow-link
+    type="type"
+  >
+    <div>
+      <a
+        class="govuk-link govuk-pagination__link pdk-arrow-link"
+        href="javascript:void(0)"
+        rel="Previous"
+      >
+        <span
+          class="govuk-pagination__link-title"
+        >
+          Onwards
+        </span>
+        <span
+          class="govuk-pagination__link-label pdk-arrow-link__subtitle"
+        >
+           My arrow link! 
+        </span>
+      </a>
+    </div>
+  </pdk-arrow-link>
+</pdk-arrow-link-test>
+`;
+
+exports[`pdk-arrow-link should render a forward arrow 1`] = `
+<pdk-arrow-link-test
+  type={[Function String]}
+>
+  <pdk-arrow-link
+    type="type"
+  >
+    <div>
+      <a
+        class="govuk-link govuk-pagination__link pdk-arrow-link"
+        href="javascript:void(0)"
+        rel="Previous"
+      >
+        <span
+          class="govuk-pagination__link-title"
+        >
+          Previous
+        </span>
+        <span
+          class="govuk-pagination__link-label pdk-arrow-link__subtitle"
+        >
+           My arrow link! 
+        </span>
+      </a>
+    </div>
+  </pdk-arrow-link>
+</pdk-arrow-link-test>
+`;

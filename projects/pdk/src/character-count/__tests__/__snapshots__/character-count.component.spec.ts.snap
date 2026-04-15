@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-character-count should render a negative count of remaining characters 1`] = `
+<pdk-character-count-test
+  limit={[Function Number]}
+  value={[Function String]}
+>
+  <pdk-character-count>
+    <span
+      aria-live="polite"
+      class="govuk-character-count__message govuk-error-message"
+    >
+       You have 2 characters too many 
+    </span>
+  </pdk-character-count>
+</pdk-character-count-test>
+`;
+
+exports[`pdk-character-count should render a positive count of remaining characters 1`] = `
+<pdk-character-count-test
+  limit={[Function Number]}
+  value={[Function String]}
+>
+  <pdk-character-count>
+    <span
+      aria-live="polite"
+      class="govuk-hint govuk-character-count__message"
+    >
+       You have 9 characters remaining 
+    </span>
+  </pdk-character-count>
+</pdk-character-count-test>
+`;
+
+exports[`pdk-character-count should render a single negative character 1`] = `
+<pdk-character-count-test
+  limit={[Function Number]}
+  value={[Function String]}
+>
+  <pdk-character-count>
+    <span
+      aria-live="polite"
+      class="govuk-character-count__message govuk-error-message"
+    >
+       You have 1 character too many 
+    </span>
+  </pdk-character-count>
+</pdk-character-count-test>
+`;
+
+exports[`pdk-character-count should render a single remaining character 1`] = `
+<pdk-character-count-test
+  limit={[Function Number]}
+  value={[Function String]}
+>
+  <pdk-character-count>
+    <span
+      aria-live="polite"
+      class="govuk-hint govuk-character-count__message"
+    >
+       You have 1 character remaining 
+    </span>
+  </pdk-character-count>
+</pdk-character-count-test>
+`;
+
+exports[`pdk-character-count should render for an unknown value 1`] = `
+<pdk-character-count-test
+  limit={[Function Number]}
+>
+  <pdk-character-count>
+    <span
+      aria-live="polite"
+      class="govuk-hint govuk-character-count__message"
+    >
+       You have 10 characters remaining 
+    </span>
+  </pdk-character-count>
+</pdk-character-count-test>
+`;
+
+exports[`pdk-character-count should render no remaining characters 1`] = `
+<pdk-character-count-test
+  limit={[Function Number]}
+  value={[Function String]}
+>
+  <pdk-character-count>
+    <span
+      aria-live="polite"
+      class="govuk-hint govuk-character-count__message"
+    >
+       You have 0 characters remaining 
+    </span>
+  </pdk-character-count>
+</pdk-character-count-test>
+`;

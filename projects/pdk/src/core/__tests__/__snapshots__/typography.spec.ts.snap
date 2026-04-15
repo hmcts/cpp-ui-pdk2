@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-typography should render 1`] = `
+<pdk-typography-test>
+  <span
+    class="govuk-heading-xl"
+    pdk-typography="heading-xlarge"
+  /><span
+    class="govuk-heading-l"
+    pdk-typography="heading-large"
+  /><span
+    class="govuk-heading-m"
+    pdk-typography="heading-medium"
+  /><span
+    class="govuk-heading-s"
+    pdk-typography="heading-small"
+  /><span
+    class="govuk-caption-xl"
+    pdk-typography="caption-xlarge"
+  /><span
+    class="govuk-caption-l"
+    pdk-typography="caption-large"
+  /><span
+    class="govuk-caption-m"
+    pdk-typography="caption-medium"
+  /><span
+    class="govuk-body-l"
+    pdk-typography="body-large"
+  /><span
+    class="govuk-body-m"
+    pdk-typography="body-medium"
+  /><span
+    class="govuk-body-s"
+    pdk-typography="body-small"
+  /><span
+    class="govuk-body-xs"
+    pdk-typography="body-xsmall"
+  /><span
+    class="govuk-body-m"
+    pdk-typography="body"
+  /><span
+    class="govuk-body-l"
+    pdk-typography="body-lead"
+  /><span
+    pdk-typography=""
+  />
+</pdk-typography-test>
+`;

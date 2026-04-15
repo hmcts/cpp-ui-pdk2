@@ -1,0 +1,54 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-summary-item';
+
+.#{$module} {
+  display: inline-block;
+  overflow: hidden;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  vertical-align: middle;
+  width: 100%;
+
+  dd, dt {
+    margin: 0;
+  }
+
+  &__number {
+    @include govuk-font(48);
+    display: block;
+    font-weight: bold;
+
+    &--hero {
+      @include govuk-font(80);
+      font-weight: bold;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-weight: bold;
+  }
+
+  &--inline {
+    .#{$module}__number {
+      @include mq($from: tablet) {
+        float: left;
+        margin-right: 10px;
+      }
+    }
+
+    .#{$module}__label {
+      overflow: hidden;
+    }
+  }
+}
+
+a:focus .#{$module} {
+  background: $govuk-focus-colour;
+}
+
+a:visited:not(:hover) .#{$module} {
+  color: $govuk-brand-colour;
+}

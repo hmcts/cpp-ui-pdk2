@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-context-panel should render correctly 1`] = `
+<pdk-context-panel-test>
+  <pdk-context-panel
+    title="Panel title"
+  >
+    <div
+      class="pdk-context-panel pdk-context-panel--success"
+      role="alert"
+    >
+      <div
+        class="pdk-context-panel__message"
+      >
+        <div>
+          <h3
+            class="govuk-heading-m"
+          >
+            Panel title
+          </h3>
+          <p
+            class="govuk-body-l"
+          >
+             Panel content here 
+          </p>
+        </div>
+      </div>
+    </div>
+  </pdk-context-panel>
+</pdk-context-panel-test>
+`;
+
+exports[`pdk-context-panel should render correctly when type is set to "confirmation" 1`] = `
+<pdk-context-panel-test
+  icon={[Function String]}
+  type={[Function String]}
+>
+  <pdk-context-panel
+    title="Panel title"
+  >
+    <div
+      class="pdk-context-panel pdk-context-panel--confirmation"
+      role="alert"
+    >
+      <i
+        aria-hidden="true"
+        class="pdk-context-panel__icon pdk-context-panel__icon--tick"
+        role="presentation"
+      />
+      <div
+        class="pdk-context-panel__message"
+      >
+        <div>
+          <h3
+            class="govuk-heading-m"
+          >
+            Panel title
+          </h3>
+          <p
+            class="govuk-body-l"
+          >
+             Panel content here 
+          </p>
+        </div>
+      </div>
+    </div>
+  </pdk-context-panel>
+</pdk-context-panel-test>
+`;
+
+exports[`pdk-context-panel should render correctly when type is set to "important"  1`] = `
+<pdk-context-panel-test
+  type={[Function String]}
+>
+  <pdk-context-panel
+    title="Panel title"
+  >
+    <div
+      class="pdk-context-panel pdk-context-panel--important"
+      role="alert"
+    >
+      <div
+        class="pdk-context-panel__message"
+      >
+        <div>
+          <h3
+            class="govuk-heading-m"
+          >
+            Panel title
+          </h3>
+          <p
+            class="govuk-body-l"
+          >
+             Panel content here 
+          </p>
+        </div>
+      </div>
+    </div>
+  </pdk-context-panel>
+</pdk-context-panel-test>
+`;
+
+exports[`pdk-context-panel should render correctly when type is set to "success" and icon set to tick 1`] = `
+<pdk-context-panel-test
+  icon={[Function String]}
+  type={[Function String]}
+>
+  <pdk-context-panel
+    title="Panel title"
+  >
+    <div
+      class="pdk-context-panel pdk-context-panel--success"
+      role="alert"
+    >
+      <i
+        aria-hidden="true"
+        class="pdk-context-panel__icon pdk-context-panel__icon--tick"
+        role="presentation"
+      />
+      <div
+        class="pdk-context-panel__message"
+      >
+        <div>
+          <h3
+            class="govuk-heading-m"
+          >
+            Panel title
+          </h3>
+          <p
+            class="govuk-body-l"
+          >
+             Panel content here 
+          </p>
+        </div>
+      </div>
+    </div>
+  </pdk-context-panel>
+</pdk-context-panel-test>
+`;
+
+exports[`pdk-context-panel should render correctly when type set to "invalid" and icon set to "warn" 1`] = `
+<pdk-context-panel-test
+  icon={[Function String]}
+  type={[Function String]}
+>
+  <pdk-context-panel
+    title="Panel title"
+  >
+    <div
+      class="pdk-context-panel pdk-context-panel--invalid"
+      role="alert"
+    >
+      <i
+        aria-hidden="true"
+        class="pdk-context-panel__icon pdk-context-panel__icon--warn"
+        role="presentation"
+      />
+      <div
+        class="pdk-context-panel__message"
+      >
+        <div>
+          <h3
+            class="govuk-heading-m"
+          >
+            Panel title
+          </h3>
+          <p
+            class="govuk-body-l"
+          >
+             Panel content here 
+          </p>
+        </div>
+      </div>
+    </div>
+  </pdk-context-panel>
+</pdk-context-panel-test>
+`;

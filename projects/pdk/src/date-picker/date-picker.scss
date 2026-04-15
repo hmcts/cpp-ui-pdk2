@@ -1,0 +1,53 @@
+@import '../styles/toolkit';
+$module: 'pdk-date-picker';
+
+#{$module} {
+  @include govuk-responsive-padding(2);
+  background-color: white;
+  border: 2px solid black;
+
+  table {
+    outline: none !important;
+  }
+  .date-picker-grid__day,
+  .date-picker-navigation__year,
+  .date-picker-year-grid__year,
+  .date-picker-navigation__arrow {
+    @include pdk-focusable-button;
+  }
+}
+
+.pdk-date-picker-input__picker {
+  position: absolute;
+  top: 45px;
+  z-index: 9999;
+}
+.pdk-date-picker-input__selection {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pdk-date-picker-input__selection-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pdk-date-picker-input__clear-selection {
+  @include mq($from: tablet) {
+    font-size: 1.5rem;
+    line-height: 1.31579;
+  }
+  font-size: 1.2rem;
+  line-height: 1.25;
+  text-align: center;
+  margin-right: 3px;
+  position: absolute;
+  right: 0px;
+}
+
+.pdk-date-picker-input__clear-selection:focus {
+  outline: 3px solid #ffbf47;
+  outline-offset: 0;
+}

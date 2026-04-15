@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-divider should render 1`] = `
+<pdk-divider-test>
+  <pdk-divider>
+    <hr
+      class="pdk-divider"
+    />
+  </pdk-divider><pdk-divider
+    dark=""
+  >
+    <hr
+      class="pdk-divider pdk-divider--dark"
+    />
+  </pdk-divider><pdk-divider
+    hero=""
+  >
+    <hr
+      class="pdk-divider pdk-divider--thick"
+    />
+  </pdk-divider>
+</pdk-divider-test>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-related should render 1`] = `
+<pdk-related-test>
+  <pdk-related>
+    <div
+      class="pdk-related"
+    >
+      Content!
+    </div>
+  </pdk-related>
+</pdk-related-test>
+`;

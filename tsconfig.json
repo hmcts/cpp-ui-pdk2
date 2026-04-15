@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "declaration": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "strict": false,
+    "target": "es2024",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2022", "ES2024", "dom"],
+    "skipLibCheck": true,
+    "paths": {
+      "@cpp/pdk": ["dist/@cpp/pdk"],
+      "@cpp/pdk/*": ["dist/@cpp/pdk/*"],
+      "@cpp/application": ["dist/@cpp/application"],
+      "@cpp/application/*": ["dist/@cpp/application/*"]
+    },
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "strictTemplates": true,
+    "strictInputTypes": false
+  }
+}

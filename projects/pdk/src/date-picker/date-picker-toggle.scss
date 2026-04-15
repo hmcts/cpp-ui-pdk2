@@ -1,0 +1,23 @@
+@import '../styles/toolkit';
+
+.pdk-date-picker__toggle {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include pdk-focusable-button;
+  &__disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.pdk-date-picker--overlay {
+  position: absolute;
+  top: calc(1.1875rem + 60px);
+  left: 0;
+  z-index: 9999;
+}

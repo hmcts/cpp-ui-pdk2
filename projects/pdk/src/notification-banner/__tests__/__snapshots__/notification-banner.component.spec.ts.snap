@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-notification-banner should render 1`] = `
+<pdk-notification-banner-test>
+  <pdk-notification-banner
+    aria-labelledby="pdk-notification-banner-title-GENERATED_ID"
+    role="region"
+    title="Important information"
+  >
+    <div
+      class="govuk-notification-banner__header"
+    >
+      <h2
+        class="govuk-notification-banner__title"
+        id="pdk-notification-banner-title-GENERATED_ID"
+      >
+        Important information
+      </h2>
+    </div>
+    <div
+      class="govuk-notification-banner__content"
+    >
+      <div
+        class="govuk-notification-banner__heading"
+      >
+         Here is the notification banner content! 
+      </div>
+    </div>
+  </pdk-notification-banner>
+</pdk-notification-banner-test>
+`;
