@@ -1,0 +1,8 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-related';
+
+.#{$module} {
+  @include govuk-responsive-padding(3, 'top');
+  border-top: 2px solid govuk-colour('blue');
+}

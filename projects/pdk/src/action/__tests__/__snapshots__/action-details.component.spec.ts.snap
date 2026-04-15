@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-action-details should render highlighted action details 1`] = `
+<pdk-action-details-test
+  highlighted="undefined"
+>
+  <pdk-action-details>
+    <div
+      class="pdk-action-details pdk-action-details--completed"
+    >
+      <div
+        class="pdk-action-details__header"
+      >
+        <span
+          class="pdk-action-details__title"
+        >
+          <pdk-action-title>
+            Action title!
+          </pdk-action-title>
+        </span>
+        <span
+          class="pdk-action-details__options"
+        >
+          <span
+            class="pdk-action-details__status pdk-action-details__status--highlighted"
+          >
+            <span>
+              Saved
+            </span>
+          </span>
+          <span
+            class="pdk-action-details__action"
+          >
+            <pdk-action-options>
+              Action options!
+            </pdk-action-options>
+          </span>
+        </span>
+      </div>
+      <div
+        class="pdk-action-details__content"
+      >
+        <pdk-action-body>
+          Action body!
+        </pdk-action-body>
+      </div>
+    </div>
+  </pdk-action-details>
+</pdk-action-details-test>
+`;
+
+exports[`pdk-action-details should render with the default action-details 1`] = `
+<pdk-action-details-test
+  highlighted="false"
+>
+  <pdk-action-details>
+    <div
+      class="pdk-action-details pdk-action-details--completed"
+    >
+      <div
+        class="pdk-action-details__header"
+      >
+        <span
+          class="pdk-action-details__title"
+        >
+          <pdk-action-title>
+            Action title!
+          </pdk-action-title>
+        </span>
+        <span
+          class="pdk-action-details__options"
+        >
+          <span
+            class="pdk-action-details__action"
+          >
+            <pdk-action-options>
+              Action options!
+            </pdk-action-options>
+          </span>
+        </span>
+      </div>
+      <div
+        class="pdk-action-details__content"
+      >
+        <pdk-action-body>
+          Action body!
+        </pdk-action-body>
+      </div>
+    </div>
+  </pdk-action-details>
+</pdk-action-details-test>
+`;

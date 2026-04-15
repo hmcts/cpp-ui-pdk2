@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[pdk-details] should render 1`] = `
+<pdk-details-test>
+  <details
+    class="govuk-details"
+    pdk-details=""
+  >
+    <summary
+      class="govuk-details__summary"
+    >
+      <span
+        class="govuk-details__summary-text"
+      >
+        Test summary
+      </span>
+    </summary>
+    <pdk-details-text
+      class="govuk-details__text"
+    >
+      Test text
+    </pdk-details-text>
+  </details>
+</pdk-details-test>
+`;

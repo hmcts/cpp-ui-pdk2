@@ -1,0 +1,389 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-tabs should change tab according to the \`selectedTabIndex\` 1`] = `
+<pdk-tabs-test
+  selectedTabIndex={[Function Number]}
+  tabChange={[Function Function]}
+>
+  <pdk-tabs>
+    <pdk-tabs-container>
+      <div
+        class="js-enabled govuk-tabs"
+      >
+        <ul
+          class="govuk-tabs__list"
+          role="tablist"
+        >
+          <li
+            class="govuk-tabs__list-item"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-0"
+              aria-selected="false"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="-1"
+            >
+               Tab one 
+            </a>
+          </li>
+          <li
+            class="govuk-tabs__list-item govuk-tabs__list-item--selected"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-1"
+              aria-selected="true"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="0"
+            >
+              <pdk-tab-heading>
+                Tab two
+              </pdk-tab-heading>
+            </a>
+          </li>
+        </ul>
+        <pdk-tab
+          heading="Tab one"
+        >
+          <section
+            aria-hidden="true"
+            class="govuk-tabs__panel govuk-tabs__panel--hidden"
+            id="pdk-tab-section-0"
+            role="tabpanel"
+          >
+            <p>
+              First tab
+            </p>
+          </section>
+        </pdk-tab>
+        <pdk-tab>
+          <section
+            aria-hidden="false"
+            class="govuk-tabs__panel"
+            id="pdk-tab-section-1"
+            role="tabpanel"
+          >
+            <p>
+              Second tab
+            </p>
+          </section>
+        </pdk-tab>
+      </div>
+    </pdk-tabs-container>
+  </pdk-tabs>
+</pdk-tabs-test>
+`;
+
+exports[`pdk-tabs should change tab when click a tab heading 1`] = `
+<pdk-tabs-test
+  tabChange={[Function Function]}
+>
+  <pdk-tabs>
+    <pdk-tabs-container>
+      <div
+        class="js-enabled govuk-tabs"
+      >
+        <ul
+          class="govuk-tabs__list"
+          role="tablist"
+        >
+          <li
+            class="govuk-tabs__list-item"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-0"
+              aria-selected="false"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="-1"
+            >
+               Tab one 
+            </a>
+          </li>
+          <li
+            class="govuk-tabs__list-item govuk-tabs__list-item--selected"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-1"
+              aria-selected="true"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="0"
+            >
+              <pdk-tab-heading>
+                Tab two
+              </pdk-tab-heading>
+            </a>
+          </li>
+        </ul>
+        <pdk-tab
+          heading="Tab one"
+        >
+          <section
+            aria-hidden="true"
+            class="govuk-tabs__panel govuk-tabs__panel--hidden"
+            id="pdk-tab-section-0"
+            role="tabpanel"
+          >
+            <p>
+              First tab
+            </p>
+          </section>
+        </pdk-tab>
+        <pdk-tab>
+          <section
+            aria-hidden="false"
+            class="govuk-tabs__panel"
+            id="pdk-tab-section-1"
+            role="tabpanel"
+          >
+            <p>
+              Second tab
+            </p>
+          </section>
+        </pdk-tab>
+      </div>
+    </pdk-tabs-container>
+  </pdk-tabs>
+</pdk-tabs-test>
+`;
+
+exports[`pdk-tabs should emit tab changed 1`] = `
+<pdk-tabs-test
+  tabChange={[Function Function]}
+>
+  <pdk-tabs>
+    <pdk-tabs-container>
+      <div
+        class="js-enabled govuk-tabs"
+      >
+        <ul
+          class="govuk-tabs__list"
+          role="tablist"
+        >
+          <li
+            class="govuk-tabs__list-item"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-0"
+              aria-selected="false"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="-1"
+            >
+               Tab one 
+            </a>
+          </li>
+          <li
+            class="govuk-tabs__list-item govuk-tabs__list-item--selected"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-1"
+              aria-selected="true"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="0"
+            >
+              <pdk-tab-heading>
+                Tab two
+              </pdk-tab-heading>
+            </a>
+          </li>
+        </ul>
+        <pdk-tab
+          heading="Tab one"
+        >
+          <section
+            aria-hidden="true"
+            class="govuk-tabs__panel govuk-tabs__panel--hidden"
+            id="pdk-tab-section-0"
+            role="tabpanel"
+          >
+            <p>
+              First tab
+            </p>
+          </section>
+        </pdk-tab>
+        <pdk-tab>
+          <section
+            aria-hidden="false"
+            class="govuk-tabs__panel"
+            id="pdk-tab-section-1"
+            role="tabpanel"
+          >
+            <p>
+              Second tab
+            </p>
+          </section>
+        </pdk-tab>
+      </div>
+    </pdk-tabs-container>
+  </pdk-tabs>
+</pdk-tabs-test>
+`;
+
+exports[`pdk-tabs should emit tab changed 2`] = `
+<pdk-tabs-test
+  tabChange={[Function Function]}
+>
+  <pdk-tabs>
+    <pdk-tabs-container>
+      <div
+        class="js-enabled govuk-tabs"
+      >
+        <ul
+          class="govuk-tabs__list"
+          role="tablist"
+        >
+          <li
+            class="govuk-tabs__list-item govuk-tabs__list-item--selected"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-0"
+              aria-selected="true"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="0"
+            >
+               Tab one 
+            </a>
+          </li>
+          <li
+            class="govuk-tabs__list-item"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-1"
+              aria-selected="false"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="-1"
+            >
+              <pdk-tab-heading>
+                Tab two
+              </pdk-tab-heading>
+            </a>
+          </li>
+        </ul>
+        <pdk-tab
+          heading="Tab one"
+        >
+          <section
+            aria-hidden="false"
+            class="govuk-tabs__panel"
+            id="pdk-tab-section-0"
+            role="tabpanel"
+          >
+            <p>
+              First tab
+            </p>
+          </section>
+        </pdk-tab>
+        <pdk-tab>
+          <section
+            aria-hidden="true"
+            class="govuk-tabs__panel govuk-tabs__panel--hidden"
+            id="pdk-tab-section-1"
+            role="tabpanel"
+          >
+            <p>
+              Second tab
+            </p>
+          </section>
+        </pdk-tab>
+      </div>
+    </pdk-tabs-container>
+  </pdk-tabs>
+</pdk-tabs-test>
+`;
+
+exports[`pdk-tabs should render 1`] = `
+<pdk-tabs-test
+  tabChange={[Function Function]}
+>
+  <pdk-tabs>
+    <pdk-tabs-container>
+      <div
+        class="js-enabled govuk-tabs"
+      >
+        <ul
+          class="govuk-tabs__list"
+          role="tablist"
+        >
+          <li
+            class="govuk-tabs__list-item"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-0"
+              aria-selected="false"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="-1"
+            >
+               Tab one 
+            </a>
+          </li>
+          <li
+            class="govuk-tabs__list-item"
+            role="presentation"
+          >
+            <a
+              aria-controls="pdk-tab-section-1"
+              aria-selected="false"
+              class="govuk-tabs__tab"
+              href="javascript:void(0);"
+              role="tab"
+              tabindex="-1"
+            >
+            </a>
+          </li>
+        </ul>
+        <pdk-tab
+          heading="Tab one"
+        >
+          <section
+            aria-hidden="true"
+            class="govuk-tabs__panel govuk-tabs__panel--hidden"
+            id="pdk-tab-section-0"
+            role="tabpanel"
+          >
+            <p>
+              First tab
+            </p>
+          </section>
+        </pdk-tab>
+        <pdk-tab>
+          <section
+            aria-hidden="true"
+            class="govuk-tabs__panel govuk-tabs__panel--hidden"
+            id="pdk-tab-section-1"
+            role="tabpanel"
+          >
+            <p>
+              Second tab
+            </p>
+          </section>
+        </pdk-tab>
+      </div>
+    </pdk-tabs-container>
+  </pdk-tabs>
+</pdk-tabs-test>
+`;

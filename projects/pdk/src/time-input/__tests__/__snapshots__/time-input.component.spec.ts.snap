@@ -1,0 +1,265 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-time-input disabled state disables time input control when disabled value is true 1`] = `
+<pdk-time-input-test
+  disabled={[Function Boolean]}
+>
+  <form
+    class="ng-untouched ng-valid ng-dirty"
+    novalidate=""
+  >
+    <pdk-time-input
+      ariadescribedby="identifier"
+      class="ng-untouched ng-valid ng-dirty"
+      name="time"
+    >
+      <div
+        class="pdk-time-input ng-untouched ng-pristine"
+      >
+        <div
+          class="pdk-time-input__item pdk-time-input__item--hour"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-hours"
+            pdk-label=""
+          >
+             Hours 
+          </label>
+          <input
+            aria-describedby="identifier"
+            autocomplete="off"
+            class="ng-untouched ng-pristine govuk-input govuk-input--width-2"
+            disabled=""
+            formcontrolname="hours"
+            id="pdk-time-input-GENERATED_ID-hours"
+            maxlength="2"
+            name="timeHours"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+        <div
+          class="pdk-time-input__item"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-minutes"
+            pdk-label=""
+          >
+             Minutes 
+          </label>
+          <input
+            autocomplete="off"
+            class="ng-untouched ng-pristine govuk-input govuk-input--width-2"
+            disabled=""
+            formcontrolname="minutes"
+            id="pdk-time-input-GENERATED_ID-minutes"
+            maxlength="2"
+            minlength="2"
+            name="timeMinutes"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+      </div>
+    </pdk-time-input>
+  </form>
+</pdk-time-input-test>
+`;
+
+exports[`pdk-time-input disabled state enables time input control when disabled value is false 1`] = `
+<pdk-time-input-test
+  disabled="false"
+>
+  <form
+    class="ng-untouched ng-valid ng-dirty"
+    novalidate=""
+  >
+    <pdk-time-input
+      ariadescribedby="identifier"
+      class="ng-untouched ng-valid ng-dirty"
+      name="time"
+    >
+      <div
+        class="pdk-time-input ng-untouched ng-pristine ng-valid"
+      >
+        <div
+          class="pdk-time-input__item pdk-time-input__item--hour"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-hours"
+            pdk-label=""
+          >
+             Hours 
+          </label>
+          <input
+            aria-describedby="identifier"
+            autocomplete="off"
+            class="ng-untouched ng-pristine ng-valid govuk-input govuk-input--width-2"
+            formcontrolname="hours"
+            id="pdk-time-input-GENERATED_ID-hours"
+            maxlength="2"
+            name="timeHours"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+        <div
+          class="pdk-time-input__item"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-minutes"
+            pdk-label=""
+          >
+             Minutes 
+          </label>
+          <input
+            autocomplete="off"
+            class="ng-untouched ng-pristine ng-valid govuk-input govuk-input--width-2"
+            formcontrolname="minutes"
+            id="pdk-time-input-GENERATED_ID-minutes"
+            maxlength="2"
+            minlength="2"
+            name="timeMinutes"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+      </div>
+    </pdk-time-input>
+  </form>
+</pdk-time-input-test>
+`;
+
+exports[`reactive pdk-time-input disabled state disables time input control when \`formGroup\` is disabled 1`] = `
+<pdk-time-input-test
+  formGroup={[Function FormGroup]}
+>
+  <form
+    class="ng-untouched ng-dirty"
+    novalidate=""
+  >
+    <pdk-time-input
+      class="ng-untouched ng-dirty"
+      name="time"
+    >
+      <div
+        class="pdk-time-input ng-untouched ng-pristine"
+      >
+        <div
+          class="pdk-time-input__item pdk-time-input__item--hour"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-hours"
+            pdk-label=""
+          >
+             Hours 
+          </label>
+          <input
+            autocomplete="off"
+            class="ng-untouched ng-pristine govuk-input govuk-input--width-2"
+            disabled=""
+            formcontrolname="hours"
+            id="pdk-time-input-GENERATED_ID-hours"
+            maxlength="2"
+            name="timeHours"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+        <div
+          class="pdk-time-input__item"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-minutes"
+            pdk-label=""
+          >
+             Minutes 
+          </label>
+          <input
+            autocomplete="off"
+            class="ng-untouched ng-pristine govuk-input govuk-input--width-2"
+            disabled=""
+            formcontrolname="minutes"
+            id="pdk-time-input-GENERATED_ID-minutes"
+            maxlength="2"
+            minlength="2"
+            name="timeMinutes"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+      </div>
+    </pdk-time-input>
+  </form>
+</pdk-time-input-test>
+`;
+
+exports[`reactive pdk-time-input disabled state enables time input control when \`formGroup\` is enabled 1`] = `
+<pdk-time-input-test
+  formGroup={[Function FormGroup]}
+>
+  <form
+    class="ng-untouched ng-valid ng-dirty"
+    novalidate=""
+  >
+    <pdk-time-input
+      class="ng-untouched ng-valid ng-dirty"
+      name="time"
+    >
+      <div
+        class="pdk-time-input ng-untouched ng-pristine ng-valid"
+      >
+        <div
+          class="pdk-time-input__item pdk-time-input__item--hour"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-hours"
+            pdk-label=""
+          >
+             Hours 
+          </label>
+          <input
+            autocomplete="off"
+            class="ng-untouched ng-pristine ng-valid govuk-input govuk-input--width-2"
+            formcontrolname="hours"
+            id="pdk-time-input-GENERATED_ID-hours"
+            maxlength="2"
+            name="timeHours"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+        <div
+          class="pdk-time-input__item"
+        >
+          <label
+            class="govuk-label govuk-visually-hidden"
+            for="pdk-time-input-GENERATED_ID-minutes"
+            pdk-label=""
+          >
+             Minutes 
+          </label>
+          <input
+            autocomplete="off"
+            class="ng-untouched ng-pristine ng-valid govuk-input govuk-input--width-2"
+            formcontrolname="minutes"
+            id="pdk-time-input-GENERATED_ID-minutes"
+            maxlength="2"
+            minlength="2"
+            name="timeMinutes"
+            pattern="[0-9]*"
+            type="text"
+          />
+        </div>
+      </div>
+    </pdk-time-input>
+  </form>
+</pdk-time-input-test>
+`;

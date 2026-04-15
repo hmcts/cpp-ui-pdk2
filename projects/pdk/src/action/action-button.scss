@@ -1,0 +1,92 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-action-button';
+
+#{$module},
+[#{$module}] {
+  @include govuk-responsive-margin(2, 'bottom');
+  display: block;
+  text-decoration: none;
+  color: govuk-colour('blue');
+  text-decoration: none;
+  border: 1px solid govuk-colour('mid-grey');
+  border-bottom: none;
+  box-shadow: 0 3px 0 govuk-colour('mid-grey');
+
+  &:focus {
+    @include pdk-focusable-button;
+
+    &:not(:active):not(:hover) {
+      box-shadow: 0 3px 0 $govuk-focus-text-colour;
+      color: $govuk-focus-text-colour !important;
+    }
+  }
+
+  &.#{$module}--disabled {
+    cursor: not-allowed;
+  }
+
+  &.#{$module}--disabled .#{$module}__header {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:not(.#{$module}--secondary) {
+    &:hover:not(.#{$module}--disabled) .#{$module}__header {
+      opacity: 0.75;
+    }
+  }
+
+  &.#{$module}--secondary {
+    .#{$module}__header {
+      background-color: #d5e8f3;
+    }
+
+    &:not(.#{$module}--disabled) a.#{$module}__header:hover {
+      background-color: #e6f1f8; // bespoke colour
+    }
+  }
+
+  &.#{$module}--error {
+    border: 3px solid govuk-colour('red');
+  }
+
+  .#{$module}__title {
+    @include govuk-font(16, bold);
+    @include govuk-responsive-padding(6, 'right');
+
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    &:after {
+      @include _govuk-responsive-spacing(2, 'right');
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAQCAYAAAAvf+5AAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAK5JREFUeNpiZACBuCUVQFIXxGJYFPOXAQtghCpqh/KXAXEsUPE/dIVMUJNgIAqIpwI1M2JTGAc1CQYygHgaumJGqBtZgOQ6IPZFkpsBxFlAZ/yHmcgA5PwBkiFAvBmXyahuiVvCBiTXYDMZw9G4FDMxEAnIsBqPIpDPGYlRBAmeuCXMQHo+PkWwcFwEjTqcimAKLyPxQVGZg64IBJgZLq47wqAf9BPIfoUvmQEEGABA1D6ssJeDXAAAAABJRU5ErkJggg==');
+      content: '';
+      height: 16px;
+      position: absolute;
+      width: 10px;
+
+      @include govuk-device-pixel-ratio {
+        background-size: 100%;
+      }
+
+      @include mq($from: desktop) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .#{$module} {
+    &__header {
+      @include govuk-responsive-padding(2);
+      box-sizing: border-box;
+    }
+
+    &__title {
+      display: block;
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import '../styles/toolkit';
+
+.pdk-masthead {
+  @include govuk-responsive-padding(6, 'top');
+  @include govuk-responsive-padding(6, 'bottom');
+
+  background: govuk-colour('blue');
+  color: govuk-colour('white');
+  margin-left: -100%;
+  margin-right: -100%;
+  padding-left: 100%;
+  padding-right: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden; // Prevent scrollbars on x-axis
+}

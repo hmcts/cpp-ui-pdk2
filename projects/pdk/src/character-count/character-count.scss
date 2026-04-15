@@ -1,0 +1,12 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/character-count/character-count';
+
+pdk-character-count {
+  display: block;
+  @include govuk-responsive-margin(1, 'top');
+  @include govuk-responsive-margin(3, 'bottom');
+
+  .govuk-hint {
+    margin-bottom: 0;
+  }
+}

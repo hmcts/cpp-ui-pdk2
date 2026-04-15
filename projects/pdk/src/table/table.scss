@@ -1,0 +1,76 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/base';
+@import 'govuk-frontend/dist/govuk/components/table/table';
+@import 'govuk-frontend/dist/govuk/core/links';
+
+.pdk-table {
+  &__row {
+    &--interactive {
+      cursor: pointer;
+    }
+    &--hover-highlight {
+      &:hover {
+        background-color: govuk-colour('light-grey');
+      }
+    }
+  }
+}
+
+.pdk-sortable {
+  button {
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    color: govuk-colour('blue');
+    padding: 0 12px 0 0;
+    border-width: 0;
+    font-weight: inherit;
+    font-size: inherit;
+    @extend .govuk-link;
+  }
+
+  &_order {
+    button::before {
+      content: '\25bc';
+      position: absolute;
+      right: -1px;
+      top: 9px;
+      font-size: 0.5em;
+    }
+
+    button::after {
+      content: ' \25b2';
+      position: absolute;
+      right: -1px;
+      top: 1px;
+      font-size: 0.5em;
+    }
+  }
+
+  &_order__asc,
+  &_order__desc {
+    button::before {
+      content: none;
+    }
+  }
+
+  &_order__asc {
+    button::after {
+      content: ' \25b2';
+      font-size: 0.8em;
+      position: absolute;
+      right: -6px;
+      top: 3px;
+    }
+  }
+
+  &_order__desc {
+    button::after {
+      content: ' \25bc';
+      font-size: 0.8em;
+      position: absolute;
+      right: -6px;
+      top: 3px;
+    }
+  }
+}

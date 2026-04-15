@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-summary-list should render 1`] = `
+<pdk-summary-list-test>
+  <dl
+    class="pdk-summary-list"
+    pdk-summary-list=""
+  >
+    <div
+      class="pdk-summary-list__row"
+      pdk-summary-list-item=""
+    >
+      <dt
+        class="pdk-summary-list__key"
+        pdk-summary-list-key=""
+      >
+        Name
+      </dt>
+      <dd
+        class="pdk-summary-list__value"
+        pdk-summary-list-value=""
+      >
+        Sarah Phillips
+      </dd>
+      <dd
+        class="pdk-summary-list__actions"
+        pdk-summary-list-action=""
+      >
+        <a
+          href="javascript:void(0)"
+          pdk-link=""
+        >
+          Change
+          <span
+            pdk-visually-hidden=""
+          >
+             name
+          </span>
+        </a>
+      </dd>
+    </div>
+    <div
+      class="pdk-summary-list__row"
+      pdk-summary-list-item=""
+    >
+      <dt
+        class="pdk-summary-list__key"
+        pdk-summary-list-key=""
+      >
+        Date of birth
+      </dt>
+      <dd
+        class="pdk-summary-list__value"
+        pdk-summary-list-value=""
+      >
+        5 January 1978
+      </dd>
+    </div>
+    <div
+      borderless=""
+      class="pdk-summary-list__row pdk-summary-list--borderless"
+      pdk-summary-list-item=""
+    >
+      <dt
+        class="pdk-summary-list__key"
+        pdk-summary-list-key=""
+      >
+        Contact information
+      </dt>
+      <dd
+        class="pdk-summary-list__value"
+        pdk-summary-list-value=""
+      >
+        72 Guild Street
+        <br />
+        London
+        <br />
+        SE23 6FH
+      </dd>
+    </div>
+    <div
+      borderless=""
+      class="pdk-summary-list__row pdk-summary-list--borderless"
+      pdk-summary-list-item=""
+    >
+      <dt
+        class="pdk-summary-list__key"
+        pdk-summary-list-key=""
+        pdk-visually-hidden=""
+      >
+        Contact information
+      </dt>
+      <dd
+        class="pdk-summary-list__value"
+        pdk-summary-list-value=""
+      >
+        72 Guild Street
+        <br />
+        London
+        <br />
+        SE23 6FH
+      </dd>
+    </div>
+  </dl>
+</pdk-summary-list-test>
+`;

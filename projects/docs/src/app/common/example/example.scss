@@ -1,0 +1,22 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+
+docs-example {
+  .docs-example {
+    @include govuk-responsive-padding(8, 'top');
+    @include govuk-responsive-padding(7, 'bottom');
+    @include govuk-responsive-padding(6, 'left');
+    @include govuk-responsive-padding(6, 'right');
+
+    border: 1px solid map-get($govuk-colours, 'mid-grey');
+    display: block;
+  }
+
+  .govuk-width-container {
+    @include mq($from: desktop) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+}

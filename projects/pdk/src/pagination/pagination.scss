@@ -1,0 +1,16 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/base';
+@import 'govuk-frontend/dist/govuk/components/pagination/pagination';
+
+.pdk-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pdk-pagination__arrow-placeholder {
+  width: 86px;
+  display: inline-block;
+}
+.pdk-pagination__item__active {
+  color: #fff;
+}

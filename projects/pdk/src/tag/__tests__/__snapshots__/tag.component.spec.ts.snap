@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-tag should render 1`] = `
+<pdk-tag-test>
+  <pdk-tag>
+    <div
+      class="govuk-tag govuk-tag--default"
+    >
+      My tag!
+    </div>
+  </pdk-tag><pdk-tag
+    condensed=""
+  >
+    <div
+      class="govuk-tag govuk-tag--default pdk-tag--condensed"
+    >
+      My tag!
+    </div>
+  </pdk-tag>
+</pdk-tag-test>
+`;

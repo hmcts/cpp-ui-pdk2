@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-fieldset / pdk-legend should render 1`] = `
+<pdk-fieldset-test>
+  <fieldset
+    class="govuk-fieldset"
+    pdk-fieldset=""
+  >
+    <legend
+      class="govuk-fieldset__legend"
+      pdk-legend=""
+    />
+    <legend
+      class="govuk-fieldset__legend govuk-fieldset__legend--s"
+      pdk-legend="small"
+    />
+    <legend
+      class="govuk-fieldset__legend govuk-fieldset__legend--m"
+      pdk-legend="medium"
+    />
+    <legend
+      class="govuk-fieldset__legend govuk-fieldset__legend--l"
+      pdk-legend="large"
+    />
+    <legend
+      class="govuk-fieldset__legend govuk-fieldset__legend--xl"
+      pdk-legend="xlarge"
+    />
+  </fieldset>
+</pdk-fieldset-test>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdkSanitize should transform html 1`] = `"safe html <div class="1"> test </div>"`;
+
+exports[`pdkSanitize should transform resourceUrl 1`] = `"safe resourceUrl data:image/jpeg;base64"`;
+
+exports[`pdkSanitize should transform style 1`] = `"safe style h1{color:red;}"`;
+
+exports[`pdkSanitize should transform url 1`] = `"safe url http:\\test.com"`;

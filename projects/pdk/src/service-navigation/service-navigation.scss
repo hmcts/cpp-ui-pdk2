@@ -1,0 +1,11 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/service-navigation/service-navigation';
+
+.pdk-service-nav-list-item {
+  a {
+    @extend .govuk-service-navigation__link;
+  }
+}
+.pdk-service-nav-clear {
+  background-color: transparent !important;
+}

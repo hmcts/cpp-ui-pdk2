@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-skip-link should render 1`] = `
+<pdk-skip-link-test>
+  <pdk-skip-link
+    target="target-id"
+  >
+    <a
+      class="govuk-skip-link"
+      href="javascript:void(0)"
+    >
+       Skip to main content 
+    </a>
+  </pdk-skip-link>
+</pdk-skip-link-test>
+`;

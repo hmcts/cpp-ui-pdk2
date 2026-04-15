@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cpp-application-technical-error-page should render page 1`] = `
+<cpp-application-technical-error-page-test>
+  <cpp-application-timed-out-page>
+    <h1
+      class="govuk-heading-xl"
+      pdk-typography="heading-xlarge"
+    >
+      Timed out
+    </h1>
+    <p
+      class="govuk-body-s"
+      pdk-typography="body-small"
+    >
+       Your request timed out. Go back and make sure your work has been saved. 
+    </p>
+    <div>
+      <button
+        class="pdk-!-text-color-blue govuk-link"
+        pdk-link=""
+        type="button"
+      >
+         Back 
+      </button>
+    </div>
+  </cpp-application-timed-out-page>
+</cpp-application-technical-error-page-test>
+`;

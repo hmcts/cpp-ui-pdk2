@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-section should render 1`] = `
+<pdk-section-test>
+  <div
+    class="govuk-section-break govuk-section-break--s"
+    pdk-section="small"
+  /><div
+    class="govuk-section-break govuk-section-break--m"
+    pdk-section="medium"
+  /><div
+    class="govuk-section-break govuk-section-break--l"
+    pdk-section="large"
+  /><div
+    class="govuk-section-break govuk-section-break--xl"
+    pdk-section="xlarge"
+  />
+</pdk-section-test>
+`;

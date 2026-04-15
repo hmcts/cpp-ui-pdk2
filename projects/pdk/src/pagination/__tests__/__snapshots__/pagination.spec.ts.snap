@@ -1,0 +1,820 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationComponent should cap the visible pages according to the \`maxPages\` flag 1`] = `
+<pdk-pagination-test
+  currentPage={[Function Number]}
+  maxPages={[Function Number]}
+  pageChange={[Function Function]}
+  pageSize={[Function Number]}
+  totalResults={[Function Number]}
+>
+  <pdk-pagination
+    data-current-page="1"
+    data-page-size="10"
+    data-total-results="90"
+  >
+    <div
+      class="pdk-pagination"
+    >
+      <nav
+        aria-label="Pagination"
+        class="govuk-pagination"
+      >
+        <div
+          class="pdk-pagination__arrow-placeholder"
+        />
+        <div
+          class="govuk-pagination__list govuk-!-margin-left-1 govuk-!-margin-right-1"
+          pdk-margin-horizontal="1"
+        >
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1 govuk-pagination__item--current"
+            pdk-margin-horizontal="1"
+          >
+            <span
+              aria-label="Current page, page 1"
+              class="pdk-pagination__item__active"
+              role="link"
+              tabindex="0"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 2"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               2 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 3"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               3 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 4"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               4 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 5"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               5 
+            </a>
+          </div>
+        </div>
+        <div
+          class="govuk-pagination__next"
+        >
+          <a
+            aria-label="Go to next page of results"
+            class="govuk-link govuk-pagination__link"
+            href="javascript:void(0)"
+            rel="Next"
+          >
+            <span
+              class="govuk-pagination__link-title"
+            >
+               Next 
+            </span>
+            <svg
+              aria-hidden="true"
+              class="govuk-pagination__icon govuk-pagination__icon--next"
+              focusable="false"
+              height="13"
+              viewBox="0 0 15 13"
+              width="15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"
+              />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </pdk-pagination>
+</pdk-pagination-test>
+`;
+
+exports[`PaginationComponent should cap the visible pages according to the \`maxPages\` flag 2`] = `
+<pdk-pagination-test
+  currentPage={[Function Number]}
+  maxPages={[Function Number]}
+  pageChange={[Function Function]}
+  pageSize={[Function Number]}
+  totalResults={[Function Number]}
+>
+  <pdk-pagination
+    data-current-page="1"
+    data-page-size="10"
+    data-total-results="90"
+  >
+    <div
+      class="pdk-pagination"
+    >
+      <nav
+        aria-label="Pagination"
+        class="govuk-pagination"
+      >
+        <div
+          class="pdk-pagination__arrow-placeholder"
+        />
+        <div
+          class="govuk-pagination__list govuk-!-margin-left-1 govuk-!-margin-right-1"
+          pdk-margin-horizontal="1"
+        >
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1 govuk-pagination__item--current"
+            pdk-margin-horizontal="1"
+          >
+            <span
+              aria-label="Current page, page 1"
+              class="pdk-pagination__item__active"
+              role="link"
+              tabindex="0"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 2"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               2 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 3"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               3 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 4"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               4 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 5"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               5 
+            </a>
+          </div>
+        </div>
+        <div
+          class="govuk-pagination__next"
+        >
+          <a
+            aria-label="Go to next page of results"
+            class="govuk-link govuk-pagination__link"
+            href="javascript:void(0)"
+            rel="Next"
+          >
+            <span
+              class="govuk-pagination__link-title"
+            >
+               Next 
+            </span>
+            <svg
+              aria-hidden="true"
+              class="govuk-pagination__icon govuk-pagination__icon--next"
+              focusable="false"
+              height="13"
+              viewBox="0 0 15 13"
+              width="15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"
+              />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </pdk-pagination>
+</pdk-pagination-test>
+`;
+
+exports[`PaginationComponent should compile correctly when on the first page 1`] = `
+<pdk-pagination-test
+  currentPage={[Function Number]}
+  pageChange={[Function Function]}
+  pageSize={[Function Number]}
+  totalResults={[Function Number]}
+>
+  <pdk-pagination
+    data-current-page="1"
+    data-page-size="10"
+    data-total-results="90"
+  >
+    <div
+      class="pdk-pagination"
+    >
+      <nav
+        aria-label="Pagination"
+        class="govuk-pagination"
+      >
+        <div
+          class="pdk-pagination__arrow-placeholder"
+        />
+        <div
+          class="govuk-pagination__list govuk-!-margin-left-1 govuk-!-margin-right-1"
+          pdk-margin-horizontal="1"
+        >
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1 govuk-pagination__item--current"
+            pdk-margin-horizontal="1"
+          >
+            <span
+              aria-label="Current page, page 1"
+              class="pdk-pagination__item__active"
+              role="link"
+              tabindex="0"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 2"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               2 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 3"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               3 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 4"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               4 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 5"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               5 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 6"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               6 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 7"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               7 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 8"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               8 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 9"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               9 
+            </a>
+          </div>
+        </div>
+        <div
+          class="govuk-pagination__next"
+        >
+          <a
+            aria-label="Go to next page of results"
+            class="govuk-link govuk-pagination__link"
+            href="javascript:void(0)"
+            rel="Next"
+          >
+            <span
+              class="govuk-pagination__link-title"
+            >
+               Next 
+            </span>
+            <svg
+              aria-hidden="true"
+              class="govuk-pagination__icon govuk-pagination__icon--next"
+              focusable="false"
+              height="13"
+              viewBox="0 0 15 13"
+              width="15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"
+              />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </pdk-pagination>
+</pdk-pagination-test>
+`;
+
+exports[`PaginationComponent should emit a \`pageChange\` event when earlier pages are available 1`] = `
+<pdk-pagination-test
+  currentPage={[Function Number]}
+  pageChange={[Function Function]}
+  pageSize={[Function Number]}
+  totalResults={[Function Number]}
+>
+  <pdk-pagination
+    data-current-page="2"
+    data-page-size="10"
+    data-total-results="90"
+  >
+    <div
+      class="pdk-pagination"
+    >
+      <nav
+        aria-label="Pagination"
+        class="govuk-pagination"
+      >
+        <div
+          class="govuk-pagination__prev"
+        >
+          <a
+            aria-label="Go to previous page of results"
+            class="govuk-link govuk-pagination__link"
+            href="javascript:void(0)"
+            rel="Previous"
+          >
+            <svg
+              aria-hidden="true"
+              class="govuk-pagination__icon govuk-pagination__icon--prev"
+              focusable="false"
+              height="13"
+              viewBox="0 0 15 13"
+              width="15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"
+              />
+            </svg>
+            <span
+              class="govuk-pagination__link-title"
+            >
+               Prev 
+            </span>
+          </a>
+        </div>
+        <div
+          class="govuk-pagination__list govuk-!-margin-left-1 govuk-!-margin-right-1"
+          pdk-margin-horizontal="1"
+        >
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 1"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               1 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1 govuk-pagination__item--current"
+            pdk-margin-horizontal="1"
+          >
+            <span
+              aria-label="Current page, page 2"
+              class="pdk-pagination__item__active"
+              role="link"
+              tabindex="0"
+            >
+              2
+            </span>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 3"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               3 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 4"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               4 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 5"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               5 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 6"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               6 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 7"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               7 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 8"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               8 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 9"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               9 
+            </a>
+          </div>
+        </div>
+        <div
+          class="govuk-pagination__next"
+        >
+          <a
+            aria-label="Go to next page of results"
+            class="govuk-link govuk-pagination__link"
+            href="javascript:void(0)"
+            rel="Next"
+          >
+            <span
+              class="govuk-pagination__link-title"
+            >
+               Next 
+            </span>
+            <svg
+              aria-hidden="true"
+              class="govuk-pagination__icon govuk-pagination__icon--next"
+              focusable="false"
+              height="13"
+              viewBox="0 0 15 13"
+              width="15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"
+              />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </pdk-pagination>
+</pdk-pagination-test>
+`;
+
+exports[`PaginationComponent should emit a \`pageChange\` event when later pages are available 1`] = `
+<pdk-pagination-test
+  currentPage={[Function Number]}
+  pageChange={[Function Function]}
+  pageSize={[Function Number]}
+  totalResults={[Function Number]}
+>
+  <pdk-pagination
+    data-current-page="1"
+    data-page-size="10"
+    data-total-results="90"
+  >
+    <div
+      class="pdk-pagination"
+    >
+      <nav
+        aria-label="Pagination"
+        class="govuk-pagination"
+      >
+        <div
+          class="pdk-pagination__arrow-placeholder"
+        />
+        <div
+          class="govuk-pagination__list govuk-!-margin-left-1 govuk-!-margin-right-1"
+          pdk-margin-horizontal="1"
+        >
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1 govuk-pagination__item--current"
+            pdk-margin-horizontal="1"
+          >
+            <span
+              aria-label="Current page, page 1"
+              class="pdk-pagination__item__active"
+              role="link"
+              tabindex="0"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 2"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               2 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 3"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               3 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 4"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               4 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 5"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               5 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 6"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               6 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 7"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               7 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 8"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               8 
+            </a>
+          </div>
+          <div
+            class="govuk-pagination__item govuk-!-margin-left-1 govuk-!-margin-right-1"
+            pdk-margin-horizontal="1"
+          >
+            <a
+              aria-label="Go to page 9"
+              class="govuk-pagination__link govuk-link"
+              href="javascript:void(0)"
+              pdk-link=""
+            >
+               9 
+            </a>
+          </div>
+        </div>
+        <div
+          class="govuk-pagination__next"
+        >
+          <a
+            aria-label="Go to next page of results"
+            class="govuk-link govuk-pagination__link"
+            href="javascript:void(0)"
+            rel="Next"
+          >
+            <span
+              class="govuk-pagination__link-title"
+            >
+               Next 
+            </span>
+            <svg
+              aria-hidden="true"
+              class="govuk-pagination__icon govuk-pagination__icon--next"
+              focusable="false"
+              height="13"
+              viewBox="0 0 15 13"
+              width="15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"
+              />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </pdk-pagination>
+</pdk-pagination-test>
+`;

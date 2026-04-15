@@ -1,0 +1,33 @@
+@import '../styles/toolkit';
+
+.pdk-filter-button {
+  border: 0;
+  background: none;
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: inherit;
+  padding: 0;
+  color: $govuk-link-colour;
+  cursor: pointer;
+  padding-right: 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 3px;
+  margin-left: 3px;
+  margin-right: 2px;
+
+  svg {
+    fill: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+    svg {
+      fill: $govuk-link-hover-colour;
+    }
+  }
+
+  &:focus {
+    @include pdk-focusable-button;
+  }
+}

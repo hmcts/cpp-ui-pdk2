@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-grid should render 1`] = `
+<pdk-grid-test>
+  <pdk-grid
+    class="govuk-grid-row"
+    container=""
+  >
+    <pdk-grid
+      class="govuk-grid-column-full"
+      full=""
+    />
+    <pdk-grid
+      class="govuk-grid-column-one-half"
+      one-half=""
+    />
+    <pdk-grid
+      class="govuk-grid-column-one-third"
+      one-third=""
+    />
+    <pdk-grid
+      class="govuk-grid-column-two-thirds"
+      two-thirds=""
+    />
+    <pdk-grid
+      class="govuk-grid-column-one-quarter"
+      one-quarter=""
+    />
+    <pdk-grid
+      class="govuk-grid-column-three-quarters"
+      three-quarters=""
+    />
+    <pdk-grid
+      class="pdk-grid-column-offset-one-half"
+      offset-one-half=""
+    />
+    <pdk-grid
+      class="pdk-grid-column-offset-one-third"
+      offset-one-third=""
+    />
+    <pdk-grid
+      class="pdk-grid-column-offset-two-thirds"
+      offset-two-thirds=""
+    />
+    <pdk-grid
+      class="pdk-grid-column-offset-one-quarter"
+      offset-one-quarter=""
+    />
+    <pdk-grid
+      class="pdk-grid-column-offset-three-quarters"
+      offset-three-quarters=""
+    />
+  </pdk-grid>
+</pdk-grid-test>
+`;

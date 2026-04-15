@@ -1,0 +1,34 @@
+{
+  "extends": "../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["projects/pdk/tsconfig.lib.json", "projects/pdk/tsconfig.spec.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": ["element", "attribute"],
+            "prefix": "pdk"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": ["element", "attribute"],
+            "prefix": "pdk",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "rules": {}
+    }
+  ]
+}

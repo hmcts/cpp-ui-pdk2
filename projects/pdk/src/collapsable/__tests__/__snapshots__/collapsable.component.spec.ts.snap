@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-collapsable should collapse content using the \`collapsed\` prop 1`] = `
+<pdk-collapsable-test
+  change={[Function Function]}
+  collapsed={[Function Boolean]}
+>
+  <pdk-collapsable>
+    <div
+      class="pdk-collapsable"
+    >
+      <div
+        class="pdk-collapsable__header"
+      >
+        <button
+          aria-controls="pdk-collapse-GENERATED_ID"
+          aria-expanded="false"
+          class="pdk-collapsable__button"
+          type="button"
+        >
+          <div
+            class="pdk-collapsable__toggle"
+          >
+            <svg
+              focusable="false"
+              height="17"
+              role="presentation"
+              viewBox="0 0 13 17"
+              width="13"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <span
+            class="pdk-collapsable__button-text"
+          >
+             Show 
+          </span>
+        </button>
+      </div>
+      <p>
+        This content cannot collapse.
+      </p>
+      <p
+        hidden=""
+        id="pdk-collapse-GENERATED_ID"
+        pdk-collapse=""
+      >
+        This content will collapse.
+      </p>
+    </div>
+  </pdk-collapsable>
+</pdk-collapsable-test>
+`;
+
+exports[`pdk-collapsable should render with custom labels 1`] = `
+<pdk-collapsable-test
+  ariaLabel={[Function String]}
+  change={[Function Function]}
+  collapsedLabel={[Function String]}
+  expandedLabel={[Function String]}
+>
+  <pdk-collapsable>
+    <div
+      class="pdk-collapsable"
+    >
+      <div
+        class="pdk-collapsable__header"
+      >
+        <button
+          aria-controls="pdk-collapse-GENERATED_ID"
+          aria-expanded="true"
+          aria-label="ARIA_LABEL"
+          class="pdk-collapsable__button"
+          type="button"
+        >
+          <div
+            class="pdk-collapsable__toggle pdk-collapsable__toggle--expanded"
+          >
+            <svg
+              focusable="false"
+              height="17"
+              role="presentation"
+              viewBox="0 0 13 17"
+              width="13"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <span
+            class="pdk-collapsable__button-text"
+          >
+             UNCOLLAPSED_LABEL 
+          </span>
+        </button>
+      </div>
+      <p>
+        This content cannot collapse.
+      </p>
+      <p
+        id="pdk-collapse-GENERATED_ID"
+        pdk-collapse=""
+      >
+        This content will collapse.
+      </p>
+    </div>
+  </pdk-collapsable>
+</pdk-collapsable-test>
+`;
+
+exports[`pdk-collapsable should render with the default props 1`] = `
+<pdk-collapsable-test
+  change={[Function Function]}
+>
+  <pdk-collapsable>
+    <div
+      class="pdk-collapsable"
+    >
+      <div
+        class="pdk-collapsable__header"
+      >
+        <button
+          aria-controls="pdk-collapse-GENERATED_ID"
+          aria-expanded="true"
+          class="pdk-collapsable__button"
+          type="button"
+        >
+          <div
+            class="pdk-collapsable__toggle pdk-collapsable__toggle--expanded"
+          >
+            <svg
+              focusable="false"
+              height="17"
+              role="presentation"
+              viewBox="0 0 13 17"
+              width="13"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <span
+            class="pdk-collapsable__button-text"
+          >
+             Hide 
+          </span>
+        </button>
+      </div>
+      <p>
+        This content cannot collapse.
+      </p>
+      <p
+        id="pdk-collapse-GENERATED_ID"
+        pdk-collapse=""
+      >
+        This content will collapse.
+      </p>
+    </div>
+  </pdk-collapsable>
+</pdk-collapsable-test>
+`;
+
+exports[`pdk-collapsable should toggle the collapsable content 1`] = `
+<pdk-collapsable-test
+  change={[Function Function]}
+>
+  <pdk-collapsable>
+    <div
+      class="pdk-collapsable"
+    >
+      <div
+        class="pdk-collapsable__header"
+      >
+        <button
+          aria-controls="pdk-collapse-GENERATED_ID"
+          aria-expanded="false"
+          class="pdk-collapsable__button"
+          type="button"
+        >
+          <div
+            class="pdk-collapsable__toggle"
+          >
+            <svg
+              focusable="false"
+              height="17"
+              role="presentation"
+              viewBox="0 0 13 17"
+              width="13"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <span
+            class="pdk-collapsable__button-text"
+          >
+             Show 
+          </span>
+        </button>
+      </div>
+      <p>
+        This content cannot collapse.
+      </p>
+      <p
+        hidden=""
+        id="pdk-collapse-GENERATED_ID"
+        pdk-collapse=""
+      >
+        This content will collapse.
+      </p>
+    </div>
+  </pdk-collapsable>
+</pdk-collapsable-test>
+`;
+
+exports[`pdk-collapsable should toggle the collapsable content 2`] = `
+<pdk-collapsable-test
+  change={[Function Function]}
+>
+  <pdk-collapsable>
+    <div
+      class="pdk-collapsable"
+    >
+      <div
+        class="pdk-collapsable__header"
+      >
+        <button
+          aria-controls="pdk-collapse-GENERATED_ID"
+          aria-expanded="true"
+          class="pdk-collapsable__button"
+          type="button"
+        >
+          <div
+            class="pdk-collapsable__toggle pdk-collapsable__toggle--expanded"
+          >
+            <svg
+              focusable="false"
+              height="17"
+              role="presentation"
+              viewBox="0 0 13 17"
+              width="13"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <span
+            class="pdk-collapsable__button-text"
+          >
+             Hide 
+          </span>
+        </button>
+      </div>
+      <p>
+        This content cannot collapse.
+      </p>
+      <p
+        id="pdk-collapse-GENERATED_ID"
+        pdk-collapse=""
+      >
+        This content will collapse.
+      </p>
+    </div>
+  </pdk-collapsable>
+</pdk-collapsable-test>
+`;

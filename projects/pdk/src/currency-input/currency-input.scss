@@ -1,0 +1,26 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-currency-input';
+
+.#{$module} {
+  position: relative;
+
+  input {
+    padding-left: govuk-em(34, 19);
+  }
+
+  &:before {
+    @include govuk-font(19);
+    color: $govuk-text-colour;
+    content: '\00a3';
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    left: govuk-em(12, 19);
+    top: 50%;
+
+    /* IE9+ support */
+    transform: translateY(-50%);
+  }
+}

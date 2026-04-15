@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-alert should coerce the container value from the attribute presence 1`] = `
+<pdk-alert-test
+  container="undefined"
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--warning"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container govuk-width-container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--alert"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;
+
+exports[`pdk-alert should render with an icon 1`] = `
+<pdk-alert-test
+  container="false"
+  icon={[Function Boolean]}
+  type={[Function String]}
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--warning"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--alert"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;
+
+exports[`pdk-alert should render with the alert type set to "confirmation" 1`] = `
+<pdk-alert-test
+  container="false"
+  type={[Function String]}
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--confirmation"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--tick"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;
+
+exports[`pdk-alert should render with the alert type set to "secure" 1`] = `
+<pdk-alert-test
+  container="false"
+  type={[Function String]}
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--secure"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--lock"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;
+
+exports[`pdk-alert should render with the alert type set to "success" 1`] = `
+<pdk-alert-test
+  container="false"
+  type={[Function String]}
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--success"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--tick"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;
+
+exports[`pdk-alert should render with the alert type set to "warning" 1`] = `
+<pdk-alert-test
+  container="false"
+  type={[Function String]}
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--warning"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--alert"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;
+
+exports[`pdk-alert should render with the default props 1`] = `
+<pdk-alert-test
+  container="false"
+>
+  <pdk-alert>
+    <div
+      class="pdk-alert pdk-alert--warning"
+      role="alert"
+    >
+      <div
+        class="pdk-alert__container"
+      >
+        <i
+          aria-hidden="true"
+          class="pdk-alert__icon pdk-alert__icon--alert"
+          role="presentation"
+        />
+        <div
+          class="pdk-alert__message"
+        >
+          <div>
+            <p>
+              Alert content here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pdk-alert>
+</pdk-alert-test>
+`;

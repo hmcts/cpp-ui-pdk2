@@ -1,0 +1,26 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/header/header';
+@import 'govuk-frontend/dist/govuk/components/service-navigation/service-navigation';
+
+.pdk-header__content {
+  padding-top: 40px;
+
+  @include mq($from: desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 0;
+    align-items: center;
+  }
+  .pdk_header__logo {
+    width: auto;
+  }
+}
+
+pdk-header-nav-item {
+  display: block;
+
+  @include mq($from: desktop) {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-warning-text should render 1`] = `
+<pdk-warning-text-test>
+  <pdk-warning-text>
+    <div
+      class="govuk-warning-text"
+    >
+      <span
+        aria-hidden="true"
+        class="govuk-warning-text__icon"
+      >
+        !
+      </span>
+      <strong
+        class="govuk-warning-text__text"
+      >
+        <span
+          class="govuk-visually-hidden"
+          pdk-visually-hidden=""
+        >
+          Warning
+        </span>
+        Warning!
+      </strong>
+    </div>
+  </pdk-warning-text>
+</pdk-warning-text-test>
+`;

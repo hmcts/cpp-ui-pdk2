@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignedOutErrorPageComponent should render page 1`] = `
+<cpp-application-signed-out-page-test>
+  <cpp-application-signed-out-page>
+    <h1
+      class="govuk-heading-xl"
+      pdk-typography="heading-xlarge"
+    >
+      You've been signed out
+    </h1>
+    <p
+      class="govuk-body-s"
+      pdk-typography="body-small"
+    >
+      This is because you have been signed in for 8 hours.
+    </p>
+    <div>
+      <button
+        class="pdk-!-text-color-blue govuk-link"
+        pdk-link=""
+        type="button"
+      >
+         Sign in again 
+      </button>
+    </div>
+  </cpp-application-signed-out-page>
+</cpp-application-signed-out-page-test>
+`;

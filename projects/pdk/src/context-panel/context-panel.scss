@@ -1,0 +1,69 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-context-panel';
+
+.#{$module} {
+  @include govuk-responsive-padding(6);
+  display: table;
+
+  &__message {
+    display: table-cell;
+
+    a,
+    a:visited {
+      color: govuk-colour('white');
+      text-decoration: underline;
+    }
+
+    h3,
+    p {
+      color: govuk-colour('white');
+      margin-bottom: 0;
+    }
+  }
+
+  &__icon {
+    display: table-cell;
+    vertical-align: top;
+    background-repeat: no-repeat;
+
+    + .#{$module}__message {
+      @include govuk-responsive-padding(2, 'left');
+    }
+  }
+
+  &__icon--tick {
+    height: 31px;
+    width: 31px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPhJREFUeNpi/P//P8NAASaGAQQj13KaA2CakgHik0D8B4gXADEbPS2+8x8VbKK5A3BYTHsHELAYBuYOlMUg8JvaFosRaTEIXKKmxaJAfJlIi18DsQ66AYFAvBqIK4GYmYYW66IbkImmaCkxDqCFxUQ5gBoWJxDQhNUBFFsMNeQdEZpRHABk8wPxKYosJsFyEJgFxIxQi08SqecjEBvhSzAJ/4kHs0m02JyYrJL5n7qAOItp4ADSLKaiA8izmAoOoMxiChzwDYgtqVlRFJBgsRMt6uaKAbGYCAfQ1mI8DqCPxUgOyAfiL0D8GIgdqGEm42hfbSAAQIABAGLORSgiES39AAAAAElFTkSuQmCC');
+  }
+
+  &__icon--warn {
+    height: 31px;
+    width: 31px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAbdJREFUeNrMV8tKAzEUTeIwldJRqCD4C4XWgdqlW/fdiDtldv2Fgqt+h4uie/+imyqipT+hULpwM1KMJ3qnxsLY3E5qPXAIDXMfTXJzT6RwhNa6iaENtsA6WAVLYApOwBE4BG+llPeiKBBQgWfgWPMwJju1auAG+KCLwdg3uIETMNV+YPwkroG7ej3ouvzjZRiYwwfGFps0vwzJb3vsstTXOfY3jlswPwMqO9UY+mDosDNRznzFwdb472dVkJXCKRgXrEzXsoop3tzgkhFkN2d+h+HjM15AN1eNYShFcdRMXEVXJgdl5orkoa3oruYg9LQiLUVNwkfwiOmnrqg7+Vj2LaafqqK2KDwcuDLTT0lRPxYeSi1k+kkVCQEf2GZ+PwlIgRwwjCJqEHbS+yts3ygg6XPCvEavPKzUUNINd8c0HIAv9skFj5k+jrJ2yNFor6BcaKeS5p01nt1YeoyMZ1Cn+kftff2eMXz0FlWqq1ic5oiJKUNUfvdzZP6O4QJ8E+uF8X9O8URgLd0jMuo4nOQKvjPV8WzN7TkqmQ7iPP0/9bpx3W4lcLiRF8tfvdUkIxHvr9QPAQYACVUup1lGK0cAAAAASUVORK5CYII=');
+  }
+
+  &--active,
+  &--success,
+  &--confirmation {
+    background-color: govuk-colour('green');
+  }
+
+  &--pending {
+    background-color: govuk-colour('orange');
+  }
+
+  &--notice {
+    background-color: govuk-colour('blue');
+  }
+
+  &--important,
+  &--invalid {
+    background-color: govuk-colour('red');
+  }
+
+  &--de-registered {
+    background-color: govuk-colour('dark-grey');
+  }
+}

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-link should render the muted style 1`] = `
+<pdk-link-test
+  muted="undefined"
+  text="false"
+  unvisited="false"
+>
+  <a
+    class="govuk-link govuk-link--muted"
+    pdk-link=""
+  >
+     My link! 
+  </a>
+</pdk-link-test>
+`;
+
+exports[`pdk-link should render the text style 1`] = `
+<pdk-link-test
+  muted="false"
+  text="undefined"
+  unvisited="false"
+>
+  <a
+    class="govuk-link govuk-link--text-colour"
+    pdk-link=""
+  >
+     My link! 
+  </a>
+</pdk-link-test>
+`;
+
+exports[`pdk-link should render the unvisited style 1`] = `
+<pdk-link-test
+  muted="false"
+  text="false"
+  unvisited="undefined"
+>
+  <a
+    class="govuk-link govuk-link--no-visited-state"
+    pdk-link=""
+  >
+     My link! 
+  </a>
+</pdk-link-test>
+`;
+
+exports[`pdk-link should render with the default props 1`] = `
+<pdk-link-test
+  muted="false"
+  text="false"
+  unvisited="false"
+>
+  <a
+    class="govuk-link"
+    pdk-link=""
+  >
+     My link! 
+  </a>
+</pdk-link-test>
+`;

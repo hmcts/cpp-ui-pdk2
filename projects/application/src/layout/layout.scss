@@ -1,0 +1,14 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+
+.cpp-layout__search {
+  margin: 0 0 10px;
+
+  @include mq($from: desktop) {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+    width: 370px;
+  }
+}

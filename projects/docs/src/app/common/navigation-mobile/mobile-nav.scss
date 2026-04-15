@@ -1,0 +1,73 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+
+$module: 'docs-mobile-nav';
+
+.#{$module} {
+  @include govuk-typography-common;
+  font-size: 19px;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #f8f8f8;
+
+    .docs-mobile-subnav__toggler {
+      position: relative;
+      padding: 16px 20px 17px 20px;
+
+      > a {
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      &.#{$module}--current-page {
+        border-bottom: 4px solid map-get($govuk-colours, 'blue');
+      }
+    }
+  }
+
+  .docs-mobile-subnav {
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+    border-top: 1px solid #dee0e2;
+    border-bottom: 1px solid #dee0e2;
+    background-color: #fff;
+
+    > li {
+      padding: 12px 20px;
+
+      &.docs-mobile-subnav--current-page {
+        border-left: 4px solid map-get($govuk-colours, 'blue');
+        padding-left: 16px;
+
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+
+    a {
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    &__heading {
+      margin: 0;
+      padding: 8px 20px 5px 0;
+      color: #6f777b;
+      font-weight: 400;
+      font-size: 19px;
+    }
+
+    &__nav {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background-color: #fff;
+    }
+  }
+}

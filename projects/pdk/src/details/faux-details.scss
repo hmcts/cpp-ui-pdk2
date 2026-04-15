@@ -1,0 +1,49 @@
+@import '../styles/toolkit';
+
+.pdk-faux-details {
+  @include govuk-font($size: 19);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  margin-bottom: govuk-spacing(1);
+  padding-left: govuk-spacing(4) + $govuk-border-width;
+  color: $govuk-link-colour;
+
+  &__text {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+  }
+
+  &:focus {
+    @include govuk-focusable;
+    .pdk-faux-details__text {
+      text-decoration: none;
+    }
+  }
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    @include govuk-shape-arrow($direction: right, $base: 14px);
+  }
+
+  &--open:before {
+    @include govuk-shape-arrow($direction: down, $base: 14px);
+  }
+}

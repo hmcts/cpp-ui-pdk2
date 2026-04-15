@@ -1,0 +1,61 @@
+name: UI library Verify & Validation
+
+trigger: none
+
+pr:
+  - main
+  - 'team/*'
+
+parameters:
+  - name: SEMVER_VERSION_INCREMENT
+    default: 'manual'
+    values:
+      - patch
+      - minor
+      - major
+      - prepatch
+      - preminor
+      - premajor
+      - prerelease
+      - from-git
+      - manual
+  - name: SEMVER_VERSION_MANUAL
+    default: null
+
+resources:
+  repositories:
+    - repository: cppAzureDevOpsTemplates
+      type: github
+      name: hmcts/cpp-azure-devops-templates
+      endpoint: 'hmcts'
+      ref: 'ui-test-upd'
+
+pool:
+  name: 'MDV-ADO-AGENTS-01'
+
+variables:
+  - name: NODE_VERSION
+    value: '18.20.x'
+  - name: NPM_VERSION
+    value: '10.7.0'
+  - name: sonarqubeProject
+    value: 'uk.gov.moj.cpp.ui:ui-pdk2'
+
+stages:
+  - ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
+      - template: pipelines/ui-library-verify.yaml@cppAzureDevOpsTemplates
+        parameters:
+          repo: '$(Build.Repository.Name)'
+          NODE_VERSION: '${{ variables.NODE_VERSION }}'
+          NPM_VERSION: '${{ variables.NPM_VERSION }}'
+          sonarqube_project: ${{ variables['sonarqubeProject'] }}
+
+  - ${{ if eq(variables['Build.Reason'], 'Manual') }}:
+      - template: pipelines/ui-library-validation.yaml@cppAzureDevOpsTemplates
+        parameters:
+          repo: '$(Build.Repository.Name)'
+          SEMVER_VERSION_INCREMENT: '${{ parameters.SEMVER_VERSION_INCREMENT }}'
+          SEMVER_VERSION_MANUAL: '${{ parameters.SEMVER_VERSION_MANUAL }}'
+          NODE_VERSION: '${{ variables.NODE_VERSION }}'
+          NPM_VERSION: '${{ variables.NPM_VERSION }}'
+          

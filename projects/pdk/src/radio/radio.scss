@@ -1,0 +1,31 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/radios/radios';
+
+pdk-radio-button {
+  margin-bottom: govuk-spacing(2);
+  display: block;
+
+  .govuk-radios__item {
+    margin-bottom: 0;
+    .govuk-radios__label {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.govuk-radios > *:last-child {
+  margin-bottom: 0;
+}
+
+pdk-radio-conditional {
+  display: block;
+  margin-bottom: govuk-spacing(4);
+
+  .govuk-radios__conditional {
+    margin-bottom: 0;
+  }
+}

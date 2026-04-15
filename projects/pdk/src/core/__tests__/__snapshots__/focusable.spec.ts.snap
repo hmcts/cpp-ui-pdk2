@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-focused should render the focused styles 1`] = `
+<pdk-focused-test
+  focused={[Function Boolean]}
+>
+  <div
+    class="pdk-focusable pdk--focused"
+    pdk-focusable=""
+    tabindex="0"
+  />
+</pdk-focused-test>
+`;
+
+exports[`pdk-focused should render with the default props 1`] = `
+<pdk-focused-test
+  focused="false"
+>
+  <div
+    class="pdk-focusable"
+    pdk-focusable=""
+    tabindex="0"
+  />
+</pdk-focused-test>
+`;

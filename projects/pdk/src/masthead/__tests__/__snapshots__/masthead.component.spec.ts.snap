@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-masthead should render 1`] = `
+<pdk-masthead-test>
+  <pdk-masthead>
+    <div
+      class="pdk-masthead"
+    >
+      My masthead
+    </div>
+  </pdk-masthead>
+</pdk-masthead-test>
+`;

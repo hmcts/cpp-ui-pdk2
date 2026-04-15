@@ -1,0 +1,49 @@
+@import 'govuk-frontend/dist/govuk/settings/index';
+@import 'govuk-frontend/dist/govuk/tools/index';
+@import 'govuk-frontend/dist/govuk/helpers/index';
+
+docs-navigation-toggle {
+  align-self: center;
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 0;
+
+  .docs-navigation-toggle {
+    background-color: govuk-colour('blue') !important;
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 govuk-colour('blue') !important;
+    margin: 0;
+    padding-right: 0;
+    padding-left: 0;
+    color: #fff;
+
+    &::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+      border-width: 8.66px 5px 0 5px;
+      border-top-color: inherit;
+      content: '';
+      margin-left: 5px;
+      border-color: #fff;
+    }
+
+    &--active::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      border-width: 0 5px 8.66px 5px;
+      border-bottom-color: inherit;
+      border-color: #fff;
+    }
+  }
+}

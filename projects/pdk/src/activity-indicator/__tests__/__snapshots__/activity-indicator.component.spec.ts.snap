@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-activity-indicator should render 1`] = `
+<pdk-activity-indicator-test>
+  <pdk-activity-indicator>
+    <div
+      class="pdk-activity-indicator"
+    >
+      <div
+        class="pdk-activity-indicator__loader"
+        role="status"
+      >
+        <div
+          class="pdk-activity-indicator__spinner"
+        />
+        <b
+          class="pdk_activity-indicator__title"
+        >
+          Page loading
+        </b>
+        <p
+          style="margin-top: 4px;"
+        >
+          This may take a moment, please wait.
+        </p>
+      </div>
+    </div>
+    <div
+      class="pdk-activity-indicator__backdrop"
+    />
+  </pdk-activity-indicator>
+</pdk-activity-indicator-test>
+`;

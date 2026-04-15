@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-visually-hidden should render the content as accessible for coerced boolean 1`] = `
+<pdk-accessibility-test
+  accessible="undefined"
+>
+  <div
+    class="govuk-visually-hidden"
+  />
+</pdk-accessibility-test>
+`;
+
+exports[`pdk-visually-hidden should render with the default props 1`] = `
+<pdk-accessibility-test
+  accessible="false"
+>
+  <div />
+</pdk-accessibility-test>
+`;

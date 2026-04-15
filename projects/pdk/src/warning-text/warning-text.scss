@@ -1,0 +1,20 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/warning-text/warning-text';
+
+:host {
+  display: block;
+  @include govuk-responsive-margin(6, 'bottom');
+}
+
+.govuk-warning-text {
+  margin: 0;
+}
+
+.pdk-warning-text--error {
+  color: govuk-colour('red');
+
+  .govuk-warning-text__icon {
+    border-color: govuk-colour('red');
+    background-color: govuk-colour('red');
+  }
+}

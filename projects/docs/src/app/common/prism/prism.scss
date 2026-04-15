@@ -1,0 +1,12 @@
+@import 'prismjs/themes/prism';
+
+docs-prism {
+  display: block;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #f8f8f8;
+  margin: 0;
+  overflow-x: auto;
+}

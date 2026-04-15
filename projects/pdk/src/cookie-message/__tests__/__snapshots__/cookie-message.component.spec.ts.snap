@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-cookie-message should render 1`] = `
+<pdk-cookie-message-test>
+  <pdk-cookie-message>
+    <div
+      class="pdk-cookie-message"
+    >
+      <p
+        class="govuk-width-container govuk-body-m"
+        pdk-typography="body"
+      >
+         GOV.UK uses cookies to make the site simpler. 
+        <a
+          class="govuk-link"
+          href="https://www.gov.uk/help/cookies"
+          pdk-link=""
+        >
+          Find out more about cookies.
+        </a>
+      </p>
+    </div>
+  </pdk-cookie-message>
+</pdk-cookie-message-test>
+`;

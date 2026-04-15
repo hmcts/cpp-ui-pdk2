@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-list should render a bulleted list 1`] = `
+<pdk-list-test
+  type={[Function String]}
+>
+  <ul
+    class="govuk-list govuk-list--bullet"
+  >
+    <li>
+      My list item
+    </li>
+  </ul>
+</pdk-list-test>
+`;
+
+exports[`pdk-list should render a numbered list 1`] = `
+<pdk-list-test
+  type={[Function String]}
+>
+  <ul
+    class="govuk-list govuk-list--number"
+  >
+    <li>
+      My list item
+    </li>
+  </ul>
+</pdk-list-test>
+`;

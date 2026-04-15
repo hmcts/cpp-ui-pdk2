@@ -1,0 +1,11 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/breadcrumbs/breadcrumbs';
+
+pdk-breadcrumb-list {
+  @include govuk-font($size: 16);
+  @include govuk-text-colour;
+
+  display: block;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(2);
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@cpp/pdk",
+  "version": "0.0.0-PLACEHOLDER",
+  "peerDependencies": {
+    "@angular/cdk": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "@kolkov/angular-editor": "^2.1.0",
+    "@ng-select/ng-select": "^14.9.0"
+  }
+}

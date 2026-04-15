@@ -1,0 +1,10 @@
+@import '../styles/toolkit';
+
+$module: 'pdk-badge';
+
+.#{$module} {
+  @include govuk-font(19, 'bold');
+  border: 2px solid govuk-colour('black');
+  padding: govuk-em(6, 19) govuk-em(9, 19) govuk-em(3, 19) govuk-em(9, 19);
+  text-transform: uppercase;
+}

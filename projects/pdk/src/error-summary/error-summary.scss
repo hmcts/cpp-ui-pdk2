@@ -1,0 +1,11 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/error-summary/error-summary';
+
+pdk-error-summary {
+  display: block;
+  @include govuk-responsive-margin(8, 'bottom');
+
+  .govuk-error-summary {
+    margin: 0;
+  }
+}

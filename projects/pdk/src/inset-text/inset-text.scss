@@ -1,0 +1,23 @@
+@import '../styles/toolkit';
+@import 'govuk-frontend/dist/govuk/components/inset-text/inset-text';
+
+pdk-inset-text {
+  display: block;
+  // Margin top intended to collapse
+  // This adds an additional 10px to the paragraph above
+  @include govuk-responsive-margin(6, 'top');
+  @include govuk-responsive-margin(6, 'bottom');
+  @include govuk-responsive-padding(3, 'top');
+  @include govuk-responsive-padding(3, 'right');
+  @include govuk-responsive-padding(3, 'bottom');
+
+  border-left: $govuk-border-width-wide solid $govuk-border-colour;
+
+  .govuk-inset-text {
+    margin: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    border-left: none;
+  }
+}

@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-action-button should handle focusing the button while it is not disabled 1`] = `
+<pdk-action-button-test
+  disabled="false"
+  error="false"
+  inverted="false"
+>
+  <a
+    aria-disabled="false"
+    pdk-action-button=""
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="pdk-action-button__header"
+    >
+      <span
+        class="pdk-action-button__title"
+      >
+         Action button 
+      </span>
+    </div>
+  </a>
+</pdk-action-button-test>
+`;
+
+exports[`pdk-action-button should handle focusing the button while it is not disabled 2`] = `
+<pdk-action-button-test
+  disabled={[Function Boolean]}
+  error="false"
+  inverted="false"
+>
+  <a
+    aria-disabled="true"
+    class="pdk-action-button--disabled"
+    pdk-action-button=""
+    role="button"
+    tabindex="-1"
+  >
+    <div
+      class="pdk-action-button__header"
+    >
+      <span
+        class="pdk-action-button__title"
+      >
+         Action button 
+      </span>
+    </div>
+  </a>
+</pdk-action-button-test>
+`;
+
+exports[`pdk-action-button should render a \`disabled\` action button 1`] = `
+<pdk-action-button-test
+  disabled="undefined"
+  error="false"
+  inverted="false"
+>
+  <a
+    aria-disabled="true"
+    class="pdk-action-button--disabled"
+    pdk-action-button=""
+    role="button"
+    tabindex="-1"
+  >
+    <div
+      class="pdk-action-button__header"
+    >
+      <span
+        class="pdk-action-button__title"
+      >
+         Action button 
+      </span>
+    </div>
+  </a>
+</pdk-action-button-test>
+`;
+
+exports[`pdk-action-button should render an \`error\` action button 1`] = `
+<pdk-action-button-test
+  disabled="false"
+  error="undefined"
+  inverted="false"
+>
+  <a
+    aria-disabled="false"
+    class="pdk-action-button--error"
+    pdk-action-button=""
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="pdk-action-button__header"
+    >
+      <span
+        class="pdk-action-button__title"
+      >
+         Action button 
+      </span>
+    </div>
+  </a>
+</pdk-action-button-test>
+`;
+
+exports[`pdk-action-button should render an \`inverted\` action button 1`] = `
+<pdk-action-button-test
+  disabled="false"
+  error="false"
+  inverted="undefined"
+>
+  <a
+    aria-disabled="false"
+    class="pdk-action-button--secondary"
+    pdk-action-button=""
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="pdk-action-button__header"
+    >
+      <span
+        class="pdk-action-button__title"
+      >
+         Action button 
+      </span>
+    </div>
+  </a>
+</pdk-action-button-test>
+`;
+
+exports[`pdk-action-button should render the default action button 1`] = `
+<pdk-action-button-test
+  disabled="false"
+  error="false"
+  inverted="false"
+>
+  <a
+    aria-disabled="false"
+    pdk-action-button=""
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="pdk-action-button__header"
+    >
+      <span
+        class="pdk-action-button__title"
+      >
+         Action button 
+      </span>
+    </div>
+  </a>
+</pdk-action-button-test>
+`;

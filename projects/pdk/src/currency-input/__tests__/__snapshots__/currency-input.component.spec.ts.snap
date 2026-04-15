@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-currency-input should disable the input 1`] = `
+<pdk-currency-input-test
+  blur={[Function Function]}
+  change={[Function Function]}
+  disabled={[Function Boolean]}
+  focus={[Function Function]}
+>
+  <form
+    class="ng-untouched ng-pristine ng-valid"
+    novalidate=""
+  >
+    <pdk-currency-input
+      aria-describedby="identifier"
+      class="ng-untouched ng-pristine ng-valid"
+      name="currency"
+    >
+      <div
+        class="pdk-currency-input"
+      >
+        <input
+          autocomplete="off"
+          class="ng-untouched ng-pristine ng-valid govuk-input"
+          id="pdk-currency-input-GENERATED_ID"
+          name="currency"
+          pattern="/^$|(?=.*?\\d)^\\$?(([1-9]\\d{0,2}(,\\d{3})*)|\\d+)?(\\.\\d{2})?$/"
+          type="text"
+        />
+      </div>
+    </pdk-currency-input>
+  </form>
+</pdk-currency-input-test>
+`;
+
+exports[`pdk-currency-input should render 1`] = `
+<pdk-currency-input-test
+  blur={[Function Function]}
+  change={[Function Function]}
+  disabled="false"
+  focus={[Function Function]}
+>
+  <form
+    class="ng-untouched ng-pristine ng-valid"
+    novalidate=""
+  >
+    <pdk-currency-input
+      aria-describedby="identifier"
+      class="ng-untouched ng-pristine ng-valid"
+      name="currency"
+    >
+      <div
+        class="pdk-currency-input"
+      >
+        <input
+          autocomplete="off"
+          class="ng-untouched ng-pristine ng-valid govuk-input"
+          id="pdk-currency-input-GENERATED_ID"
+          name="currency"
+          pattern="/^$|(?=.*?\\d)^\\$?(([1-9]\\d{0,2}(,\\d{3})*)|\\d+)?(\\.\\d{2})?$/"
+          type="text"
+        />
+      </div>
+    </pdk-currency-input>
+  </form>
+</pdk-currency-input-test>
+`;
+
+exports[`reactive pdk-currency-input disabled state disables currency input control when \`formGroup\` is disabled 1`] = `
+<pdk-currency-input-test
+  formGroup={[Function FormGroup]}
+>
+  <form
+    class="ng-untouched ng-pristine"
+    novalidate=""
+  >
+    <pdk-currency-input
+      class="ng-untouched ng-pristine"
+      name="currency"
+    >
+      <div
+        class="pdk-currency-input"
+      >
+        <input
+          autocomplete="off"
+          class="ng-untouched ng-pristine ng-valid govuk-input"
+          id="pdk-currency-input-GENERATED_ID"
+          name="currency"
+          pattern="/^$|(?=.*?\\d)^\\$?(([1-9]\\d{0,2}(,\\d{3})*)|\\d+)?(\\.\\d{2})?$/"
+          type="text"
+        />
+      </div>
+    </pdk-currency-input>
+  </form>
+</pdk-currency-input-test>
+`;
+
+exports[`reactive pdk-currency-input disabled state enables currency input control when \`formGroup\` is enabled 1`] = `
+<pdk-currency-input-test
+  formGroup={[Function FormGroup]}
+>
+  <form
+    class="ng-untouched ng-pristine ng-valid"
+    novalidate=""
+  >
+    <pdk-currency-input
+      class="ng-untouched ng-pristine ng-valid"
+      name="currency"
+    >
+      <div
+        class="pdk-currency-input"
+      >
+        <input
+          autocomplete="off"
+          class="ng-untouched ng-pristine ng-valid govuk-input"
+          id="pdk-currency-input-GENERATED_ID"
+          name="currency"
+          pattern="/^$|(?=.*?\\d)^\\$?(([1-9]\\d{0,2}(,\\d{3})*)|\\d+)?(\\.\\d{2})?$/"
+          type="text"
+        />
+      </div>
+    </pdk-currency-input>
+  </form>
+</pdk-currency-input-test>
+`;

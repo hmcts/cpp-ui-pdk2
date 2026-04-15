@@ -1,0 +1,12 @@
+@import '../styles/toolkit';
+
+.pdk-cookie-message {
+  @include govuk-responsive-padding(3, 'top');
+  @include govuk-responsive-padding(3, 'bottom');
+  background-color: #e9f3f9;
+  p {
+    @include govuk-font(16);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

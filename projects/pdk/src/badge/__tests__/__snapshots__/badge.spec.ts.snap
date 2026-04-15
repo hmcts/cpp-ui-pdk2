@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pdk-badge should render 1`] = `
+<pdk-badge-test>
+  <pdk-badge
+    class="pdk-badge"
+  >
+    CONTENT
+  </pdk-badge>
+</pdk-badge-test>
+`;
