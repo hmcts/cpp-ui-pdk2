@@ -1,13 +1,6 @@
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  NgControl,
-  ReactiveFormsModule,
-  ValidationErrors
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
   createValidatorForFormControl,
   InputValidators,
@@ -269,7 +262,7 @@ describe('createValidatorForFormControl', () => {
   });
 
   it('should return null from created validator when inner function returns null', () => {
-    const validateFn = (value: unknown) => null;
+    const validateFn = (_value: unknown) => null;
     const validator = createValidatorForFormControl(validateFn);
     const control = new FormControl('any value');
 
@@ -277,7 +270,7 @@ describe('createValidatorForFormControl', () => {
   });
 
   it('should pass control value to the validation function', () => {
-    const mockValidateFn = jasmine.createSpy('validateFn').and.returnValue(null);
+    const mockValidateFn = jest.fn().mockReturnValue(null);
     const validator = createValidatorForFormControl(mockValidateFn);
     const control = new FormControl('test value');
 
@@ -293,8 +286,8 @@ describe('PdkValidatorDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ValidatorTestComponent, PdkValidatorDirective],
-      imports: [ReactiveFormsModule]
+      declarations: [ValidatorTestComponent],
+      imports: [ReactiveFormsModule, PdkValidatorDirective]
     });
 
     fixture = TestBed.createComponent(ValidatorTestComponent);
@@ -302,8 +295,9 @@ describe('PdkValidatorDirective', () => {
   });
 
   it('should validate control using provided validator function', () => {
-    const mockValidator = jasmine.createSpy('validator').and.returnValue(null);
-    directive = fixture.debugElement.injector.get(PdkValidatorDirective);
+    const mockValidator = jest.fn().mockReturnValue(null);
+    const input = fixture.debugElement.children[0];
+    directive = input.injector.get(PdkValidatorDirective);
     directive.validator = mockValidator;
 
     const control = new FormControl('test');
@@ -314,10 +308,11 @@ describe('PdkValidatorDirective', () => {
   });
 
   it('should return validation errors from provided validator', () => {
-    const mockValidator = jasmine.createSpy('validator').and.returnValue({
+    const mockValidator = jest.fn().mockReturnValue({
       custom: true
     });
-    directive = fixture.debugElement.injector.get(PdkValidatorDirective);
+    const input = fixture.debugElement.children[0];
+    directive = input.injector.get(PdkValidatorDirective);
     directive.validator = mockValidator;
 
     const control = new FormControl('test');
@@ -332,8 +327,8 @@ describe('PdkMaxValueValidatorDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MaxValueValidatorTestComponent, PdkMaxValueValidatorDirective],
-      imports: [ReactiveFormsModule]
+      declarations: [MaxValueValidatorTestComponent],
+      imports: [ReactiveFormsModule, PdkMaxValueValidatorDirective]
     });
 
     fixture = TestBed.createComponent(MaxValueValidatorTestComponent);
@@ -366,8 +361,8 @@ describe('PdkMinValueValidatorDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MinValueValidatorTestComponent, PdkMinValueValidatorDirective],
-      imports: [ReactiveFormsModule]
+      declarations: [MinValueValidatorTestComponent],
+      imports: [ReactiveFormsModule, PdkMinValueValidatorDirective]
     });
 
     fixture = TestBed.createComponent(MinValueValidatorTestComponent);
@@ -400,8 +395,8 @@ describe('PdkMinCountValidatorDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MinCountValidatorTestComponent, PdkMinCountValidatorDirective],
-      imports: [ReactiveFormsModule]
+      declarations: [MinCountValidatorTestComponent],
+      imports: [ReactiveFormsModule, PdkMinCountValidatorDirective]
     });
 
     fixture = TestBed.createComponent(MinCountValidatorTestComponent);
@@ -434,8 +429,8 @@ describe('PdkMaxCountValidatorDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MaxCountValidatorTestComponent, PdkMaxCountValidatorDirective],
-      imports: [ReactiveFormsModule]
+      declarations: [MaxCountValidatorTestComponent],
+      imports: [ReactiveFormsModule, PdkMaxCountValidatorDirective]
     });
 
     fixture = TestBed.createComponent(MaxCountValidatorTestComponent);
@@ -468,8 +463,8 @@ describe('PdkMaximumLengthValidatorDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MaximumLengthValidatorTestComponent, PdkMaximumLengthValidatorDirective],
-      imports: [ReactiveFormsModule]
+      declarations: [MaximumLengthValidatorTestComponent],
+      imports: [ReactiveFormsModule, PdkMaximumLengthValidatorDirective]
     });
 
     fixture = TestBed.createComponent(MaximumLengthValidatorTestComponent);
@@ -509,7 +504,9 @@ class ValidatorTestComponent {
 
 @Component({
   selector: 'pdk-max-value-test',
-  template: `<input formControlName="maxValue" [maxValue]="maxValue" />`,
+  template: `<form [formGroup]="form">
+    <input formControlName="maxValue" [maxValue]="maxValue" />
+  </form>`,
   standalone: false
 })
 class MaxValueValidatorTestComponent {
@@ -521,7 +518,9 @@ class MaxValueValidatorTestComponent {
 
 @Component({
   selector: 'pdk-min-value-test',
-  template: `<input formControlName="minValue" [minValue]="minValue" />`,
+  template: `<form [formGroup]="form">
+    <input formControlName="minValue" [minValue]="minValue" />
+  </form>`,
   standalone: false
 })
 class MinValueValidatorTestComponent {
@@ -533,7 +532,9 @@ class MinValueValidatorTestComponent {
 
 @Component({
   selector: 'pdk-min-count-test',
-  template: `<input formControlName="minCount" [minCount]="minCount" />`,
+  template: `<form [formGroup]="form">
+    <input formControlName="minCount" [minCount]="minCount" />
+  </form>`,
   standalone: false
 })
 class MinCountValidatorTestComponent {
@@ -545,7 +546,9 @@ class MinCountValidatorTestComponent {
 
 @Component({
   selector: 'pdk-max-count-test',
-  template: `<input formControlName="maxCount" [maxCount]="maxCount" />`,
+  template: `<form [formGroup]="form">
+    <input formControlName="maxCount" [maxCount]="maxCount" />
+  </form>`,
   standalone: false
 })
 class MaxCountValidatorTestComponent {
@@ -557,7 +560,9 @@ class MaxCountValidatorTestComponent {
 
 @Component({
   selector: 'pdk-maximum-length-test',
-  template: `<input formControlName="maximumLength" [maximumLength]="maximumLength" />`,
+  template: `<form [formGroup]="form">
+    <input formControlName="maximumLength" [maximumLength]="maximumLength" />
+  </form>`,
   standalone: false
 })
 class MaximumLengthValidatorTestComponent {
