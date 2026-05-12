@@ -37,7 +37,7 @@ export class InputValidators {
     const validator = (c: AbstractControl): ValidationErrors | null => {
       if (Number.isInteger(c.value) && c.value < min) {
         return {
-          maxValue: {
+          minValue: {
             expected: min,
             actual: c.value
           }
