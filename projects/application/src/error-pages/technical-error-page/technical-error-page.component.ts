@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { PdkLinkDirective, PdkTypographyDirective } from '@cpp/pdk';
 
 @Component({
@@ -13,12 +12,12 @@ import { PdkLinkDirective, PdkTypographyDirective } from '@cpp/pdk';
     <div>
       <p pdk-typography="body-small">
         Check you’ve entered the web address correctly or
-        <a [routerLink]="['/']" pdk-link>go to the home page</a> - any unsaved changes may be lost.
+        <a href="/" pdk-link>go to the home page</a> - any unsaved changes may be lost.
       </p>
     </div>
   `,
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [PdkTypographyDirective, PdkLinkDirective, RouterLink]
+  imports: [PdkTypographyDirective, PdkLinkDirective]
 })
 export class TechnicalErrorPageComponent {}
