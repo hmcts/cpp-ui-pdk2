@@ -1,4 +1,4 @@
-import { Directive, forwardRef, Injector, Input, Type } from '@angular/core';
+import { Directive, forwardRef, Injector, input, Input, Type } from '@angular/core';
 import {
   AbstractControl,
   NgControl,
@@ -8,6 +8,7 @@ import {
   ValidatorFn
 } from '@angular/forms';
 import { isWeekend } from '../date-picker/date-picker.util';
+import { coerceBooleanProperty } from '../util';
 
 function toTimestamp(value: Date | string | number): number {
   let date: Date | string | number = value;
@@ -193,5 +194,14 @@ export class PdkFutureDateValidatorDirective implements Validator {
   ]
 })
 export class PdkWeekDateValidatorDirective implements Validator {
-  validate = DateValidators.weekDate;
+  shouldValidate = input.required({
+    alias: 'weekDate',
+    transform: coerceBooleanProperty
+  });
+  validate = (control: AbstractControl) => {
+    if (this.shouldValidate()) {
+      return DateValidators.weekDate(control);
+    }
+    return null;
+  };
 }

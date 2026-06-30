@@ -94,6 +94,9 @@ const markup = `
       <docs-props-list-item name="pastDate" type="boolean" defaultValue="false">
         When <code docs-code>true</code>, validates that the entered date is in the past.
       </docs-props-list-item>
+      <docs-props-list-item name="disableWeekend" type="boolean" defaultValue="false">
+        When <code docs-code>true</code>, disables weekend dates in the date picker.
+      </docs-props-list-item>
       <docs-props-list-item name="placeholder" type="string">
         Placeholder text for the input.
       </docs-props-list-item>
