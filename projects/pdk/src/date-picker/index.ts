@@ -9,6 +9,8 @@ import { PdkDatePickerYearComponent } from './date-picker-year.component';
 import { PdkDatePickerYearGridComponent } from './date-picker-year-grid.component';
 import { PdkDatePickerComponent } from './date-picker.component';
 
+export * from './date-picker.util';
+
 export const PdkDatePicker = [
   PdkDatePickerComponent,
   PdkDatePickerDayComponent,

@@ -5,6 +5,7 @@ import {
   ElementRef,
   forwardRef,
   Injector,
+  input,
   Input,
   Type,
   viewChild
@@ -85,6 +86,7 @@ const defaultFormatFn = (date: string) => formatDate(date, 'dd MMM yyyy', 'en-GB
             [minDate]="minDate"
             [maxDate]="maxDate"
             [pastDate]="pastDate"
+            [disableWeekend]="disableWeekend()"
             [value]="value"
             (change)="handleValueChange($event)"
           >
@@ -149,6 +151,8 @@ export class PdkDatePickerInputComponent implements ControlValueAccessor, FormFi
     return this._pastDate;
   }
   @Input() placeholder?: string;
+
+  disableWeekend = input<boolean>(false);
 
   readonly controlRef = viewChild.required('selectionInputRef', {
     read: ElementRef<HTMLInputElement>

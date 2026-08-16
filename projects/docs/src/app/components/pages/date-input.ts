@@ -77,7 +77,8 @@ const markup = `
         When <code docs-code>true</code>, validates that the entered date is in the past.
       </docs-props-list-item>
       <docs-props-list-item name="weekDate" type="boolean" defaultValue="false">
-        When <code docs-code>true</code>, validates that the entered date is a week date.
+        When <code docs-code>true</code>, validates that the entered date is a week date and
+        disables weekend dates in the date picker.
       </docs-props-list-item>
       <docs-props-list-item name="picker" type="boolean" defaultValue="false">
         When <code docs-code>true</code>, show the date picker.
