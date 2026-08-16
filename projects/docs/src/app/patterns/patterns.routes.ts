@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { CppAddressEntryComponent } from './pages/cpp-address-entry';
 import { CppInstallationComponent } from './pages/cpp-installation';
 import { CppLayoutComponent } from './pages/cpp-layout';
 import { OverviewComponent } from './pages/overview';
@@ -28,6 +29,13 @@ export const patternsRoutes: Route[] = [
         component: CppLayoutComponent,
         data: {
           title: 'Common Platform layout'
+        }
+      },
+      {
+        path: 'cpp/address-entry',
+        component: CppAddressEntryComponent,
+        data: {
+          title: 'Common Platform address entry'
         }
       }
     ]

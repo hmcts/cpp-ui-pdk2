@@ -11,6 +11,10 @@ export const navSections: Array<NavSection> = [
       {
         title: 'Application layout',
         routerLink: '/patterns/cpp/layout'
+      },
+      {
+        title: 'Addresses',
+        routerLink: '/patterns/cpp/address-entry'
       }
     ]
   }
