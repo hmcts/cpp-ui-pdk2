@@ -20,5 +20,4 @@ id = "generic-api-key"
 description = "Temporarily disabled"
 regex = "(?i)(?:api[_-]?key|apikey)"
 tags = ["generic-api-key"]
-entropy = "off"
 disabled = true
