@@ -15,3 +15,10 @@ description = "Identify banned IDs"
 regex = '''${GITLEAKS_REGEX_BANNED_IDS}'''
 tags = ["banned-ids"]
 
+[[rules]]
+id = "generic-api-key"
+description = "Temporarily disabled"
+regex = "(?i)(?:api[_-]?key|apikey)"
+tags = ["generic-api-key"]
+entropy = "off"
+disabled = true
