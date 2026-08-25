@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "cpp-application",
+            "prefix": ["cpp-application", "cpp"],
             "style": "kebab-case"
           }
         ]

@@ -28,7 +28,7 @@ resources:
       type: github
       name: hmcts/cpp-azure-devops-templates
       endpoint: 'hmcts'
-      ref: 'ui-test-upd'
+      ref: 'main'
 
 pool:
   name: 'MDV-ADO-AGENTS-01'
