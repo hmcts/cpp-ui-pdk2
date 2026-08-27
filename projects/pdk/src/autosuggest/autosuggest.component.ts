@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -7,10 +8,13 @@ import {
   forwardRef,
   Injector,
   Input,
+  OnDestroy,
   Output,
+  QueryList,
   TemplateRef,
   Type,
   viewChild,
+  ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
@@ -26,6 +30,7 @@ import { PdkAutosuggestSectionTitleComponent } from './autosuggest-section-title
 import { AutosuggestSection } from './autosuggest.interfaces';
 import { PdkInteractionContainerComponent } from '../core/interaction';
 import { PdkVisuallyHiddenDirective } from '../core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'pdk-autosuggest',
@@ -69,9 +74,13 @@ import { PdkVisuallyHiddenDirective } from '../core';
           [attr.id]="suggestionsContainerId"
           class="pdk-autosuggest__suggestions-container"
           [pdk-input-width]="inputWidth"
+          [class.pdk-autosuggest__suggestions-container--scrollable]="isScrollable"
           [class.pdk-autosuggest__suggestions-container--open]="
             didOpenSuggestions && sections.length !== 0
           "
+          [style.max-height.px]="suggestionsViewportHeight"
+          (mousedown)="handleSuggestionsMousedown($event)"
+          (mouseup)="handleSuggestionsMouseup()"
         >
           @for (section of sections; let index=$index; track (section.title || index)) { @if
           (section.title) {
@@ -91,6 +100,7 @@ import { PdkVisuallyHiddenDirective } from '../core';
             trackBySuggestionKeyAndIndex(suggestionIndex, suggestion); let suggestionIndex = $index)
             {
             <li
+              #suggestionRef
               [attr.id]="mapSuggestionToKey(suggestion)"
               role="option"
               tabindex="-1"
@@ -141,7 +151,7 @@ import { PdkVisuallyHiddenDirective } from '../core';
   ]
 })
 export class PdkAutosuggestComponent<T = unknown>
-  implements ControlValueAccessor, FormFieldControlV2
+  implements AfterViewInit, ControlValueAccessor, FormFieldControlV2, OnDestroy
 {
   @Input() ariaDescribedBy: string | null = null;
   @Input() ariaLabel: string | null = null;
@@ -153,6 +163,7 @@ export class PdkAutosuggestComponent<T = unknown>
   @Input() id = generateId('pdk-autosuggest__input');
   @Input() inputWidth?: InputWidth;
   @Input() inputType?: 'text' | 'search' = 'text';
+  @Input() maxVisibleSuggestions?: number;
   @Input() mapSuggestionToKey: (suggestion: T) => string | number;
   @Input() mapSuggestionToLabel: (suggestion: T) => string;
   @Input()
@@ -191,6 +202,8 @@ export class PdkAutosuggestComponent<T = unknown>
   @Output() inputText = new EventEmitter<string>();
 
   controlRef = viewChild.required('inputRef', { read: ElementRef<HTMLInputElement> });
+  @ViewChildren('suggestionRef', { read: ElementRef })
+  suggestionRefs!: QueryList<ElementRef<HTMLElement>>;
 
   get ariaDescribedByComputed(): string | null {
     if (this.ariaDescribedBy) {
@@ -221,9 +234,11 @@ export class PdkAutosuggestComponent<T = unknown>
   suggestionsContainerId = generateId('pdk-autosuggest__suggestions-container');
   instructionsId = generateId('pdk-autosuggest__instructions');
   statusMessage = '';
+  suggestionsViewportHeight: number | null = null;
 
   private _value!: T | null;
   private _sections: AutosuggestSection<T>[] = [];
+  private suggestionRefsSubscription?: Subscription;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private injector: Injector) {
     this.mapSuggestionToKey = () => {
@@ -232,6 +247,23 @@ export class PdkAutosuggestComponent<T = unknown>
     this.mapSuggestionToLabel = () => {
       throw new Error('`mapSuggestionToLabel` must be provided');
     };
+  }
+
+  ngAfterViewInit() {
+    this.suggestionRefsSubscription = this.suggestionRefs.changes.subscribe(() => {
+      this.updateSuggestionsViewportHeight();
+    });
+    this.updateSuggestionsViewportHeight();
+  }
+
+  ngOnDestroy() {
+    this.suggestionRefsSubscription?.unsubscribe();
+  }
+
+  get isScrollable(): boolean {
+    return Boolean(
+      this.maxVisibleSuggestions && this.suggestions.length > this.maxVisibleSuggestions
+    );
   }
 
   get ngControl() {
@@ -285,6 +317,7 @@ export class PdkAutosuggestComponent<T = unknown>
           this.highlightedSuggestionIndex < this.suggestions.length - 1
         ) {
           this.highlightedSuggestion = this.suggestions[this.highlightedSuggestionIndex + 1];
+          this.scrollHighlightedSuggestionIntoView();
         }
         event.preventDefault();
         break;
@@ -292,6 +325,7 @@ export class PdkAutosuggestComponent<T = unknown>
       case 'ArrowUp':
         if (this.suggestions.length > 1 && this.highlightedSuggestionIndex !== 0) {
           this.highlightedSuggestion = this.suggestions[this.highlightedSuggestionIndex - 1];
+          this.scrollHighlightedSuggestionIntoView();
         }
         event.preventDefault();
         break;
@@ -357,9 +391,21 @@ export class PdkAutosuggestComponent<T = unknown>
     }
   }
 
+  handleSuggestionsMousedown({ target }: MouseEvent) {
+    this.didTargetSuggestion = target;
+  }
+
+  handleSuggestionsMouseup() {
+    this.didTargetSuggestion = null;
+  }
+
   openSuggestions() {
     this.didOpenSuggestions = true;
     this.updateStatusMessage();
+
+    if (this.isScrollable) {
+      setTimeout(() => this.updateSuggestionsViewportHeight());
+    }
 
     if (this.highlightFirstSuggestion || this.suggestions[0] === this._value) {
       this.highlightedSuggestion = this.suggestions[0] || null;
@@ -395,6 +441,37 @@ export class PdkAutosuggestComponent<T = unknown>
       this.openSuggestions();
     }
     this.updateStatusMessage();
+  }
+
+  private scrollHighlightedSuggestionIntoView() {
+    const highlightedElement = this.suggestionRefs?.get(
+      this.highlightedSuggestionIndex
+    )?.nativeElement;
+    highlightedElement?.scrollIntoView?.({ block: 'nearest' });
+  }
+
+  private updateSuggestionsViewportHeight() {
+    if (!this.isScrollable || !this.suggestionRefs) {
+      this.suggestionsViewportHeight = null;
+      this.markForCheck();
+      return;
+    }
+
+    const visibleSuggestionElements = this.suggestionRefs
+      .toArray()
+      .slice(0, this.maxVisibleSuggestions);
+    const measuredHeight = visibleSuggestionElements.reduce(
+      (height, suggestion) =>
+        height +
+        (suggestion.nativeElement.getBoundingClientRect().height ||
+          suggestion.nativeElement.offsetHeight),
+      0
+    );
+
+    // Hidden containers and DOM-only tests report zero height. The open-list
+    // render schedules another measurement; the fallback keeps the cap stable.
+    this.suggestionsViewportHeight = measuredHeight || visibleSuggestionElements.length * 48;
+    this.markForCheck();
   }
 
   // ControlValueAccessor interface

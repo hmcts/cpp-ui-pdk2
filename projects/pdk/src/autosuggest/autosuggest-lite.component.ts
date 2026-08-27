@@ -39,6 +39,7 @@ import { PdkTextColorDirective } from '../core/colour';
       [inputType]="inputType"
       [mapSuggestionToKey]="getKey"
       [mapSuggestionToLabel]="getTitle"
+      [maxVisibleSuggestions]="maxVisibleSuggestions"
       (inputText)="handleInputText($event)"
       [suggestions]="suggestions"
       [suggestionTemplateRef]="suggestionTemplateRef"
@@ -89,6 +90,7 @@ export class PdkAutosuggestLiteComponent<T extends { [key: string]: any }>
   @Input() id!: string;
   @Input() inputWidth?: InputWidth;
   @Input() inputType?: 'text' | 'search' = 'text';
+  @Input() maxVisibleSuggestions?: number;
   @Input() suggestions: T[] = [];
   @Input() mapSuggestionToKey?: (suggestion: T) => string | number;
   @Input() mapSuggestionToTitle?: (suggestion: T) => string;
