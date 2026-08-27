@@ -19,6 +19,11 @@ $module: 'pdk-autosuggest';
       top: 40px + $govuk-border-width-form-element;
       z-index: 10000;
     }
+
+    &--scrollable {
+      overflow-y: scroll;
+      overscroll-behavior: contain;
+    }
   }
 
   &__options {
