@@ -28,7 +28,7 @@ resources:
       type: github
       name: hmcts/cpp-azure-devops-templates
       endpoint: 'hmcts'
-      ref: 'ui-test-upd'
+      ref: 'main'
 
 pool:
   name: 'MDV-ADO-AGENTS-01'
@@ -58,4 +58,3 @@ stages:
           SEMVER_VERSION_MANUAL: '${{ parameters.SEMVER_VERSION_MANUAL }}'
           NODE_VERSION: '${{ variables.NODE_VERSION }}'
           NPM_VERSION: '${{ variables.NPM_VERSION }}'
-          

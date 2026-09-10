@@ -1,6 +1,6 @@
 {
   "name": "cpp.ui.pdk",
-  "version": "19.0.7-ALU.0",
+  "version": "19.0.7-ALU.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/hmcts/cpp-ui-pdk2"
