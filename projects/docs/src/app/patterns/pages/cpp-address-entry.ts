@@ -1,47 +1,124 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { PdkTypographyDirective } from '@cpp/pdk';
+import { FormsModule } from '@angular/forms';
+import {
+  PdkButton,
+  PdkErrorSummaryComponent,
+  PdkForm,
+  PdkTypographyDirective,
+  ValidationError,
+  PdkMarginDirective
+} from '@cpp/pdk';
+import {
+  Address,
+  AddressFieldsConfig,
+  addressToSingleLine,
+  CppAddressAutosuggestComponent,
+  CppAddressComponent,
+  CppAddressPostcodeFinderComponent
+} from '@cpp/application';
+
 import {
   CodeComponent,
   PropsListComponent,
   PropsListItemComponent
 } from '../../common/props-list/props-list';
 import { ExampleComponent } from '../../common/example/example.component';
-import { FormsModule } from '@angular/forms';
-import {
-  Address,
-  CppAddressComponent,
-  CppAddressPostcodeFinderComponent,
-  CppAddressAutosuggestComponent,
-  addressToSingleLine
-} from '@cpp/application';
 
 const finderHtml = `
-<cpp-address-postcode-finder
-  [(ngModel)]="address"
-  required
-  (verificationStatusChange)="handleStatus($event)"
-  (errors)="searchErrors = $event"
->
-</cpp-address-postcode-finder>
+<form pdk-form (errors)="formErrors = $event" (validSubmit)="save()">
+
+
+  <pdk-form-field label="Address">
+    <cpp-address-postcode-finder
+    (addressFound)="address = $event"
+    (errors)="searchErrors = $event"
+  >
+  </cpp-address-postcode-finder>
+    <cpp-address name="address" required [(ngModel)]="address"></cpp-address>
+  </pdk-form-field>
+
+  <button pdk-button type="submit">Save address</button>
+</form>
 `;
 
 const autosuggestHtml = `
-<cpp-address-autosuggest
-  [(ngModel)]="address"
-  required
-  [inputWidth]="30"
-  (verificationStatusChange)="handleStatus($event)"
->
-</cpp-address-autosuggest>
+<form pdk-form (errors)="formErrors = $event" (validSubmit)="save()">
+  <pdk-form-field label="Search for an address">
+    <cpp-address-autosuggest
+      name="address"
+      required
+      [inputWidth]="30"
+      [(ngModel)]="address"
+    >
+    </cpp-address-autosuggest>
+  </pdk-form-field>
+
+  <button pdk-button type="submit">Save address</button>
+</form>
+`;
+
+const pairedHtml = `
+<form pdk-form (errors)="formErrors = $event" (validSubmit)="save()">
+  <pdk-form-field label="Search for an address">
+    <cpp-address-autosuggest
+      ngModel
+      [ngModelOptions]="{ standalone: true }"
+      clearOnSelection
+      [inputWidth]="30"
+      (ngModelChange)="address = $event"
+    >
+    </cpp-address-autosuggest>
+  </pdk-form-field>
+
+  <pdk-form-field label="Address">
+    <cpp-address name="address" required [(ngModel)]="address"></cpp-address>
+  </pdk-form-field>
+
+  <button pdk-button type="submit">Save address</button>
+</form>
 `;
 
 const manualHtml = `
-<cpp-address
-  [(ngModel)]="address"
-  required
-  (verificationStatusChange)="handleStatus($event)"
->
-</cpp-address>
+<form pdk-form (errors)="formErrors = $event" (validSubmit)="save()">
+  <pdk-form-field label="Address" labelType="small">
+    <cpp-address
+      name="address"
+      required
+      [fields]="{
+        line1: { labelType: 'default' },
+        line2: { labelType: 'default' },
+        line3: { labelType: 'default' },
+        line4: { labelType: 'default' },
+        line5: { labelType: 'default' },
+        postcode: { labelType: 'default' }
+      }"
+      [(ngModel)]="address"
+    >
+    </cpp-address>
+  </pdk-form-field>
+
+  <button pdk-button type="submit">Save address</button>
+</form>
+`;
+
+const fieldsHtml = `
+<form pdk-form (errors)="formErrors = $event" (validSubmit)="save()">
+  <pdk-form-field label="Address" labelType="small">
+    <cpp-address
+      name="address"
+      required
+      [fields]="{
+        line1: { errorMessages: { required: 'Enter the building and street' } },
+        line4: { label: 'Ward' },
+        line5: { label: 'Region (optional)', maxChars: 60 }
+      }"
+      [(ngModel)]="address"
+    >
+    </cpp-address>
+  </pdk-form-field>
+
+  <button pdk-button type="submit">Save address</button>
+</form>
 `;
 
 @Component({
@@ -49,210 +126,440 @@ const manualHtml = `
   encapsulation: ViewEncapsulation.None,
   template: `
     <span pdk-typography="caption-xlarge">Common Platform</span>
-    <h1 pdk-typography="heading-xlarge">Address entry</h1>
+    <h1 pdk-typography="heading-xlarge">Addresses</h1>
 
     <p pdk-typography="body">
-      Address entry is a set of three form controls for capturing a UK address, each suited to a
-      different journey: finding an address by postcode, searching for it as you type, or entering
-      it manually.
+      Three components for capturing a UK address. One is the address fields. The other two find an
+      address, by postcode or as the user types. Use whichever your journey needs.
     </p>
 
     <p pdk-typography="body">
-      To use address entry, add the
-      <code docs-code>CppAddressPostcodeFinderComponent</code>,
-      <code docs-code>CppAddressAutosuggestComponent</code> or
-      <code docs-code>CppAddressComponent</code> from this package to your list of ngModule/
-      standalone component imports. Be sure to add
-      <code docs-code>provideCPPApplicationEnvironment</code> from this package to your list of
-      providers in the top parent route , bootstrap function or bootstrap module. Its second
-      argument accepts providers that override the default
+      All of them talk to Ordnance Survey, so add
+      <code docs-code>provideCPPApplicationEnvironment</code> from this package to your providers in
+      the top parent route , bootstrap function or bootstrap module. Its second argument takes
+      providers that override the defaults, which is how you replace
       <code docs-code>ADDRESS_LOOKUP_CONFIG</code>.
     </p>
 
-    <!-- Address by postcode -->
+    <!-- Find by postcode -->
 
-    <h2 pdk-typography="heading-large">Address by postcode</h2>
+    <h2 pdk-typography="heading-large">Find by postcode</h2>
 
     <p pdk-typography="body">
-      <code docs-code>CppAddressPostcodeFinderComponent</code> asks for a postcode first. "Find
-      address" lists the matching addresses; picking one populates the editable address fields. An
-      "Enter address manually" link skips the search and opens the fields directly.
+      Import <code docs-code>CppAddressPostcodeFinderComponent</code>. The user enters a postcode
+      and picks from the addresses at it, and the one they pick comes back through
+      <code docs-code>addressFound</code>.
+    </p>
+
+    <p pdk-typography="body">
+      It holds no value and is not a form control, so it can sit inside the same
+      <code docs-code>pdk-form-field</code> as the <code docs-code>cpp-address</code> it feeds, and
+      the address fields remain the thing the form is bound to. Its search runs on its own small
+      form, so Find address never submits the page, and anything wrong with the postcode comes back
+      through <code docs-code>errors</code> for your <code docs-code>pdk-error-summary</code>.
     </p>
 
     <docs-example [html]="finderHtml">
-      <cpp-address-postcode-finder [(ngModel)]="finderAddress"></cpp-address-postcode-finder>
-      @if (finderAddress; as address) {
-      <p pdk-typography="body-medium">Value: {{ toSingleLine(address) }}</p>
-      }
+      <form pdk-form (errors)="setFormErrors($event)" (validSubmit)="save('postcode')">
+        @if (finderErrors; as errors) {
+        <pdk-error-summary [errors]="errors"></pdk-error-summary>
+        }
+
+        <pdk-form-field label="Address">
+          <cpp-address-postcode-finder
+            pdk-margin-bottom="2"
+            (addressFound)="finderAddress = $event"
+            (errors)="setSearchErrors($event)"
+          ></cpp-address-postcode-finder>
+          <cpp-address
+            name="finderAddress"
+            required
+            [ngModel]="finderAddress"
+            (ngModelChange)="finderAddress = $event"
+          ></cpp-address>
+        </pdk-form-field>
+
+        <button pdk-button type="submit">Save address</button>
+      </form>
     </docs-example>
 
     <h3 pdk-typography="heading-medium">Api</h3>
-    <docs-props-list propWidth="240">
-      <docs-props-list-item name="ngModel / formControl" type="Address | null">
-        The selected address. Accepts an <code docs-code>Address</code> to pre-populate the fields.
-      </docs-props-list-item>
+    <docs-props-list propWidth="200">
       <docs-props-list-item name="disabled" type="boolean" defaultValue="false">
-        When <code docs-code>true</code>, disables the search and the address fields.
+        When <code docs-code>true</code>, turns off the postcode box, the button and the list of
+        results.
       </docs-props-list-item>
-      <docs-props-list-item name="required" type="boolean" defaultValue="false">
-        When present, address line 1, town or city and postcode become mandatory.
-      </docs-props-list-item>
-      <docs-props-list-item name="validThreshold" type="number" defaultValue="0.9">
-        The minimum Ordnance Survey match score for a Valid verification result.
-      </docs-props-list-item>
-      <docs-props-list-item name="needsVerificationThreshold" type="number" defaultValue="0.7">
-        The minimum match score for a Needs verification result. Scores below it are Invalid.
-      </docs-props-list-item>
-      <docs-props-list-item name="verificationStatusChange" type="expression">
-        An expression executed when an address has been verified, receiving a
-        <code docs-code>VerificationStatus</code>.
+      <docs-props-list-item name="addressFound" type="expression">
+        An expression executed when the user picks an address from the results. It receives an
+        <code docs-code>Address</code>.
       </docs-props-list-item>
       <docs-props-list-item name="errors" type="expression">
-        An expression executed when the postcode search is submitted, receiving the search's
-        <code docs-code>ValidationError[]</code> for use in an error summary.
+        An expression executed when the postcode search is submitted. It receives the search's
+        <code docs-code>ValidationError[]</code>, which you can pass to an error summary.
       </docs-props-list-item>
     </docs-props-list>
 
-    <!-- Address by autosuggest -->
+    <!-- Search as you type -->
 
-    <h2 pdk-typography="heading-large">Address by autosuggest</h2>
+    <h2 pdk-typography="heading-large">Search as you type</h2>
 
     <p pdk-typography="body">
-      <code docs-code>CppAddressAutosuggestComponent</code> searches as the user types. From three
-      characters onwards, matching addresses are suggested; choosing one populates the editable
-      address fields and clears the search box. An "Enter address manually" link opens the fields
-      directly.
+      Import <code docs-code>CppAddressAutosuggestComponent</code>. Addresses are suggested once the
+      user has typed three characters, and picking one sets the value. This one is a form control,
+      so bind it with <code docs-code>ngModel</code> or <code docs-code>formControl</code> and wrap
+      it in a <code docs-code>pdk-form-field</code>. The label, the hint and any error message are
+      yours to set.
+    </p>
+
+    <p pdk-typography="body">
+      By default the chosen address stays in the box, so the user can see what they picked. If you
+      are using it to feed something else, such as a
+      <code docs-code>cpp-address</code> or a list, set <code docs-code>clearOnSelection</code> and
+      the box empties ready for the next search.
     </p>
 
     <docs-example [html]="autosuggestHtml">
-      <cpp-address-autosuggest [(ngModel)]="autosuggestAddress"></cpp-address-autosuggest>
-      @if (autosuggestAddress; as address) {
-      <p pdk-typography="body-medium">Value: {{ toSingleLine(address) }}</p>
-      }
+      <form pdk-form (errors)="suggestErrors = $event" (validSubmit)="save('autosuggest')">
+        @if (suggestErrors; as errors) {
+        <pdk-error-summary [errors]="errors"></pdk-error-summary>
+        }
+
+        <pdk-form-field label="Search for an address">
+          <cpp-address-autosuggest
+            name="suggestAddress"
+            required
+            [inputWidth]="30"
+            [ngModel]="suggestAddress"
+            (ngModelChange)="suggestAddress = $event"
+          ></cpp-address-autosuggest>
+        </pdk-form-field>
+
+        @if (suggestAddress; as address) {
+        <p pdk-typography="body-medium">You picked {{ toSingleLine(address) }}</p>
+        }
+
+        <button pdk-button type="submit">Save address</button>
+      </form>
+    </docs-example>
+
+    <h3 pdk-typography="heading-medium">Passing the address to the fields</h3>
+
+    <p pdk-typography="body">
+      Most of the time you want the user to see what they picked and be able to correct it. Put a
+      <code docs-code>cpp-address</code> underneath and let the search hand the address down to it.
+    </p>
+
+    <p pdk-typography="body">
+      The search box is only a way in, so keep it out of the form by marking it standalone. The form
+      then has one value, the address, held by the fields. Add
+      <code docs-code>clearOnSelection</code> so the box empties once the address has moved down,
+      which also makes it obvious the fields are now the thing to edit.
+    </p>
+
+    <docs-example [html]="pairedHtml">
+      <form pdk-form (errors)="pairedErrors = $event" (validSubmit)="save('paired')">
+        @if (pairedErrors; as errors) {
+        <pdk-error-summary [errors]="errors"></pdk-error-summary>
+        }
+
+        <pdk-form-field label="Search for an address">
+          <cpp-address-autosuggest
+            ngModel
+            [ngModelOptions]="{ standalone: true }"
+            clearOnSelection
+            [inputWidth]="30"
+            (ngModelChange)="pairedAddress = $event"
+          ></cpp-address-autosuggest>
+        </pdk-form-field>
+
+        <pdk-form-field label="Address">
+          <cpp-address
+            name="pairedAddress"
+            required
+            [ngModel]="pairedAddress"
+            (ngModelChange)="pairedAddress = $event"
+          ></cpp-address>
+        </pdk-form-field>
+
+        <button pdk-button type="submit">Save address</button>
+      </form>
     </docs-example>
 
     <h3 pdk-typography="heading-medium">Api</h3>
-    <docs-props-list propWidth="240">
+    <docs-props-list propWidth="200">
       <docs-props-list-item name="ngModel / formControl" type="Address | null">
-        The selected address. Accepts an <code docs-code>Address</code> to pre-populate the fields.
+        The chosen address.
+      </docs-props-list-item>
+      <docs-props-list-item name="ariaLabel" type="string">
+        A label for the search box, for when there is no visible one.
+      </docs-props-list-item>
+      <docs-props-list-item name="ariaLabelledBy" type="string">
+        The id of the element that labels the search box.
+      </docs-props-list-item>
+      <docs-props-list-item name="clearOnSelection" type="boolean" defaultValue="false">
+        When <code docs-code>true</code>, empties the search box after the user picks an address.
       </docs-props-list-item>
       <docs-props-list-item name="disabled" type="boolean" defaultValue="false">
-        When <code docs-code>true</code>, disables the search and the address fields.
-      </docs-props-list-item>
-      <docs-props-list-item name="required" type="boolean" defaultValue="false">
-        When present, address line 1, town or city and postcode become mandatory.
+        When <code docs-code>true</code>, turns off the search box.
       </docs-props-list-item>
       <docs-props-list-item name="inputWidth" type="number">
-        The width of the search input. One of 2, 3, 4, 5, 10, 20 or 30 characters. Full width when
-        unset.
-      </docs-props-list-item>
-      <docs-props-list-item name="validThreshold" type="number" defaultValue="0.9">
-        The minimum Ordnance Survey match score for a Valid verification result.
-      </docs-props-list-item>
-      <docs-props-list-item name="needsVerificationThreshold" type="number" defaultValue="0.7">
-        The minimum match score for a Needs verification result. Scores below it are Invalid.
-      </docs-props-list-item>
-      <docs-props-list-item name="verificationStatusChange" type="expression">
-        An expression executed when an address has been verified, receiving a
-        <code docs-code>VerificationStatus</code>.
+        How wide the search box is, in characters. One of 2, 3, 4, 5, 10, 20 or 30. Full width if
+        you leave it out.
       </docs-props-list-item>
     </docs-props-list>
 
-    <!-- Address manual entry -->
+    <!-- Enter an address -->
 
-    <h2 pdk-typography="heading-large">Address manual entry</h2>
+    <h2 pdk-typography="heading-large">Enter an address</h2>
 
     <p pdk-typography="body">
-      <code docs-code>CppAddressComponent</code> is the editable address fields on their own —
-      address lines 1 to 3, town or city, county and postcode — and is what the other two flavours
-      embed once an address is chosen. It also accepts a raw Ordnance Survey DPA result through its
-      value accessor and converts it to an <code docs-code>Address</code>. Leaving the fields
-      verifies the address and shows the status tag next to the postcode.
+      Import <code docs-code>CppAddressComponent</code>. Five address lines and a postcode, where
+      line 4 is the town or city and line 5 is the county. It is a form control, so bind it and wrap
+      it in a <code docs-code>pdk-form-field</code>. Give the field a label such as Address, because
+      the component labels each line but not the group.
+    </p>
+
+    <p pdk-typography="body">
+      Add <code docs-code>required</code> and the user must fill in the first line and the postcode.
+      The other lines stay optional. You can also hand it a raw Ordnance Survey DPA result instead
+      of an <code docs-code>Address</code> and it will sort out the lines for you. What comes back
+      out is always an <code docs-code>Address</code>.
+    </p>
+
+    <p pdk-typography="body">
+      Once an address is complete it is checked against Ordnance Survey, and a tag next to the
+      postcode says whether it is valid, needs checking, or was not recognised. The check never
+      blocks the form, it only reports, and the result also comes back through
+      <code docs-code>verificationStatusChange</code>.
+    </p>
+
+    <p pdk-typography="body">
+      Errors appear on the field that caused them, next to address line 1 or the postcode or
+      wherever the problem is, and each one gets its own entry in the error summary. You will not
+      see a second, vaguer message on the group, because the component tells the form field it is
+      showing those errors itself. The form still knows it is invalid, so
+      <code docs-code>form.valid</code> and anything you have hanging off it behave as you would
+      expect.
     </p>
 
     <docs-example [html]="manualHtml">
-      <cpp-address [(ngModel)]="manualAddress"></cpp-address>
-      @if (manualAddress; as address) {
-      <p pdk-typography="body-medium">Value: {{ toSingleLine(address) }}</p>
-      }
+      <form pdk-form (errors)="manualErrors = $event" (validSubmit)="save('manual')">
+        @if (manualErrors; as errors) {
+        <pdk-error-summary [errors]="errors"></pdk-error-summary>
+        }
+
+        <pdk-form-field label="Address" labelType="small">
+          <cpp-address
+            name="manualAddress"
+            required
+            [fields]="manualFields"
+            [ngModel]="manualAddress"
+            (ngModelChange)="manualAddress = $event"
+          ></cpp-address>
+        </pdk-form-field>
+
+        <button pdk-button type="submit">Save address</button>
+      </form>
     </docs-example>
 
     <h3 pdk-typography="heading-medium">Api</h3>
-    <docs-props-list propWidth="240">
+    <docs-props-list propWidth="200">
       <docs-props-list-item name="ngModel / formControl" type="Address | OsDpaResult | null">
-        The address. A DPA result written to the control is converted to an
-        <code docs-code>Address</code>; the emitted value is always
-        <code docs-code>Address | null</code>.
+        The address. Give it a DPA result and it is turned into an
+        <code docs-code>Address</code>. The value it gives back is always an
+        <code docs-code>Address</code> or <code docs-code>null</code>.
       </docs-props-list-item>
       <docs-props-list-item name="disabled" type="boolean" defaultValue="false">
-        When <code docs-code>true</code>, disables all address fields.
+        When <code docs-code>true</code>, turns off every field.
+      </docs-props-list-item>
+      <docs-props-list-item name="fields" type="object">
+        Changes the label , label type, error message or the character limit of any field. See
+        below.
       </docs-props-list-item>
       <docs-props-list-item name="required" type="boolean" defaultValue="false">
-        When present, address line 1, town or city and postcode become mandatory.
+        When present, the user must fill in address line 1 and the postcode.
       </docs-props-list-item>
       <docs-props-list-item name="validThreshold" type="number" defaultValue="0.9">
-        The minimum Ordnance Survey match score for a Valid verification result.
+        The Ordnance Survey score at which an address is treated as valid.
       </docs-props-list-item>
       <docs-props-list-item name="needsVerificationThreshold" type="number" defaultValue="0.7">
-        The minimum match score for a Needs verification result. Scores below it are Invalid.
+        The score at which an address is treated as needing a check. Anything lower is treated as
+        not recognised.
       </docs-props-list-item>
       <docs-props-list-item name="verificationStatusChange" type="expression">
-        An expression executed when an address has been verified, receiving a
+        An expression executed once an address has been checked. It receives a
         <code docs-code>VerificationStatus</code>.
       </docs-props-list-item>
     </docs-props-list>
 
-    <!-- Helper functions -->
-
-    <h2 pdk-typography="heading-large">Helper functions</h2>
+    <h3 pdk-typography="heading-medium">Labels, limits and messages</h3>
 
     <p pdk-typography="body">
-      The package also exports helpers for working with the <code docs-code>Address</code> value
-      once it leaves the control — the live examples above use
-      <code docs-code>addressToSingleLine</code> to print the current value.
+      Every field starts with a label, a label type, a character limit and a message for each thing
+      that can go wrong with it. Pass a <code docs-code>fields</code> object to change any of them,
+      on as many or as few fields as you like. Anything you leave out keeps its default, so changing
+      a label does not lose the limit or the messages that came with it.
     </p>
 
-    <docs-props-list propWidth="240">
+    <docs-example [html]="fieldsHtml">
+      <form pdk-form (errors)="fieldsErrors = $event" (validSubmit)="save('fields')">
+        @if (fieldsErrors; as errors) {
+        <pdk-error-summary [errors]="errors"></pdk-error-summary>
+        }
+
+        <pdk-form-field label="Address" labelType="small">
+          <cpp-address
+            name="fieldsAddress"
+            required
+            [fields]="configFields"
+            [ngModel]="fieldsAddress"
+            (ngModelChange)="fieldsAddress = $event"
+          ></cpp-address>
+        </pdk-form-field>
+
+        <button pdk-button type="submit">Save address</button>
+      </form>
+    </docs-example>
+
+    <p pdk-typography="body">Each entry takes any of these.</p>
+
+    <docs-props-list propWidth="200">
+      <docs-props-list-item name="label" type="string"> The field's label. </docs-props-list-item>
+      <docs-props-list-item name="labelType" type="string" defaultValue="small">
+        How big the label is. One of <code docs-code>default</code>, <code docs-code>small</code>,
+        <code docs-code>medium</code>, <code docs-code>large</code>,
+        <code docs-code>xlarge</code> or <code docs-code>none</code>.
+      </docs-props-list-item>
+      <docs-props-list-item name="maxChars" type="number" defaultValue="35">
+        The character limit. Not available on the postcode.
+      </docs-props-list-item>
+      <docs-props-list-item name="errorMessages" type="object">
+        A message per rule. An address line field takes <code docs-code>required</code>,
+        <code docs-code>addressLine</code> and <code docs-code>maximumLength</code>. The postcode
+        takes <code docs-code>required</code> and <code docs-code>postcode</code>.
+      </docs-props-list-item>
+    </docs-props-list>
+
+    <p pdk-typography="body">And these are the fields you can pass them for.</p>
+
+    <docs-props-list propWidth="200">
+      <docs-props-list-item name="line1" type="object" defaultValue="Address line 1">
+        The first line. Required when <code docs-code>required</code> is set.
+      </docs-props-list-item>
+      <docs-props-list-item name="line2" type="object" defaultValue="Address line 2 (optional)">
+        Optional.
+      </docs-props-list-item>
+      <docs-props-list-item name="line3" type="object" defaultValue="Address line 3 (optional)">
+        Optional.
+      </docs-props-list-item>
+      <docs-props-list-item name="line4" type="object" defaultValue="Town or city">
+        The town or city. This is where a postcode search puts the post town.
+      </docs-props-list-item>
+      <docs-props-list-item name="line5" type="object" defaultValue="County (optional)">
+        The county. Left out when the address is checked, because Ordnance Survey does not hold one
+        and sending it lowers the score.
+      </docs-props-list-item>
+      <docs-props-list-item name="postcode" type="object" defaultValue="Postcode">
+        Takes a label, a label type and its two messages. No character limit.
+      </docs-props-list-item>
+    </docs-props-list>
+
+    <!-- Helpers -->
+
+    <h2 pdk-typography="heading-large">Helpers</h2>
+
+    <p pdk-typography="body">
+      A few functions come with the components for working with an address once you have one.
+    </p>
+
+    <docs-props-list propWidth="200">
       <docs-props-list-item name="addressToSingleLine" type="function">
-        Converts an <code docs-code>Address</code> to a single comma-separated line, skipping empty
-        parts. Useful for displaying a captured address in summaries and confirmation pages.
+        Turns an address into one line, separated by commas, skipping anything empty. Handy for
+        summary pages and confirmation screens.
       </docs-props-list-item>
       <docs-props-list-item name="isPopulatedAddress" type="function">
-        Type guard returning <code docs-code>true</code> when an address has the mandatory parts —
-        line 1, town or city and postcode.
+        Tells you whether an address has the parts that matter, which are the first line and the
+        postcode.
       </docs-props-list-item>
       <docs-props-list-item name="osDpaToAddress" type="function">
-        Converts an Ordnance Survey DPA result (<code docs-code>OsDpaResult</code>) to an
-        <code docs-code>Address</code>, composing the address lines from the organisation, building
-        and street parts.
-      </docs-props-list-item>
-      <docs-props-list-item name="isOsDpaResult" type="function">
-        Type guard distinguishing a raw <code docs-code>OsDpaResult</code> from an
-        <code docs-code>Address</code>.
+        Turns a raw Ordnance Survey DPA result into an <code docs-code>Address</code>. You rarely
+        need this, because <code docs-code>cpp-address</code> accepts a DPA result directly.
       </docs-props-list-item>
     </docs-props-list>
   `,
   imports: [
     PdkTypographyDirective,
+    PdkErrorSummaryComponent,
+    PdkForm,
+    PdkButton,
+    FormsModule,
     CodeComponent,
     ExampleComponent,
-    FormsModule,
     PropsListComponent,
     PropsListItemComponent,
     CppAddressComponent,
     CppAddressPostcodeFinderComponent,
-    CppAddressAutosuggestComponent
+    CppAddressAutosuggestComponent,
+    PdkMarginDirective
   ]
 })
 export class CppAddressEntryComponent {
   finderHtml = finderHtml;
   autosuggestHtml = autosuggestHtml;
+  pairedHtml = pairedHtml;
   manualHtml = manualHtml;
+  fieldsHtml = fieldsHtml;
+
+  manualFields: AddressFieldsConfig = {
+    line1: { labelType: 'default' },
+    line2: { labelType: 'default' },
+    line3: { labelType: 'default' },
+    line4: { labelType: 'default' },
+    line5: { labelType: 'default' },
+    postcode: { labelType: 'default' }
+  };
+
+  configFields: AddressFieldsConfig = {
+    line1: { errorMessages: { required: 'Enter the building and street' } },
+    line4: { label: 'Ward' },
+    line5: { label: 'Region (optional)', maxChars: 60 }
+  };
+
   finderAddress: Address | null = null;
-  autosuggestAddress: Address | null = null;
+  fieldsAddress: Address | null = null;
+  suggestAddress: Address | null = null;
+  pairedAddress: Address | null = null;
   manualAddress: Address | null = null;
+
+  finderErrors: ValidationError[] | null = null;
+  suggestErrors: ValidationError[] | null = null;
+  pairedErrors: ValidationError[] | null = null;
+  manualErrors: ValidationError[] | null = null;
+  fieldsErrors: ValidationError[] | null = null;
+
+  private searchErrors: ValidationError[] | null = null;
+  private formErrors: ValidationError[] | null = null;
+
+  setSearchErrors(errors: ValidationError[] | null) {
+    this.searchErrors = errors;
+    this.combineFinderErrors();
+  }
+
+  setFormErrors(errors: ValidationError[] | null) {
+    this.formErrors = errors;
+    this.combineFinderErrors();
+  }
 
   toSingleLine(address: Address): string {
     return addressToSingleLine(address);
+  }
+
+  private combineFinderErrors() {
+    const combined = [...(this.searchErrors ?? []), ...(this.formErrors ?? [])];
+    this.finderErrors = combined.length ? combined : null;
+  }
+
+  save(flavour: string) {
+    console.log(`Saved (${flavour})`);
   }
 }

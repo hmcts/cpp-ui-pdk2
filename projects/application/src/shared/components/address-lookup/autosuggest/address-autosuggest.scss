@@ -1,5 +1,3 @@
-// ViewEncapsulation.None so we can reach pdk-autosuggest-lite internals; everything
-// is scoped under .cpp-address-autosuggest (the root element) to avoid leaks.
 .cpp-address-autosuggest {
   // ~10 rows visible, then scroll.
   $visible-rows: 10;

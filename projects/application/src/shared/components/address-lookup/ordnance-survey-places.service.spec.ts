@@ -66,7 +66,7 @@ describe('OrdnanceSurveyPlacesService', () => {
         expect.objectContaining({
           line1: '10 DOWNING STREET',
           line2: 'WESTMINSTER',
-          town: 'LONDON',
+          line4: 'LONDON',
           postcode: 'SW1A 2AA',
           uprn: '100012345678'
         })
