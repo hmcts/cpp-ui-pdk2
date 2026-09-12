@@ -71,21 +71,21 @@ describe('CppAddressComponent', () => {
   it('takes a DPA result through writeValue', () => {
     component.writeValue({
       UPRN: '1',
-      ADDRESS: '10, DOWNING STREET, LONDON, SW1A 2AA',
-      BUILDING_NUMBER: '10',
+      ADDRESS: '104, DOWNING STREET, LONDON, ZZ1 1AA',
+      BUILDING_NUMBER: '104',
       THOROUGHFARE_NAME: 'DOWNING STREET',
       DEPENDENT_LOCALITY: 'WESTMINSTER',
       POST_TOWN: 'LONDON',
-      POSTCODE: 'SW1A 2AA'
+      POSTCODE: 'ZZ1 1AA'
     });
 
     expect(component.addressForm.getRawValue()).toEqual({
-      line1: '10 DOWNING STREET',
+      line1: '104 DOWNING STREET',
       line2: 'WESTMINSTER',
       line3: '',
       line4: 'LONDON',
       line5: '',
-      postcode: 'SW1A 2AA'
+      postcode: 'ZZ1 1AA'
     });
   });
 });
