@@ -1,80 +1,82 @@
-<pdk-form-field label="No fixed abode" labelType="none">
-  <pdk-checkbox [formControl]="noFixedAbodeControl" [valueChecked]="true" [valueUnchecked]="false">
-    No fixed abode
-  </pdk-checkbox>
-</pdk-form-field>
-
-@if (!noFixedAbodeControl.value) {
 <pdk-interaction-container (blur)="verify()">
-  <div class="cpp-address__fields" [formGroup]="addressForm" pdk-margin-top="4">
+  <div class="cpp-address__fields" [formGroup]="addressForm">
+    @let field = fields();
+
     <pdk-form-field
-      label="Address line 1"
+      [label]="field.line1.label"
+      [labelType]="field.line1.labelType"
       [errorMessages]="[
-        { rule: 'required', message: 'Enter address line 1' },
-        { rule: 'addressLine', message: 'Address line 1 contains invalid characters' }
+        { rule: 'required', message: field.line1.errorMessages.required },
+        { rule: 'addressLine', message: field.line1.errorMessages.addressLine },
+        { rule: 'maximumLength', message: field.line1.errorMessages.maximumLength }
       ]"
     >
       <input #line1El pdk-input pdk-text-input formControlName="line1" />
+      @if (characterCountFor('line1'); as count) {
+      <pdk-character-count [value]="count.value" [limit]="count.limit"></pdk-character-count>
+      }
     </pdk-form-field>
 
     <pdk-form-field
-      label="Address line 2 (optional)"
+      [label]="field.line2.label"
+      [labelType]="field.line2.labelType"
       [errorMessages]="[
-        { rule: 'addressLine', message: 'Address line 2 contains invalid characters' }
+        { rule: 'required', message: field.line2.errorMessages.required },
+        { rule: 'addressLine', message: field.line2.errorMessages.addressLine },
+        { rule: 'maximumLength', message: field.line2.errorMessages.maximumLength }
       ]"
     >
       <input pdk-input pdk-text-input formControlName="line2" />
+      @if (characterCountFor('line2'); as count) {
+      <pdk-character-count [value]="count.value" [limit]="count.limit"></pdk-character-count>
+      }
     </pdk-form-field>
 
     <pdk-form-field
-      label="Address line 3 (optional)"
+      [label]="field.line3.label"
+      [labelType]="field.line3.labelType"
       [errorMessages]="[
-        { rule: 'addressLine', message: 'Address line 3 contains invalid characters' }
+        { rule: 'required', message: field.line3.errorMessages.required },
+        { rule: 'addressLine', message: field.line3.errorMessages.addressLine },
+        { rule: 'maximumLength', message: field.line3.errorMessages.maximumLength }
       ]"
     >
       <input pdk-input pdk-text-input formControlName="line3" />
+      @if (characterCountFor('line3'); as count) {
+      <pdk-character-count [value]="count.value" [limit]="count.limit"></pdk-character-count>
+      }
     </pdk-form-field>
 
     <pdk-form-field
-      label="Address line 4 (optional)"
+      [label]="field.line4.label"
+      [labelType]="field.line4.labelType"
       [errorMessages]="[
-        { rule: 'addressLine', message: 'Address line 4 contains invalid characters' }
+        { rule: 'required', message: field.line4.errorMessages.required },
+        { rule: 'addressLine', message: field.line4.errorMessages.addressLine },
+        { rule: 'maximumLength', message: field.line4.errorMessages.maximumLength }
       ]"
     >
       <input pdk-input pdk-text-input formControlName="line4" />
     </pdk-form-field>
 
     <pdk-form-field
-      label="Address line 5 (optional)"
+      [label]="field.line5.label"
+      [labelType]="field.line5.labelType"
       [errorMessages]="[
-        { rule: 'addressLine', message: 'Address line 5 contains invalid characters' }
+        { rule: 'required', message: field.line5.errorMessages.required },
+        { rule: 'addressLine', message: field.line5.errorMessages.addressLine },
+        { rule: 'maximumLength', message: field.line5.errorMessages.maximumLength }
       ]"
     >
       <input pdk-input pdk-text-input formControlName="line5" />
     </pdk-form-field>
 
     <pdk-form-field
-      label="Town or city"
+      [label]="field.postcode.label"
+      [labelType]="field.postcode.labelType"
       [errorMessages]="[
-        { rule: 'required', message: 'Enter a town or city' },
-        { rule: 'addressLine', message: 'Town or city contains invalid characters' }
-      ]"
-    >
-      <input pdk-input pdk-text-input formControlName="town" />
-    </pdk-form-field>
-
-    <pdk-form-field
-      label="County (optional)"
-      [errorMessages]="[{ rule: 'addressLine', message: 'County contains invalid characters' }]"
-    >
-      <input pdk-input pdk-text-input formControlName="county" />
-    </pdk-form-field>
-
-    <pdk-form-field
-      label="Postcode"
-      [errorMessages]="[
-        { rule: 'required', message: 'Enter a postcode' },
-        { rule: 'postcode', message: 'Enter a valid UK postcode' }
+        { rule: 'required', message: field.postcode.errorMessages.required },
+        { rule: 'postcode', message: field.postcode.errorMessages.postcode }
       ]"
     >
       <div class="cpp-address__postcode-row">
@@ -86,4 +88,3 @@
     </pdk-form-field>
   </div>
 </pdk-interaction-container>
-}

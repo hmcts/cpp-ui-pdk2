@@ -203,8 +203,20 @@ export class PdkFormFieldComponent implements AfterContentInit, OnDestroy {
   }
 
   setNgControlErrors(errors: ValidationErrors | null) {
-    this._ngControlErrors = errors;
+    this._ngControlErrors = this.withoutSuppressedRules(errors);
     this.evaluateErrors();
+  }
+
+  private withoutSuppressedRules(errors: ValidationErrors | null): ValidationErrors | null {
+    const suppressed = (this.formFieldControl as FormFieldControlV2)?.suppressedRules;
+
+    if (!errors || !suppressed?.length) {
+      return errors;
+    }
+
+    const shown = { ...errors };
+    suppressed.forEach((rule) => delete shown[rule]);
+    return Object.keys(shown).length ? shown : null;
   }
 
   private evaluateErrors() {

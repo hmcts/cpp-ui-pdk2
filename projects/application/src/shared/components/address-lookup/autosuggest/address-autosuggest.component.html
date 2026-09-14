@@ -1,30 +1,19 @@
 <div class="cpp-address-autosuggest">
-  <pdk-form-field label="Search address" [pdk-margin-bottom]="showAddress() ? 4 : undefined">
-    <pdk-autosuggest-lite
-      [id]="id + '-input'"
-      [inputWidth]="inputWidth()"
-      [suggestions]="suggestions.value() ?? []"
-      [mapSuggestionToTitle]="toSingleLine"
-      [mapSuggestionToKey]="toKey"
-      [disabled]="isDisabled()"
-      ngModel
-      [ngModelOptions]="{ standalone: true }"
-      (ngModelChange)="selectAddress($event)"
-      (inputText)="searchText.set($event)"
-    ></pdk-autosuggest-lite>
-  </pdk-form-field>
+  <pdk-autosuggest-lite
+    [ariaDescribedBy]="ariaDescribedBy"
+    [ariaLabel]="ariaLabel()"
+    [ariaLabelledBy]="ariaLabelledBy()"
+    [disabled]="isDisabled()"
+    [hasError]="hasError"
+    [id]="id"
+    [inputWidth]="inputWidth()"
+    [mapSuggestionToKey]="toKey"
+    [mapSuggestionToTitle]="toSingleLine"
+    [suggestions]="suggestions.value() ?? []"
+    (inputText)="searchText.set($event)"
+  ></pdk-autosuggest-lite>
 
-  @if (!showAddress()) {
-  <p pdk-margin-bottom="4">
-    <a pdk-link href="javascript:void(0);" (click)="enterManually()">Enter address manually</a>
-  </p>
-  } @if (showAddress()) {
-  <cpp-address
-    [formControl]="addressControl"
-    [required]="required()"
-    [validThreshold]="validThreshold()"
-    [needsVerificationThreshold]="needsVerificationThreshold()"
-    (verificationStatusChange)="verificationStatusChange.emit($event)"
-  ></cpp-address>
+  @if (noResults()) {
+  <pdk-inset-text pdk-margin-top="2">No addresses found</pdk-inset-text>
   }
 </div>

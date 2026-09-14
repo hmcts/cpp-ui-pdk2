@@ -58,4 +58,3 @@ stages:
           SEMVER_VERSION_MANUAL: '${{ parameters.SEMVER_VERSION_MANUAL }}'
           NODE_VERSION: '${{ variables.NODE_VERSION }}'
           NPM_VERSION: '${{ variables.NPM_VERSION }}'
-          

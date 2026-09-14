@@ -18,12 +18,12 @@ const CONFIG: OsPlacesConfig = {
 
 const DPA_FIXTURE: OsDpaResult = {
   UPRN: '100012345678',
-  ADDRESS: '10, DOWNING STREET, LONDON, SW1A 2AA',
-  BUILDING_NUMBER: '10',
+  ADDRESS: '104, DOWNING STREET, LONDON, ZZ1 1AA',
+  BUILDING_NUMBER: '104',
   THOROUGHFARE_NAME: 'DOWNING STREET',
   DEPENDENT_LOCALITY: 'WESTMINSTER',
   POST_TOWN: 'LONDON',
-  POSTCODE: 'SW1A 2AA'
+  POSTCODE: 'ZZ1 1AA'
 };
 
 describe('OrdnanceSurveyPlacesService', () => {
@@ -52,11 +52,11 @@ describe('OrdnanceSurveyPlacesService', () => {
   describe('findByPostcode', () => {
     it('issues a GET to /postcode with dataset, key and normalised postcode', () => {
       let result;
-      service.findByPostcode('  sw1a   2aa ').subscribe((r) => (result = r));
+      service.findByPostcode('  zz1   1aa ').subscribe((r) => (result = r));
 
       const req = expectOne((r) => r.url === `${CONFIG.baseUrl}/postcode`);
       expect(req.request.method).toBe('GET');
-      expect(req.request.params.get('postcode')).toBe('SW1A 2AA');
+      expect(req.request.params.get('postcode')).toBe('ZZ1 1AA');
       expect(req.request.params.get('dataset')).toBe('DPA');
       expect(req.request.params.get('key')).toBe('test-key');
 
@@ -64,10 +64,10 @@ describe('OrdnanceSurveyPlacesService', () => {
 
       expect(result).toEqual([
         expect.objectContaining({
-          line1: '10 DOWNING STREET',
+          line1: '104 DOWNING STREET',
           line2: 'WESTMINSTER',
-          town: 'LONDON',
-          postcode: 'SW1A 2AA',
+          line4: 'LONDON',
+          postcode: 'ZZ1 1AA',
           uprn: '100012345678'
         })
       ]);
@@ -75,7 +75,7 @@ describe('OrdnanceSurveyPlacesService', () => {
 
     it('returns an empty array when there are no results', () => {
       let result;
-      service.findByPostcode('SW1A 2AA').subscribe((r) => (result = r));
+      service.findByPostcode('ZZ1 1AA').subscribe((r) => (result = r));
       expectOne((r) => r.url.endsWith('/postcode')).flush({ results: [] });
       expect(result).toEqual([]);
     });
@@ -84,10 +84,10 @@ describe('OrdnanceSurveyPlacesService', () => {
   describe('find', () => {
     it('issues a GET to /find with the query', () => {
       let result;
-      service.find('10 Downing').subscribe((r) => (result = r));
+      service.find('104 Downing').subscribe((r) => (result = r));
 
       const req = expectOne((r) => r.url === `${CONFIG.baseUrl}/find`);
-      expect(req.request.params.get('query')).toBe('10 Downing');
+      expect(req.request.params.get('query')).toBe('104 Downing');
       expect(req.request.params.get('dataset')).toBe('DPA');
 
       req.flush({ results: [{ DPA: DPA_FIXTURE }] });
@@ -98,25 +98,25 @@ describe('OrdnanceSurveyPlacesService', () => {
   describe('match', () => {
     it('issues a GET to /find for a single DPA result with minmatch and carries the MATCH score', () => {
       let result;
-      service.match('10 Downing Street, London, SW1A 2AA', 0.4).subscribe((r) => (result = r));
+      service.match('104 Downing Street, London, ZZ1 1AA', 0.4).subscribe((r) => (result = r));
 
       const req = expectOne(
         (r) => r.url === `${CONFIG.baseUrl}/find` && r.params.get('minmatch') === '0.4'
       );
-      expect(req.request.params.get('query')).toBe('10 Downing Street, London, SW1A 2AA');
+      expect(req.request.params.get('query')).toBe('104 Downing Street, London, ZZ1 1AA');
       expect(req.request.params.get('maxresults')).toBe('1');
       expect(req.request.params.get('dataset')).toBe('DPA');
 
       req.flush({ results: [{ DPA: { ...DPA_FIXTURE, MATCH: 0.95 } }] });
 
-      expect(result).toEqual([expect.objectContaining({ match: 0.95, postcode: 'SW1A 2AA' })]);
+      expect(result).toEqual([expect.objectContaining({ match: 0.95, postcode: 'ZZ1 1AA' })]);
     });
   });
 
   describe('error handling', () => {
     it('degrades to an empty array on a 429 response', () => {
       let result;
-      service.findByPostcode('SW1A 2AA').subscribe((r) => (result = r));
+      service.findByPostcode('ZZ1 1AA').subscribe((r) => (result = r));
       expectOne((r) => r.url.endsWith('/postcode')).flush('Too Many Requests', {
         status: 429,
         statusText: 'Too Many Requests'
@@ -145,7 +145,7 @@ describe('OrdnanceSurveyPlacesService', () => {
       const proxyService = TestBed.inject(OrdnanceSurveyPlacesService);
       const proxyHttp = TestBed.inject(HttpTestingController);
 
-      proxyService.findByPostcode('SW1A 2AA').subscribe();
+      proxyService.findByPostcode('ZZ1 1AA').subscribe();
       const req = proxyHttp.expectOne((r) => r.url === '/proxy/os/postcode');
       expect(req.request.params.has('key')).toBe(false);
       req.flush({ results: [] });

@@ -32,10 +32,10 @@ export const patternsRoutes: Route[] = [
         }
       },
       {
-        path: 'cpp/address-entry',
+        path: 'cpp/addresses',
         component: CppAddressEntryComponent,
         data: {
-          title: 'Common Platform address entry'
+          title: 'Common Platform addresses'
         }
       }
     ]

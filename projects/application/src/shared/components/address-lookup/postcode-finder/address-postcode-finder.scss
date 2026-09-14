@@ -1,17 +1,20 @@
-// ViewEncapsulation.None so we can reach pdk-radio-group internals; everything
-// is scoped under .cpp-address-postcode-finder (the root element) to avoid leaks.
 .cpp-address-postcode-finder {
-  // ~10 rows visible, then scroll.
   $visible-rows: 10;
   $row-height: 2.5rem;
 
-  &__actions {
+  &__search {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    gap: 1rem;
+
+    button {
+      margin-bottom: 2px;
+    }
   }
 
   pdk-radio-group .govuk-radios {
     max-height: $visible-rows * $row-height;
     overflow-y: auto;
+    padding-left: 10px;
   }
 }

@@ -1,65 +1,48 @@
-<div class="cpp-address-postcode-finder">
-  <!-- [formGroup] + pdk-form on a div: a full pdk-form without a nested native
-       <form>. DI scopes the postcode field to THIS form, isolating it from any
-       consuming parent form's submit. -->
+<div class="cpp-address-postcode-finder" pdk-margin-bottom="2">
+  @let disabled = isDisabled();
+
+  <!-- pdk-form on a div: isolates the search from any consuming form's submit. -->
   <div [formGroup]="searchForm" pdk-form (errors)="errors.emit($event)" (validSubmit)="runSearch()">
     <pdk-form-field
-      pdk-margin-bottom="6"
-      label="Postcode"
+      label="Find by postcode"
+      labelType="small"
       [errorMessages]="[
         { rule: 'required', message: 'Enter a full UK postcode' },
         { rule: 'postcode', message: 'Enter a valid UK postcode' }
       ]"
     >
-      <input
-        #postcodeEl
-        pdk-input
-        pdk-text-input="postcode"
-        formControlName="postcode"
-        (keydown.enter)="onEnter($event)"
-      />
-    </pdk-form-field>
+      <div class="cpp-address-postcode-finder__search">
+        <input
+          [pdk-input]="10"
+          pdk-text-input="postcode"
+          formControlName="postcode"
+          (keydown.enter)="onEnter($event)"
+        />
 
-    <div class="cpp-address-postcode-finder__actions" pdk-margin-bottom="4">
-      <button
-        pdk-button="secondary"
-        type="button"
-        pdk-margin-bottom="0"
-        [disabled]="isDisabled()"
-        (click)="submitSearch()"
-      >
-        Find address
-      </button>
-      @if (!showAddress()) {
-      <a pdk-link pdk-margin-left="4" href="javascript:void(0);" (click)="enterManually()">
-        Enter address manually
-      </a>
-      }
-    </div>
+        <button pdk-button="secondary" type="button" [disabled]="disabled" (click)="submitSearch()">
+          Find address
+        </button>
+      </div>
+    </pdk-form-field>
   </div>
 
   @if (results(); as found) { @if (found.length) {
-  <p pdk-typography="body-medium" pdk-margin-bottom="2">
-    {{ found.length }} address{{ found.length === 1 ? '' : 'es' }} found
-  </p>
-  <pdk-form-field label="Select an address">
+  <pdk-form-field
+    [label]="resultsLabel()"
+    labelType="small"
+    pdk-margin-top="2"
+    pdk-margin-bottom="2"
+  >
     <pdk-radio-group
+      small
       [options]="addressOptions()"
-      [disabled]="isDisabled()"
+      [disabled]="disabled"
       ngModel
       [ngModelOptions]="{ standalone: true }"
       (ngModelChange)="selectAddress($event)"
     ></pdk-radio-group>
   </pdk-form-field>
   } @else {
-  <p pdk-typography="body-medium" pdk-margin-bottom="4">No addresses found</p>
-  } } @if (showAddress()) {
-  <cpp-address
-    [formControl]="addressControl"
-    [required]="required()"
-    [validThreshold]="validThreshold()"
-    [needsVerificationThreshold]="needsVerificationThreshold()"
-    (verificationStatusChange)="verificationStatusChange.emit($event)"
-  ></cpp-address>
-  }
+  <pdk-inset-text pdk-margin-top="2">No addresses found</pdk-inset-text>
+  } }
 </div>

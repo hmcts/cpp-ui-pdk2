@@ -34,7 +34,8 @@ import {
   FormFieldControl,
   FormFieldControlV2,
   generateId,
-  PdkCheckBox,
+  InputValidators,
+  PdkCharacterCountComponent,
   PdkCore,
   PdkForm,
   PdkInput,
@@ -42,9 +43,12 @@ import {
   PdkTextInput,
   PdkTextInputValidators
 } from '@cpp/pdk';
+import { map, of, tap } from 'rxjs';
 
 import {
   Address,
+  AddressFieldConfig,
+  AddressFieldsConfig,
   addressToSingleLine,
   isPopulatedAddress,
   OsDpaResult,
@@ -53,13 +57,70 @@ import {
   VerificationStatus
 } from '../address.model';
 import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
-import { map, of, tap } from 'rxjs';
 
-const NO_FIXED_ABODE_ADDRESS: Address = {
-  line1: 'No fixed abode',
-  town: '',
-  postcode: '',
-  noFixedAbode: true
+type AddressLineKey = Exclude<keyof AddressFieldsConfig, 'postcode'>;
+
+const CHARACTER_COUNT_THRESHOLD = 10;
+
+const DEFAULT_FIELDS: AddressFieldsConfig = {
+  line1: {
+    label: 'Address line 1',
+    labelType: 'small',
+    maxChars: 35,
+    errorMessages: {
+      required: 'Enter address line 1',
+      addressLine: 'Address line 1 contains invalid characters',
+      maximumLength: 'Address line 1 must be {{expected}} characters or less'
+    }
+  },
+  line2: {
+    label: 'Address line 2 (optional)',
+    labelType: 'small',
+    maxChars: 35,
+    errorMessages: {
+      required: 'Enter address line 2',
+      addressLine: 'Address line 2 contains invalid characters',
+      maximumLength: 'Address line 2 must be {{expected}} characters or less'
+    }
+  },
+  line3: {
+    label: 'Address line 3 (optional)',
+    labelType: 'small',
+    maxChars: 35,
+    errorMessages: {
+      required: 'Enter address line 3',
+      addressLine: 'Address line 3 contains invalid characters',
+      maximumLength: 'Address line 3 must be {{expected}} characters or less'
+    }
+  },
+  line4: {
+    label: 'Town or city',
+    labelType: 'small',
+    maxChars: 35,
+    errorMessages: {
+      required: 'Enter a town or city',
+      addressLine: 'Town or city contains invalid characters',
+      maximumLength: 'Town or city must be {{expected}} characters or less'
+    }
+  },
+  line5: {
+    label: 'County (optional)',
+    labelType: 'small',
+    maxChars: 35,
+    errorMessages: {
+      required: 'Enter a county',
+      addressLine: 'County contains invalid characters',
+      maximumLength: 'County must be {{expected}} characters or less'
+    }
+  },
+  postcode: {
+    label: 'Postcode',
+    labelType: 'small',
+    errorMessages: {
+      required: 'Enter a postcode',
+      postcode: 'Enter a valid UK postcode'
+    }
+  }
 };
 
 const STATUS_TAG: Record<
@@ -72,8 +133,38 @@ const STATUS_TAG: Record<
   unverified: { color: 'grey', label: 'Unverified' }
 };
 
-const line = (...validators: ValidatorFn[]) =>
-  new FormControl('', { nonNullable: true, validators });
+const mergeMessages = (base = {}, override = {}) => {
+  const messages = { ...base };
+  Object.entries(override).forEach(([rule, message]) => {
+    if (message !== undefined) {
+      messages[rule] = message;
+    }
+  });
+  return messages;
+};
+
+const merge = (base: AddressFieldConfig, override: AddressFieldConfig = {}) => ({
+  label: override.label ?? base.label,
+  labelType: override.labelType ?? base.labelType,
+  maxChars: override.maxChars ?? base.maxChars,
+  errorMessages: mergeMessages(base.errorMessages, override.errorMessages)
+});
+
+const resolveFields = (config: AddressFieldsConfig = {}) => ({
+  line1: merge(DEFAULT_FIELDS.line1, config.line1),
+  line2: merge(DEFAULT_FIELDS.line2, config.line2),
+  line3: merge(DEFAULT_FIELDS.line3, config.line3),
+  line4: merge(DEFAULT_FIELDS.line4, config.line4),
+  line5: merge(DEFAULT_FIELDS.line5, config.line5),
+  postcode: {
+    label: config.postcode?.label ?? DEFAULT_FIELDS.postcode.label,
+    labelType: config.postcode?.labelType ?? DEFAULT_FIELDS.postcode.labelType,
+    errorMessages: mergeMessages(
+      DEFAULT_FIELDS.postcode.errorMessages,
+      config.postcode?.errorMessages
+    )
+  }
+});
 
 @Component({
   selector: 'cpp-address',
@@ -89,9 +180,9 @@ const line = (...validators: ValidatorFn[]) =>
     PdkForm,
     PdkInput,
     PdkTextInput,
-    PdkCheckBox,
     PdkCore,
-    PdkTagComponent
+    PdkTagComponent,
+    PdkCharacterCountComponent
   ],
   templateUrl: './address.component.html'
 })
@@ -99,8 +190,10 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
   private readonly service = inject(OrdnanceSurveyPlacesService);
   private readonly injector = inject(Injector);
   private readonly cdr = inject(ChangeDetectorRef);
+
   readonly disabled = input(false, { transform: coerceBooleanProperty });
   readonly required = input(false, { transform: coerceBooleanProperty });
+  readonly fields = input(DEFAULT_FIELDS, { transform: resolveFields });
   readonly validThreshold = input(0.9);
   readonly needsVerificationThreshold = input(0.7);
 
@@ -112,25 +205,25 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
   errorMessages: ErrorMessageConfig[] = [];
   readonly controlType = 'address';
   readonly multi = true;
+  readonly suppressedRules = ['address', 'required'];
   readonly controlRef = viewChild('line1El', { read: ElementRef<HTMLElement> });
 
   get ngControl(): NgControl {
     return this.injector.get(NgControl as Type<NgControl>, null as unknown as NgControl);
   }
 
-  readonly noFixedAbodeControl = new FormControl(false, { nonNullable: true });
   readonly addressForm = new FormGroup({
-    line1: line(PdkTextInputValidators.addressLine),
-    line2: line(PdkTextInputValidators.addressLine),
-    line3: line(PdkTextInputValidators.addressLine),
-    line4: line(PdkTextInputValidators.addressLine),
-    line5: line(PdkTextInputValidators.addressLine),
-    town: line(PdkTextInputValidators.addressLine),
-    county: line(PdkTextInputValidators.addressLine),
-    postcode: line(PdkTextInputValidators.postcode)
+    line1: this.line('line1'),
+    line2: this.line('line2'),
+    line3: this.line('line3'),
+    line4: this.line('line4'),
+    line5: this.line('line5'),
+    postcode: new FormControl('', {
+      nonNullable: true,
+      validators: [PdkTextInputValidators.postcode]
+    })
   });
 
-  readonly noFixedAbode = toSignal(this.noFixedAbodeControl.valueChanges);
   readonly addressFormValue = toSignal(this.addressForm.valueChanges);
   readonly verifyAddress = signal<Address | null>(null);
   readonly verificationStatus = rxResource({
@@ -139,20 +232,19 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
       if (!request) {
         return of(undefined);
       }
+      // line5 is the county, which DPA never returns and which lowers the match score.
       return this.service
         .match(
-          addressToSingleLine({ ...request, county: undefined }),
+          addressToSingleLine({ ...request, line5: undefined }),
           this.needsVerificationThreshold()
         )
         .pipe(
-          map((results: ScoredAddress[]) => {
-            const status = this.toStatus(results[0]?.match);
-            return status;
-          }),
+          map((results: ScoredAddress[]) => this.toStatus(results[0]?.match)),
           tap((status) => this.verificationStatusChange.emit(status))
         );
     }
   });
+
   readonly statusTag = computed(() => {
     const status = this.verificationStatus.value();
     return status ? STATUS_TAG[status] : null;
@@ -163,41 +255,30 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
 
   constructor() {
     effect(() => {
-      const noFixedAbode = this.noFixedAbode();
       const formValues = this.addressFormValue();
-      if (noFixedAbode === undefined && formValues === undefined) {
+      if (formValues === undefined) {
         return;
       }
-      if (noFixedAbode) {
-        this.propagate(NO_FIXED_ABODE_ADDRESS);
-      } else {
-        const { line1, line2, line3, line4, line5, town, county, postcode } =
-          formValues ?? this.addressForm.getRawValue();
-        this.propagate(
-          !line1.trim()
-            ? null
-            : {
-                line1: line1.trim(),
-                line2: line2.trim() || undefined,
-                line3: line3.trim() || undefined,
-                line4: line4.trim() || undefined,
-                line5: line5.trim() || undefined,
-                town: town.trim(),
-                county: county.trim() || undefined,
-                postcode: postcode.trim()
-              }
-        );
-      }
+      const { line1, line2, line3, line4, line5, postcode } = formValues;
+      this.propagate(
+        !line1.trim()
+          ? null
+          : {
+              line1: line1.trim(),
+              line2: line2.trim() || undefined,
+              line3: line3.trim() || undefined,
+              line4: line4.trim() || undefined,
+              line5: line5.trim() || undefined,
+              postcode: postcode.trim()
+            }
+      );
     });
 
     effect(() => {
-      const mandatoryControls = [
-        this.addressForm.controls.line1,
-        this.addressForm.controls.town,
-        this.addressForm.controls.postcode
-      ];
-      mandatoryControls.forEach((control) => {
-        this.required()
+      const required = this.required();
+
+      [this.addressForm.controls.line1, this.addressForm.controls.postcode].forEach((control) => {
+        required
           ? control.addValidators(Validators.required)
           : control.removeValidators(Validators.required);
         control.updateValueAndValidity({ emitEvent: false });
@@ -214,9 +295,8 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
   writeValue(value: Address | OsDpaResult | null): void {
     const address =
       !!value && 'POST_TOWN' in value ? osDpaToAddress(value) : (value as Address | null);
-    this.noFixedAbodeControl.setValue(address?.noFixedAbode || false, { emitEvent: false });
 
-    if (address && !address.noFixedAbode) {
+    if (address) {
       this.patch(address);
       if (isPopulatedAddress(address)) {
         this.verifyAddress.set(address);
@@ -225,6 +305,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
       this.addressForm.reset(undefined, { emitEvent: false });
       this.verificationStatus.set(undefined);
     }
+    this.markForCheck();
   }
 
   markForCheck(): void {
@@ -242,28 +323,40 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
   setDisabledState(isDisabled: boolean): void {
     const opts = { emitEvent: false };
     isDisabled ? this.addressForm.disable(opts) : this.addressForm.enable(opts);
-    isDisabled ? this.noFixedAbodeControl.disable(opts) : this.noFixedAbodeControl.enable(opts);
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    if (!control.value || !!control.value.noFixedAbode) {
-      return null;
-    }
-    const errorEntries = Object.entries(this.addressForm.controls).filter(
-      ([, { invalid }]) => !!invalid
-    );
-    const address =
-      errorEntries.length > 0
-        ? Object.fromEntries(errorEntries.map(([controlName, { errors }]) => [controlName, errors]))
-        : null;
-    return address ? { address } : null;
+    return control.value && this.addressForm.invalid ? { address: true } : null;
   }
 
   verify(): void {
     const current = this.addressForm.getRawValue() as Address;
-    if (isPopulatedAddress(current) && !this.noFixedAbodeControl.value) {
+    if (isPopulatedAddress(current)) {
       this.verifyAddress.set(current);
     }
+  }
+
+  characterCountFor(key: AddressLineKey): { value: string; limit: number } | null {
+    const limit = this.fields()[key].maxChars;
+    if (!limit) {
+      return null;
+    }
+    const value = this.addressForm.controls[key].value;
+    return limit - value.length <= CHARACTER_COUNT_THRESHOLD ? { value, limit } : null;
+  }
+
+  private line(key: AddressLineKey): FormControl<string> {
+    return new FormControl('', {
+      nonNullable: true,
+      validators: [PdkTextInputValidators.addressLine, this.withinLimit(key)]
+    });
+  }
+
+  private withinLimit(key: AddressLineKey): ValidatorFn {
+    return (control: AbstractControl) => {
+      const limit = this.fields()[key].maxChars;
+      return limit ? InputValidators.maximumLength(limit)(control) : null;
+    };
   }
 
   private propagate(address: Address | null): void {
@@ -292,8 +385,6 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
         line3: address.line3 ?? '',
         line4: address.line4 ?? '',
         line5: address.line5 ?? '',
-        town: address.town ?? '',
-        county: address.county ?? '',
         postcode: address.postcode ?? ''
       },
       { emitEvent: false }

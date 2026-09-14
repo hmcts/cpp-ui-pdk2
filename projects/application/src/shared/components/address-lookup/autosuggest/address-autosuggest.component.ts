@@ -1,26 +1,17 @@
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  computed,
   Component,
   effect,
   inject,
-  Injector,
   input,
-  output,
   signal,
-  Type,
-  viewChild,
+  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { rxResource, takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  ControlValueAccessor,
-  FormControl,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-  ReactiveFormsModule
-} from '@angular/forms';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   coerceBooleanProperty,
   ErrorMessageConfig,
@@ -29,20 +20,17 @@ import {
   generateId,
   InputWidth,
   PdkAutosuggest,
-  PdkAutosuggestLiteComponent,
-  PdkCore,
-  PdkForm
+  PdkInsetTextComponent,
+  PdkMarginDirective,
+  PdkAutosuggestLiteComponent
 } from '@cpp/pdk';
 import { of, switchMap, timer } from 'rxjs';
 
-import {
-  Address,
-  addressToSingleLine,
-  isPopulatedAddress,
-  VerificationStatus
-} from '../address.model';
-import { CppAddressComponent } from '../address/address.component';
+import { Address, addressToSingleLine } from '../address.model';
 import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
+
+const MIN_SEARCH_LENGTH = 3;
+const SEARCH_DEBOUNCE_MS = 300;
 
 @Component({
   selector: 'cpp-address-autosuggest',
@@ -53,71 +41,48 @@ import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
     { provide: FormFieldControl, useExisting: CppAddressAutosuggestComponent },
     { provide: NG_VALUE_ACCESSOR, useExisting: CppAddressAutosuggestComponent, multi: true }
   ],
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    PdkForm,
-    PdkAutosuggest,
-    PdkCore,
-    CppAddressComponent
-  ],
+  imports: [PdkAutosuggest, PdkInsetTextComponent, PdkMarginDirective],
   templateUrl: './address-autosuggest.component.html'
 })
 export class CppAddressAutosuggestComponent implements ControlValueAccessor, FormFieldControlV2 {
   private readonly service = inject(OrdnanceSurveyPlacesService);
   private readonly cdr = inject(ChangeDetectorRef);
-  private readonly injector = inject(Injector);
 
+  readonly ariaLabel = input<string | null>(null);
+  readonly ariaLabelledBy = input<string | null>(null);
+  readonly clearOnSelection = input(false, { transform: coerceBooleanProperty });
   readonly disabled = input(false, { transform: coerceBooleanProperty });
-  readonly required = input(false, { transform: coerceBooleanProperty });
   readonly inputWidth = input<InputWidth>();
-  readonly validThreshold = input(0.9);
-  readonly needsVerificationThreshold = input(0.7);
 
-  readonly verificationStatusChange = output<VerificationStatus>();
+  @ViewChild(PdkAutosuggestLiteComponent, { static: true })
+  private readonly liteRef!: PdkAutosuggestLiteComponent<any>;
 
   id = generateId('cpp-address-autosuggest');
   ariaDescribedBy: string | null = null;
   hasError = false;
   errorMessages: ErrorMessageConfig[] = [];
-  readonly controlType = 'address-autosuggest';
-  readonly multi = true;
 
-  get ngControl(): NgControl {
-    return this.injector.get(NgControl as Type<NgControl>, null as unknown as NgControl);
-  }
-
-  markForCheck(): void {
-    this.cdr.markForCheck();
-  }
-
-  private readonly lite = viewChild.required(PdkAutosuggestLiteComponent);
-
-  readonly addressControl = new FormControl<Address | null>(null);
-
+  readonly isDisabled = signal(false);
   readonly searchText = signal('');
   readonly suggestions = rxResource({
     request: this.searchText,
     loader: ({ request }) =>
-      request.length < 3
+      request.length < MIN_SEARCH_LENGTH
         ? of<Address[]>([])
-        : timer(300).pipe(switchMap(() => this.service.find(request)))
+        : timer(SEARCH_DEBOUNCE_MS).pipe(switchMap(() => this.service.find(request)))
   });
-  readonly showAddress = signal(false);
-  readonly isDisabled = signal(false);
+
+  readonly noResults = computed(
+    () =>
+      this.searchText().length >= MIN_SEARCH_LENGTH &&
+      !this.suggestions.isLoading() &&
+      this.suggestions.value()?.length === 0
+  );
 
   readonly toSingleLine = (address: Address): string => addressToSingleLine(address);
   readonly toKey = (address: Address): string => address.uprn ?? addressToSingleLine(address);
 
-  private notifyChange: (value: Address | null) => void = () => {};
-  private notifyTouched: () => void = () => {};
-
   constructor() {
-    this.addressControl.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      this.notifyChange(value);
-      this.notifyTouched();
-    });
-
     effect(() => {
       if (this.disabled()) {
         this.setDisabledState(true);
@@ -125,37 +90,45 @@ export class CppAddressAutosuggestComponent implements ControlValueAccessor, For
     });
   }
 
+  get controlType(): string {
+    return this.liteRef.controlType;
+  }
+
+  get multi(): boolean {
+    return this.liteRef ? this.liteRef.multi : false;
+  }
+
+  get ngControl() {
+    return this.liteRef.ngControl;
+  }
+
+  get controlRef() {
+    return this.liteRef.controlRef;
+  }
+
+  markForCheck(): void {
+    this.cdr.markForCheck();
+    this.liteRef.markForCheck();
+  }
+
   writeValue(value: Address | null): void {
-    this.addressControl.setValue(value, { emitEvent: false });
-    this.showAddress.set(!!value);
+    this.liteRef.writeValue(value ?? undefined);
   }
 
   registerOnChange(fn: (value: Address | null) => void): void {
-    this.notifyChange = fn;
+    this.liteRef.registerOnChange((address: Address | null) => {
+      fn(address);
+      if (address && this.clearOnSelection()) {
+        this.liteRef.writeValue(undefined);
+      }
+    });
   }
 
   registerOnTouched(fn: () => void): void {
-    this.notifyTouched = fn;
+    this.liteRef.registerOnTouched(fn);
   }
 
   setDisabledState(isDisabled: boolean): void {
-    isDisabled
-      ? this.addressControl.disable({ emitEvent: false })
-      : this.addressControl.enable({ emitEvent: false });
     this.isDisabled.set(isDisabled);
-  }
-
-  selectAddress(address: Address | null): void {
-    if (!address || !isPopulatedAddress(address)) {
-      return;
-    }
-    this.showAddress.set(true);
-    this.addressControl.setValue(address);
-    // The address fields now hold the value — clear the search input.
-    this.lite().writeValue(undefined);
-  }
-
-  enterManually(): void {
-    this.showAddress.set(true);
   }
 }
