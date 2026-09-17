@@ -1,9 +1,9 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from '@jest/globals';
+import { of } from 'rxjs';
 
 import { CppAddressComponent } from './address.component';
-import { ADDRESS_LOOKUP_CONFIG } from '../ordnance-survey-places.config';
+import { AddressLookupService } from '../address-lookup.service';
 
 describe('CppAddressComponent', () => {
   let fixture: ComponentFixture<CppAddressComponent>;
@@ -11,13 +11,8 @@ describe('CppAddressComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CppAddressComponent, HttpClientTestingModule],
-      providers: [
-        {
-          provide: ADDRESS_LOOKUP_CONFIG,
-          useValue: { baseUrl: 'https://example.test', dataset: 'DPA' }
-        }
-      ]
+      imports: [CppAddressComponent],
+      providers: [{ provide: AddressLookupService, useValue: { match: () => of([]) } }]
     });
 
     fixture = TestBed.createComponent(CppAddressComponent);
@@ -68,15 +63,13 @@ describe('CppAddressComponent', () => {
     expect(postcode.errorMessages.postcode).toBe('Enter a valid UK postcode');
   });
 
-  it('takes a DPA result through writeValue', () => {
+  it('fills the fields from an address through writeValue', () => {
     component.writeValue({
-      UPRN: '1',
-      ADDRESS: '104, DOWNING STREET, LONDON, ZZ1 1AA',
-      BUILDING_NUMBER: '104',
-      THOROUGHFARE_NAME: 'DOWNING STREET',
-      DEPENDENT_LOCALITY: 'WESTMINSTER',
-      POST_TOWN: 'LONDON',
-      POSTCODE: 'ZZ1 1AA'
+      line1: '104 DOWNING STREET',
+      line2: 'WESTMINSTER',
+      line4: 'LONDON',
+      postcode: 'ZZ1 1AA',
+      uprn: '100012345678'
     });
 
     expect(component.addressForm.getRawValue()).toEqual({

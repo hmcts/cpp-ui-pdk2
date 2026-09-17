@@ -45,68 +45,8 @@ export interface AddressFieldsConfig {
   postcode?: AddressPostcodeFieldConfig;
 }
 
-export interface OsDpaResult {
-  UPRN: string;
-  ADDRESS: string;
-  ORGANISATION_NAME?: string;
-  SUB_BUILDING_NAME?: string;
-  BUILDING_NAME?: string;
-  BUILDING_NUMBER?: string;
-  THOROUGHFARE_NAME?: string;
-  DEPENDENT_LOCALITY?: string;
-  POST_TOWN: string;
-  POSTCODE: string;
-  MATCH?: number;
-}
-
 export interface ScoredAddress extends Address {
   match?: number;
-}
-
-const ADDRESS_LINE_SLOTS = 3;
-
-function packAddressLines(parts: string[]): string[] {
-  const lines = [...parts];
-
-  while (lines.length > ADDRESS_LINE_SLOTS) {
-    let joinAt = 0;
-    for (let index = 1; index < lines.length - 1; index++) {
-      const shortest = lines[joinAt].length + lines[joinAt + 1].length;
-      if (lines[index].length + lines[index + 1].length < shortest) {
-        joinAt = index;
-      }
-    }
-    lines.splice(joinAt, 2, `${lines[joinAt]}, ${lines[joinAt + 1]}`);
-  }
-
-  return lines;
-}
-
-export function osDpaToAddress(dpa: OsDpaResult): Address {
-  const numberAndStreet = [dpa.BUILDING_NUMBER, dpa.THOROUGHFARE_NAME]
-    .filter((part) => !!part && part.trim().length > 0)
-    .join(' ')
-    .trim();
-
-  const [line1, line2, line3] = packAddressLines(
-    [
-      dpa.ORGANISATION_NAME,
-      dpa.SUB_BUILDING_NAME,
-      dpa.BUILDING_NAME,
-      numberAndStreet || undefined,
-      dpa.DEPENDENT_LOCALITY
-    ].filter((part): part is string => !!part && part.trim().length > 0)
-  );
-
-  return {
-    line1: line1 ?? dpa.ADDRESS,
-    line2,
-    line3,
-    line4: dpa.POST_TOWN,
-    line5: undefined,
-    postcode: dpa.POSTCODE,
-    uprn: dpa.UPRN
-  };
 }
 
 export function isPopulatedAddress(address: Address | null | undefined): address is Address {
