@@ -44,5 +44,7 @@
   </pdk-form-field>
   } @else {
   <pdk-inset-text pdk-margin-top="2">No addresses found</pdk-inset-text>
-  } }
+  } } @if (failureMessage(); as message) {
+  <pdk-inset-text pdk-margin-top="2">{{ message }}</pdk-inset-text>
+  }
 </div>

@@ -34,7 +34,7 @@ import {
 } from '@cpp/pdk';
 
 import { Address, addressToSingleLine } from '../address.model';
-import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
+import { addressLookupFailureMessage, AddressLookupService } from '../address-lookup.service';
 
 @Component({
   selector: 'cpp-address-postcode-finder',
@@ -55,7 +55,7 @@ import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
   templateUrl: './address-postcode-finder.component.html'
 })
 export class CppAddressPostcodeFinderComponent {
-  private readonly service = inject(OrdnanceSurveyPlacesService);
+  private readonly service = inject(AddressLookupService);
   private readonly destroyRef = inject(DestroyRef);
 
   readonly disabled = input(false, { transform: coerceBooleanProperty });
@@ -71,6 +71,7 @@ export class CppAddressPostcodeFinderComponent {
   });
 
   readonly results = signal<Address[] | null>(null);
+  readonly failureMessage = signal<string | null>(null);
   readonly isDisabled = signal(false);
 
   readonly resultsLabel = computed(() => {
@@ -108,10 +109,14 @@ export class CppAddressPostcodeFinderComponent {
 
   runSearch(): void {
     this.results.set(null);
+    this.failureMessage.set(null);
     this.service
       .findByPostcode(this.searchForm.controls.postcode.value)
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((found) => this.results.set(found));
+      .subscribe({
+        next: (found) => this.results.set(found),
+        error: (error) => this.failureMessage.set(addressLookupFailureMessage(error))
+      });
   }
 
   selectAddress(address: Address | null): void {

@@ -4,6 +4,7 @@ import {
   PdkButton,
   PdkErrorSummaryComponent,
   PdkForm,
+  PdkInsetTextComponent,
   PdkTypographyDirective,
   ValidationError,
   PdkMarginDirective
@@ -134,12 +135,24 @@ const fieldsHtml = `
     </p>
 
     <p pdk-typography="body">
-      All of them talk to Ordnance Survey, so add
-      <code docs-code>provideCPPApplicationEnvironment</code> from this package to your providers in
-      the top parent route , bootstrap function or bootstrap module. Its second argument takes
-      providers that override the defaults, which is how you replace
-      <code docs-code>ADDRESS_LOOKUP_CONFIG</code>.
+      They all call the address lookup service through <code docs-code>CppHttp</code>, so there is
+      nothing to configure here. As long as your app sets its base url the way it already does for
+      every other service, the calls reach the right place.
     </p>
+
+    <p pdk-typography="body">
+      When the lookup is unavailable the searches say so and invite the user to type the address in
+      instead, and an address that could not be checked is tagged Unverified rather than being
+      wrongly marked Invalid.
+    </p>
+
+    <pdk-inset-text>
+      The examples on this page run on stubbed data, so none of them call the real lookup service.
+      Search <code docs-code>CV1 2AA</code> for a long list of Coventry addresses, or
+      <code docs-code>CV32 5BB</code> for a short one in Leamington Spa. Search as you type matches
+      on any part of an address, so try <code docs-code>Aylward</code> or
+      <code docs-code>Rosewood</code>.
+    </pdk-inset-text>
 
     <!-- Find by postcode -->
 
@@ -321,9 +334,7 @@ const fieldsHtml = `
 
     <p pdk-typography="body">
       Add <code docs-code>required</code> and the user must fill in the first line and the postcode.
-      The other lines stay optional. You can also hand it a raw Ordnance Survey DPA result instead
-      of an <code docs-code>Address</code> and it will sort out the lines for you. What comes back
-      out is always an <code docs-code>Address</code>.
+      The other lines stay optional.
     </p>
 
     <p pdk-typography="body">
@@ -364,10 +375,8 @@ const fieldsHtml = `
 
     <h3 pdk-typography="heading-medium">Api</h3>
     <docs-props-list propWidth="200">
-      <docs-props-list-item name="ngModel / formControl" type="Address | OsDpaResult | null">
-        The address. Give it a DPA result and it is turned into an
-        <code docs-code>Address</code>. The value it gives back is always an
-        <code docs-code>Address</code> or <code docs-code>null</code>.
+      <docs-props-list-item name="ngModel / formControl" type="Address | null">
+        The address.
       </docs-props-list-item>
       <docs-props-list-item name="disabled" type="boolean" defaultValue="false">
         When <code docs-code>true</code>, turns off every field.
@@ -481,10 +490,6 @@ const fieldsHtml = `
         Tells you whether an address has the parts that matter, which are the first line and the
         postcode.
       </docs-props-list-item>
-      <docs-props-list-item name="osDpaToAddress" type="function">
-        Turns a raw Ordnance Survey DPA result into an <code docs-code>Address</code>. You rarely
-        need this, because <code docs-code>cpp-address</code> accepts a DPA result directly.
-      </docs-props-list-item>
     </docs-props-list>
   `,
   imports: [
@@ -500,7 +505,8 @@ const fieldsHtml = `
     CppAddressComponent,
     CppAddressPostcodeFinderComponent,
     CppAddressAutosuggestComponent,
-    PdkMarginDirective
+    PdkMarginDirective,
+    PdkInsetTextComponent
   ]
 })
 export class CppAddressEntryComponent {

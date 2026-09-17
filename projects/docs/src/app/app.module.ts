@@ -17,7 +17,8 @@ import { PaneComponent } from './common/pane/pane.component';
 import { NavigationComponent } from './common/navigation/navigation.component';
 import { MobileNavComponent } from './common/navigation-mobile/mobile-nav.component';
 import { PdkCore, PdkFooter, PdkHeader, PdkSkipLinkComponent } from '@cpp/pdk';
-import { provideCppCoreHttpServices } from '@cpp/core';
+import { HTTP_CONFIG, provideCppCoreHttpServices } from '@cpp/core';
+import { addressLookupStubInterceptor } from './common/address-lookup-stub.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,12 @@ import { provideCppCoreHttpServices } from '@cpp/core';
     ...PdkFooter
   ],
   bootstrap: [AppComponent],
-  providers: [provideCppCoreHttpServices(), provideCPPApplicationEnvironment({ production: false })]
+  providers: [
+    provideCppCoreHttpServices(
+      [{ provide: HTTP_CONFIG, useValue: { baseUrl: '' } }],
+      addressLookupStubInterceptor
+    ),
+    provideCPPApplicationEnvironment({ production: false })
+  ]
 })
 export class AppModule {}

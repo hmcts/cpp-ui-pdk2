@@ -5,6 +5,7 @@ import {
   Component,
   effect,
   inject,
+  ResourceStatus,
   input,
   signal,
   ViewChild,
@@ -27,7 +28,7 @@ import {
 import { of, switchMap, timer } from 'rxjs';
 
 import { Address, addressToSingleLine } from '../address.model';
-import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
+import { addressLookupFailureMessage, AddressLookupService } from '../address-lookup.service';
 
 const MIN_SEARCH_LENGTH = 3;
 const SEARCH_DEBOUNCE_MS = 300;
@@ -45,7 +46,7 @@ const SEARCH_DEBOUNCE_MS = 300;
   templateUrl: './address-autosuggest.component.html'
 })
 export class CppAddressAutosuggestComponent implements ControlValueAccessor, FormFieldControlV2 {
-  private readonly service = inject(OrdnanceSurveyPlacesService);
+  private readonly service = inject(AddressLookupService);
   private readonly cdr = inject(ChangeDetectorRef);
 
   readonly ariaLabel = input<string | null>(null);
@@ -72,8 +73,15 @@ export class CppAddressAutosuggestComponent implements ControlValueAccessor, For
         : timer(SEARCH_DEBOUNCE_MS).pipe(switchMap(() => this.service.find(request)))
   });
 
+  readonly failureMessage = computed(() =>
+    this.suggestions.status() === ResourceStatus.Error
+      ? addressLookupFailureMessage(this.suggestions.error())
+      : null
+  );
+
   readonly noResults = computed(
     () =>
+      !this.failureMessage() &&
       this.searchText().length >= MIN_SEARCH_LENGTH &&
       !this.suggestions.isLoading() &&
       this.suggestions.value()?.length === 0

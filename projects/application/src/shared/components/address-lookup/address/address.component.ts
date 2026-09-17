@@ -43,7 +43,7 @@ import {
   PdkTextInput,
   PdkTextInputValidators
 } from '@cpp/pdk';
-import { map, of, tap } from 'rxjs';
+import { catchError, map, of, tap } from 'rxjs';
 
 import {
   Address,
@@ -51,12 +51,10 @@ import {
   AddressFieldsConfig,
   addressToSingleLine,
   isPopulatedAddress,
-  OsDpaResult,
-  osDpaToAddress,
   ScoredAddress,
   VerificationStatus
 } from '../address.model';
-import { OrdnanceSurveyPlacesService } from '../ordnance-survey-places.service';
+import { AddressLookupService } from '../address-lookup.service';
 
 type AddressLineKey = Exclude<keyof AddressFieldsConfig, 'postcode'>;
 
@@ -187,7 +185,7 @@ const resolveFields = (config: AddressFieldsConfig = {}) => ({
   templateUrl: './address.component.html'
 })
 export class CppAddressComponent implements ControlValueAccessor, FormFieldControlV2, Validator {
-  private readonly service = inject(OrdnanceSurveyPlacesService);
+  private readonly service = inject(AddressLookupService);
   private readonly injector = inject(Injector);
   private readonly cdr = inject(ChangeDetectorRef);
 
@@ -240,6 +238,8 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
         )
         .pipe(
           map((results: ScoredAddress[]) => this.toStatus(results[0]?.match)),
+          // A lookup we could not reach says nothing about the address itself.
+          catchError(() => of<VerificationStatus>('unverified')),
           tap((status) => this.verificationStatusChange.emit(status))
         );
     }
@@ -292,10 +292,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     });
   }
 
-  writeValue(value: Address | OsDpaResult | null): void {
-    const address =
-      !!value && 'POST_TOWN' in value ? osDpaToAddress(value) : (value as Address | null);
-
+  writeValue(address: Address | null): void {
     if (address) {
       this.patch(address);
       if (isPopulatedAddress(address)) {

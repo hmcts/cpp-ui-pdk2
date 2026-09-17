@@ -51,10 +51,13 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
             "allowedCommonJsDependencies": ["lodash", "uuid/v4", "prismjs"],
-            "outputPath": "dist/docs",
+            "outputPath": {
+              "base": "dist/docs",
+              "browser": ""
+            },
             "index": "projects/docs/src/index.html",
             "polyfills": ["projects/docs/src/polyfills.ts"],
             "tsConfig": "projects/docs/tsconfig.app.json",
@@ -67,7 +70,7 @@
                 "inject": true
               }
             ],
-            "main": "projects/docs/src/main.ts"
+            "browser": "projects/docs/src/main.ts"
           },
           "configurations": {
             "production": {
