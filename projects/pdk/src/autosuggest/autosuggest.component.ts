@@ -11,6 +11,7 @@ import {
   TemplateRef,
   Type,
   viewChild,
+  viewChildren,
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
@@ -69,6 +70,7 @@ import { PdkVisuallyHiddenDirective } from '../core';
           [attr.id]="suggestionsContainerId"
           class="pdk-autosuggest__suggestions-container"
           [pdk-input-width]="inputWidth"
+          (mousedown)="handlePanelMousedown()"
           [class.pdk-autosuggest__suggestions-container--open]="
             didOpenSuggestions && sections.length !== 0
           "
@@ -91,6 +93,7 @@ import { PdkVisuallyHiddenDirective } from '../core';
             trackBySuggestionKeyAndIndex(suggestionIndex, suggestion); let suggestionIndex = $index)
             {
             <li
+              #optionRef
               [attr.id]="mapSuggestionToKey(suggestion)"
               role="option"
               tabindex="-1"
@@ -191,6 +194,7 @@ export class PdkAutosuggestComponent<T = unknown>
   @Output() inputText = new EventEmitter<string>();
 
   controlRef = viewChild.required('inputRef', { read: ElementRef<HTMLInputElement> });
+  optionRefs = viewChildren('optionRef', { read: ElementRef<HTMLElement> });
 
   get ariaDescribedByComputed(): string | null {
     if (this.ariaDescribedBy) {
@@ -214,6 +218,7 @@ export class PdkAutosuggestComponent<T = unknown>
 
   didOpenSuggestions = false;
   didTargetSuggestion: EventTarget;
+  didPressInsidePanel = false;
   highlightedSuggestion!: T | null;
   inputValue = '';
   multi = false;
@@ -258,7 +263,23 @@ export class PdkAutosuggestComponent<T = unknown>
     return false;
   }
 
+  handlePanelMousedown() {
+    this.didPressInsidePanel = true;
+  }
+
+  private scrollHighlightedIntoView() {
+    this.optionRefs()[this.highlightedSuggestionIndex]?.nativeElement.scrollIntoView({
+      block: 'nearest'
+    });
+  }
+
   handleBlurInput() {
+    if (this.didPressInsidePanel) {
+      this.didPressInsidePanel = false;
+      this.controlRef().nativeElement.focus();
+      return;
+    }
+
     // assert that the element is not still focused – this can be the case in some browsers
     // as a consequence of the 'blur' event being triggered when switching tabs, despite the
     // input never losing its apparent focus
@@ -285,6 +306,7 @@ export class PdkAutosuggestComponent<T = unknown>
           this.highlightedSuggestionIndex < this.suggestions.length - 1
         ) {
           this.highlightedSuggestion = this.suggestions[this.highlightedSuggestionIndex + 1];
+          this.scrollHighlightedIntoView();
         }
         event.preventDefault();
         break;
@@ -292,6 +314,7 @@ export class PdkAutosuggestComponent<T = unknown>
       case 'ArrowUp':
         if (this.suggestions.length > 1 && this.highlightedSuggestionIndex !== 0) {
           this.highlightedSuggestion = this.suggestions[this.highlightedSuggestionIndex - 1];
+          this.scrollHighlightedIntoView();
         }
         event.preventDefault();
         break;
