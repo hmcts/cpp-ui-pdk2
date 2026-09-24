@@ -60,7 +60,8 @@ export class AddressLookupService {
       .query<AddressSearchResponse>({
         url,
         requestType,
-        params: mapObjectToHttpParams(params)
+        params: mapObjectToHttpParams(params),
+        background: true
       })
       .pipe(map((response) => response?.results ?? []));
   }
