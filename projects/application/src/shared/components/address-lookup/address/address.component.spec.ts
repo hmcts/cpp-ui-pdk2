@@ -20,6 +20,72 @@ describe('CppAddressComponent', () => {
     fixture.detectChanges();
   });
 
+  describe('disabling', () => {
+    it('disables a single field from the config and leaves the rest alone', () => {
+      fixture.componentRef.setInput('fields', { postcode: { disabled: true } });
+      fixture.detectChanges();
+
+      expect(component.addressForm.controls.postcode.disabled).toBe(true);
+      expect(component.addressForm.controls.line1.enabled).toBe(true);
+    });
+
+    it('stops a disabled field being required', () => {
+      fixture.componentRef.setInput('required', true);
+      fixture.componentRef.setInput('fields', { postcode: { disabled: true } });
+      fixture.detectChanges();
+
+      component.addressForm.controls.line1.setValue('104 Downing Street');
+
+      expect(component.addressForm.controls.postcode.value).toBe('');
+      expect(component.addressForm.valid).toBe(true);
+    });
+
+    it('disables everything when the form disables the control', () => {
+      component.setDisabledState(true);
+      fixture.detectChanges();
+
+      expect(component.addressForm.disabled).toBe(true);
+    });
+
+    it('re-enables only what the config has not disabled', () => {
+      fixture.componentRef.setInput('fields', { postcode: { disabled: true } });
+      component.setDisabledState(true);
+      fixture.detectChanges();
+
+      component.setDisabledState(false);
+      fixture.detectChanges();
+
+      expect(component.addressForm.controls.line1.enabled).toBe(true);
+      expect(component.addressForm.controls.postcode.disabled).toBe(true);
+    });
+
+    it('keeps a disabled field in the value it reports', () => {
+      const propagated: unknown[] = [];
+      component.registerOnChange((value) => propagated.push(value));
+
+      component.writeValue({ line1: '104 Downing Street', postcode: 'ZZ1 1AA' });
+      fixture.componentRef.setInput('fields', { postcode: { disabled: true } });
+      fixture.detectChanges();
+
+      component.addressForm.controls.line2.setValue('Westminster');
+      fixture.detectChanges();
+
+      expect(propagated.at(-1)).toEqual(
+        expect.objectContaining({ line2: 'Westminster', postcode: 'ZZ1 1AA' })
+      );
+    });
+
+    it('reports nothing when the consuming form writes a value and nobody edits', () => {
+      const propagated: unknown[] = [];
+      component.registerOnChange((value) => propagated.push(value));
+
+      component.writeValue({ line1: 'No fixed abode', postcode: '' });
+      fixture.detectChanges();
+
+      expect(propagated).toEqual([]);
+    });
+  });
+
   it('resolves controlRef to the first address line input', () => {
     const ref = component.controlRef();
     const inputs = fixture.nativeElement.querySelectorAll('input');

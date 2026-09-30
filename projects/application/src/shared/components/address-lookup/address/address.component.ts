@@ -56,7 +56,8 @@ import {
 } from '../address.model';
 import { AddressLookupService } from '../address-lookup.service';
 
-type AddressLineKey = Exclude<keyof AddressFieldsConfig, 'postcode'>;
+type AddressFieldKey = keyof AddressFieldsConfig;
+type AddressFormControls = Record<AddressFieldKey, FormControl<string>>;
 
 const CHARACTER_COUNT_THRESHOLD = 10;
 
@@ -145,6 +146,7 @@ const merge = (base: AddressFieldConfig, override: AddressFieldConfig = {}) => (
   label: override.label ?? base.label,
   labelType: override.labelType ?? base.labelType,
   maxChars: override.maxChars ?? base.maxChars,
+  disabled: override.disabled ?? false,
   errorMessages: mergeMessages(base.errorMessages, override.errorMessages)
 });
 
@@ -157,6 +159,7 @@ const resolveFields = (config: AddressFieldsConfig = {}) => ({
   postcode: {
     label: config.postcode?.label ?? DEFAULT_FIELDS.postcode.label,
     labelType: config.postcode?.labelType ?? DEFAULT_FIELDS.postcode.labelType,
+    disabled: config.postcode?.disabled ?? false,
     errorMessages: mergeMessages(
       DEFAULT_FIELDS.postcode.errorMessages,
       config.postcode?.errorMessages
@@ -210,7 +213,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     return this.injector.get(NgControl as Type<NgControl>, null as unknown as NgControl);
   }
 
-  readonly addressForm = new FormGroup({
+  readonly addressForm = new FormGroup<AddressFormControls>({
     line1: this.line('line1'),
     line2: this.line('line2'),
     line3: this.line('line3'),
@@ -222,7 +225,10 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     })
   });
 
-  readonly addressFormValue = toSignal(this.addressForm.valueChanges);
+  readonly addressFormChanged = toSignal(this.addressForm.valueChanges);
+
+  private readonly formDisabled = signal(false);
+  private readonly allDisabled = computed(() => this.formDisabled() || this.disabled());
   readonly verifyAddress = signal<Address | null>(null);
   readonly verificationStatus = rxResource({
     request: this.verifyAddress,
@@ -255,11 +261,10 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
 
   constructor() {
     effect(() => {
-      const formValues = this.addressFormValue();
-      if (formValues === undefined) {
+      if (this.addressFormChanged() === undefined) {
         return;
       }
-      const { line1, line2, line3, line4, line5, postcode } = formValues;
+      const { line1, line2, line3, line4, line5, postcode } = this.addressForm.getRawValue();
       this.propagate(
         !line1.trim()
           ? null
@@ -286,9 +291,13 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     });
 
     effect(() => {
-      if (this.disabled()) {
-        this.setDisabledState(true);
-      }
+      const allDisabled = this.allDisabled();
+      const fields = this.fields();
+
+      Object.entries(this.addressForm.controls).forEach(([key, control]) => {
+        const disable = allDisabled || fields[key].disabled;
+        disable ? control.disable({ emitEvent: false }) : control.enable({ emitEvent: false });
+      });
     });
   }
 
@@ -318,8 +327,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
   }
 
   setDisabledState(isDisabled: boolean): void {
-    const opts = { emitEvent: false };
-    isDisabled ? this.addressForm.disable(opts) : this.addressForm.enable(opts);
+    this.formDisabled.set(isDisabled);
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
@@ -333,7 +341,9 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     }
   }
 
-  characterCountFor(key: AddressLineKey): { value: string; limit: number } | null {
+  characterCountFor(
+    key: Exclude<AddressFieldKey, 'postcode'>
+  ): { value: string; limit: number } | null {
     const limit = this.fields()[key].maxChars;
     if (!limit) {
       return null;
@@ -342,14 +352,14 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     return limit - value.length <= CHARACTER_COUNT_THRESHOLD ? { value, limit } : null;
   }
 
-  private line(key: AddressLineKey): FormControl<string> {
+  private line(key: Exclude<AddressFieldKey, 'postcode'>): FormControl<string> {
     return new FormControl('', {
       nonNullable: true,
       validators: [PdkTextInputValidators.addressLine, this.withinLimit(key)]
     });
   }
 
-  private withinLimit(key: AddressLineKey): ValidatorFn {
+  private withinLimit(key: Exclude<AddressFieldKey, 'postcode'>): ValidatorFn {
     return (control: AbstractControl) => {
       const limit = this.fields()[key].maxChars;
       return limit ? InputValidators.maximumLength(limit)(control) : null;
