@@ -381,9 +381,9 @@ const fieldsHtml = `
       <docs-props-list-item name="disabled" type="boolean" defaultValue="false">
         When <code docs-code>true</code>, turns off every field.
       </docs-props-list-item>
-      <docs-props-list-item name="fields" type="object">
-        Changes the label , label type, error message or the character limit of any field. See
-        below.
+      <docs-props-list-item name="fields" type="AddressFieldsConfig">
+        Changes the label, label type, error messages, character limit or disabled state of any
+        address field. See Field configuration below.
       </docs-props-list-item>
       <docs-props-list-item name="required" type="boolean" defaultValue="false">
         When present, the user must fill in address line 1 and the postcode.
@@ -410,6 +410,12 @@ const fieldsHtml = `
       a label does not lose the limit or the messages that came with it.
     </p>
 
+    <p pdk-typography="body">
+      The <code docs-code>disabled</code> property in <code docs-code>fields</code> turns off that
+      one field. The <code docs-code>disabled</code> input on the component turns off all of them.
+      Either way the field keeps its value and stops being required.
+    </p>
+
     <docs-example [html]="fieldsHtml">
       <form pdk-form (errors)="fieldsErrors = $event" (validSubmit)="save('fields')">
         @if (fieldsErrors; as errors) {
@@ -430,48 +436,75 @@ const fieldsHtml = `
       </form>
     </docs-example>
 
-    <p pdk-typography="body">Each entry takes any of these.</p>
+    <h3 pdk-typography="heading-medium">Field configuration</h3>
+
+    <p pdk-typography="body">
+      The keys of the <code docs-code>fields</code> input, one per address field. Each takes an
+      <code docs-code>AddressFieldConfig</code>, except the postcode which takes an
+      <code docs-code>AddressPostcodeFieldConfig</code>.
+    </p>
+
+    <docs-props-list propWidth="200">
+      <docs-props-list-item name="line1" type="object" defaultValue="{ label: 'Address line 1' }">
+        The first line of the address. Required when <code docs-code>required</code> is set.
+      </docs-props-list-item>
+      <docs-props-list-item
+        name="line2"
+        type="object"
+        defaultValue="{ label: 'Address line 2 (optional)' }"
+      >
+        The second line.
+      </docs-props-list-item>
+      <docs-props-list-item
+        name="line3"
+        type="object"
+        defaultValue="{ label: 'Address line 3 (optional)' }"
+      >
+        The third line.
+      </docs-props-list-item>
+      <docs-props-list-item name="line4" type="object" defaultValue="{ label: 'Town or city' }">
+        The town or city. Where a postcode search puts the post town.
+      </docs-props-list-item>
+      <docs-props-list-item
+        name="line5"
+        type="object"
+        defaultValue="{ label: 'County (optional)' }"
+      >
+        The county. Not sent when the address is checked.
+      </docs-props-list-item>
+      <docs-props-list-item name="postcode" type="object" defaultValue="{ label: 'Postcode' }">
+        The postcode. Required when <code docs-code>required</code> is set.
+      </docs-props-list-item>
+    </docs-props-list>
+
+    <h3 pdk-typography="heading-medium">AddressFieldConfig</h3>
 
     <docs-props-list propWidth="200">
       <docs-props-list-item name="label" type="string"> The field's label. </docs-props-list-item>
       <docs-props-list-item name="labelType" type="string" defaultValue="small">
-        How big the label is. One of <code docs-code>default</code>, <code docs-code>small</code>,
-        <code docs-code>medium</code>, <code docs-code>large</code>,
-        <code docs-code>xlarge</code> or <code docs-code>none</code>.
+        <code docs-code>default</code>, <code docs-code>small</code>, <code docs-code>medium</code>,
+        <code docs-code>large</code>, <code docs-code>xlarge</code> or <code docs-code>none</code>.
       </docs-props-list-item>
       <docs-props-list-item name="maxChars" type="number" defaultValue="35">
-        The character limit. Not available on the postcode.
+        The character limit.
+      </docs-props-list-item>
+      <docs-props-list-item name="disabled" type="boolean" defaultValue="false">
+        Turns this field off on its own.
       </docs-props-list-item>
       <docs-props-list-item name="errorMessages" type="object">
-        A message per rule. An address line field takes <code docs-code>required</code>,
-        <code docs-code>addressLine</code> and <code docs-code>maximumLength</code>. The postcode
-        takes <code docs-code>required</code> and <code docs-code>postcode</code>.
+        A message for <code docs-code>required</code>, <code docs-code>addressLine</code> or
+        <code docs-code>maximumLength</code>.
       </docs-props-list-item>
     </docs-props-list>
 
-    <p pdk-typography="body">And these are the fields you can pass them for.</p>
+    <h3 pdk-typography="heading-medium">AddressPostcodeFieldConfig</h3>
 
-    <docs-props-list propWidth="200">
-      <docs-props-list-item name="line1" type="object" defaultValue="Address line 1">
-        The first line. Required when <code docs-code>required</code> is set.
-      </docs-props-list-item>
-      <docs-props-list-item name="line2" type="object" defaultValue="Address line 2 (optional)">
-        Optional.
-      </docs-props-list-item>
-      <docs-props-list-item name="line3" type="object" defaultValue="Address line 3 (optional)">
-        Optional.
-      </docs-props-list-item>
-      <docs-props-list-item name="line4" type="object" defaultValue="Town or city">
-        The town or city. This is where a postcode search puts the post town.
-      </docs-props-list-item>
-      <docs-props-list-item name="line5" type="object" defaultValue="County (optional)">
-        The county. Left out when the address is checked, because Ordnance Survey does not hold one
-        and sending it lowers the score.
-      </docs-props-list-item>
-      <docs-props-list-item name="postcode" type="object" defaultValue="Postcode">
-        Takes a label, a label type and its two messages. No character limit.
-      </docs-props-list-item>
-    </docs-props-list>
+    <p pdk-typography="body">
+      The same as above without <code docs-code>maxChars</code>, since the postcode rule already
+      decides what a real postcode looks like. Its <code docs-code>errorMessages</code> is an
+      <code docs-code>AddressPostcodeErrorMessages</code>, taking
+      <code docs-code>required</code> and <code docs-code>postcode</code>.
+    </p>
 
     <!-- Helpers -->
 

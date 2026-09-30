@@ -27,12 +27,14 @@ export interface AddressFieldConfig {
   label?: string;
   labelType?: LabelType | 'none';
   maxChars?: number;
+  disabled?: boolean;
   errorMessages?: AddressLineErrorMessages;
 }
 
 export interface AddressPostcodeFieldConfig {
   label?: string;
   labelType?: LabelType | 'none';
+  disabled?: boolean;
   errorMessages?: AddressPostcodeErrorMessages;
 }
 
