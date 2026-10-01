@@ -11,7 +11,6 @@ import {
   output,
   signal,
   Type,
-  untracked,
   viewChild
 } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
@@ -259,6 +258,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
 
   private notifyChange: (value: Address | null) => void = () => {};
   private notifyTouched: () => void = () => {};
+  private notifyValidatorChange: () => void = () => {};
 
   constructor() {
     effect(() => {
@@ -289,7 +289,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
           : control.removeValidators(Validators.required);
         control.updateValueAndValidity({ emitEvent: false });
       });
-      this.revalidate();
+      this.notifyValidatorChange();
     });
 
     effect(() => {
@@ -300,7 +300,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
         const disable = allDisabled || fields[key].disabled;
         disable ? control.disable({ emitEvent: false }) : control.enable({ emitEvent: false });
       });
-      this.revalidate();
+      this.notifyValidatorChange();
     });
   }
 
@@ -335,6 +335,10 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     return control.value && this.addressForm.invalid ? { address: true } : null;
   }
 
+  registerOnValidatorChange(fn: () => void): void {
+    this.notifyValidatorChange = fn;
+  }
+
   verify(): void {
     this.verifyIfPopulated(this.addressForm.getRawValue() as Address);
   }
@@ -364,15 +368,6 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
     };
   }
 
-  /**
-   * The validity of the fields feeds validate(), but changing their validators
-   * or disabling them does not tell the bound control, so it is checked again.
-   */
-  private revalidate(): void {
-    untracked(() => this.ngControl?.control?.updateValueAndValidity());
-  }
-
-  /** Only an address with a postcode is checked; anything less has no status to show. */
   private verifyIfPopulated(address: Address): void {
     if (isPopulatedAddress(address)) {
       this.verifyAddress.set(address);
