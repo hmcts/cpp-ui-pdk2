@@ -1,9 +1,23 @@
+import { Component, signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { expect } from '@jest/globals';
 import { of } from 'rxjs';
 
 import { CppAddressComponent } from './address.component';
 import { AddressLookupService } from '../address-lookup.service';
+import { Address, AddressFieldsConfig } from '../address.model';
+
+@Component({
+  template: `<cpp-address [formControl]="control" [required]="required()" [fields]="fields()" />`,
+  imports: [ReactiveFormsModule, CppAddressComponent]
+})
+class TestHostComponent {
+  readonly address = viewChild.required(CppAddressComponent);
+  readonly control = new FormControl<Address | null>(null);
+  readonly required = signal(false);
+  readonly fields = signal<AddressFieldsConfig>({});
+}
 
 describe('CppAddressComponent', () => {
   let fixture: ComponentFixture<CppAddressComponent>;
@@ -145,6 +159,51 @@ describe('CppAddressComponent', () => {
       line4: 'LONDON',
       line5: '',
       postcode: 'ZZ1 1AA'
+    });
+  });
+
+  describe('verification status', () => {
+    it('clears the status when an address without a postcode is written', async () => {
+      component.writeValue({ line1: '104 Downing Street', postcode: 'ZZ1 1AA' });
+      fixture.detectChanges();
+      await fixture.whenStable();
+      expect(component.verificationStatus.value()).toBe('invalid');
+
+      component.writeValue({ line1: '104 Downing Street', postcode: '' });
+      fixture.detectChanges();
+
+      expect(component.verificationStatus.value()).toBeUndefined();
+    });
+  });
+
+  describe('in a form', () => {
+    let hostFixture: ComponentFixture<TestHostComponent>;
+    let host: TestHostComponent;
+
+    beforeEach(() => {
+      hostFixture = TestBed.createComponent(TestHostComponent);
+      host = hostFixture.componentInstance;
+      host.control.setValue({ line1: '104 Downing Street', postcode: '' });
+      hostFixture.detectChanges();
+    });
+
+    it('tells the bound control when becoming required leaves the address incomplete', () => {
+      expect(host.control.valid).toBe(true);
+
+      host.required.set(true);
+      hostFixture.detectChanges();
+
+      expect(host.control.errors).toEqual({ address: true });
+    });
+
+    it('tells the bound control when disabling the postcode completes the address', () => {
+      host.required.set(true);
+      hostFixture.detectChanges();
+
+      host.fields.set({ postcode: { disabled: true } });
+      hostFixture.detectChanges();
+
+      expect(host.control.valid).toBe(true);
     });
   });
 });

@@ -11,6 +11,7 @@ import {
   output,
   signal,
   Type,
+  untracked,
   viewChild
 } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
@@ -288,6 +289,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
           : control.removeValidators(Validators.required);
         control.updateValueAndValidity({ emitEvent: false });
       });
+      this.revalidate();
     });
 
     effect(() => {
@@ -298,15 +300,14 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
         const disable = allDisabled || fields[key].disabled;
         disable ? control.disable({ emitEvent: false }) : control.enable({ emitEvent: false });
       });
+      this.revalidate();
     });
   }
 
   writeValue(address: Address | null): void {
     if (address) {
       this.patch(address);
-      if (isPopulatedAddress(address)) {
-        this.verifyAddress.set(address);
-      }
+      this.verifyIfPopulated(address);
     } else {
       this.addressForm.reset(undefined, { emitEvent: false });
       this.verificationStatus.set(undefined);
@@ -335,10 +336,7 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
   }
 
   verify(): void {
-    const current = this.addressForm.getRawValue() as Address;
-    if (isPopulatedAddress(current)) {
-      this.verifyAddress.set(current);
-    }
+    this.verifyIfPopulated(this.addressForm.getRawValue() as Address);
   }
 
   characterCountFor(
@@ -364,6 +362,24 @@ export class CppAddressComponent implements ControlValueAccessor, FormFieldContr
       const limit = this.fields()[key].maxChars;
       return limit ? InputValidators.maximumLength(limit)(control) : null;
     };
+  }
+
+  /**
+   * The validity of the fields feeds validate(), but changing their validators
+   * or disabling them does not tell the bound control, so it is checked again.
+   */
+  private revalidate(): void {
+    untracked(() => this.ngControl?.control?.updateValueAndValidity());
+  }
+
+  /** Only an address with a postcode is checked; anything less has no status to show. */
+  private verifyIfPopulated(address: Address): void {
+    if (isPopulatedAddress(address)) {
+      this.verifyAddress.set(address);
+    } else {
+      this.verifyAddress.set(null);
+      this.verificationStatus.set(undefined);
+    }
   }
 
   private propagate(address: Address | null): void {
