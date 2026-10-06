@@ -53,13 +53,14 @@ describe('AddressLookupService', () => {
   });
 
   describe('find', () => {
-    it('queries the addresses endpoint with the free text address', () => {
+    it('queries the addresses endpoint with the free text address and asks for street data', () => {
       service.find('104 Downing').subscribe();
 
       const options = optionsOf();
       expect(options.url).toBe('/address-lookup-service/addresses');
       expect(options.requestType).toBe('application/vnd.addresslookup-service.addresses+json');
       expect(options.params.get('address')).toBe('104 Downing');
+      expect(options.params.get('include')).toBe('dpa');
     });
   });
 

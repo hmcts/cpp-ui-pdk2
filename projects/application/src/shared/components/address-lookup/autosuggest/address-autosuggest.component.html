@@ -1,17 +1,55 @@
 <div class="cpp-address-autosuggest">
-  <pdk-autosuggest-lite
+  <pdk-autosuggest
     [ariaDescribedBy]="ariaDescribedBy"
     [ariaLabel]="ariaLabel()"
     [ariaLabelledBy]="ariaLabelledBy()"
     [disabled]="isDisabled()"
     [hasError]="hasError"
+    highlightColor="blue"
     [id]="id"
     [inputWidth]="inputWidth()"
-    [mapSuggestionToKey]="toKey"
-    [mapSuggestionToTitle]="toSingleLine"
-    [suggestions]="suggestions.value() ?? []"
-    (inputText)="searchText.set($event)"
-  ></pdk-autosuggest-lite>
+    [mapSuggestionToKey]="suggestionKey"
+    [mapSuggestionToLabel]="suggestionLabel"
+    [suggestions]="suggestions()"
+    [suggestionTemplateRef]="suggestionTemplate"
+    (inputText)="search($event)"
+  ></pdk-autosuggest>
+
+  <ng-template #suggestionTemplate let-highlighted="highlighted" let-suggestion="suggestion">
+    @let textColour = highlighted ? 'white' : 'black';
+    <div
+      class="cpp-address-autosuggest__suggestion"
+      pdk-margin="-1"
+      pdk-padding="1"
+      (click)="navigateInsteadOfSelecting(suggestion, $event)"
+    >
+      @if (suggestion === backToAllResults) {
+      <span pdk-back-link pdk-margin="0" [pdk-text-colour]="textColour">{{
+        suggestion.title
+      }}</span>
+      } @else {
+      <div>
+        @let title = suggestion.title | highlightMatch: searchText();
+        <span pdk-typography="body-small" [pdk-text-colour]="textColour"
+          >{{ title.before }}<b>{{ title.match }}</b
+          >{{ title.after }}</span
+        >
+        <br />
+        @let subtitle = suggestion.subtitle | highlightMatch: searchText();
+        <span pdk-typography="body-small" [pdk-text-colour]="highlighted ? 'white' : 'dark-grey'"
+          >{{ subtitle.before }}<b>{{ subtitle.match }}</b
+          >{{ subtitle.after }}</span
+        >
+      </div>
+      @if (suggestion.groupedSuggestions) {
+      <span
+        class="cpp-address-autosuggest__caret"
+        aria-hidden="true"
+        [pdk-text-colour]="textColour"
+      ></span>
+      } }
+    </div>
+  </ng-template>
 
   @if (noResults()) {
   <pdk-inset-text pdk-margin-top="2">No addresses found</pdk-inset-text>

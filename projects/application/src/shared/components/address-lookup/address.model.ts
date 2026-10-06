@@ -8,6 +8,12 @@ export interface Address {
   line5?: string;
   postcode: string;
   uprn?: string;
+  dpa?: {
+    BUILDING_NAME?: string;
+    DEPENDENT_THOROUGHFARE_NAME?: string;
+    THOROUGHFARE_NAME?: string;
+    POST_TOWN?: string;
+  };
 }
 
 export type VerificationStatus = 'valid' | 'needs-verification' | 'invalid' | 'unverified';
