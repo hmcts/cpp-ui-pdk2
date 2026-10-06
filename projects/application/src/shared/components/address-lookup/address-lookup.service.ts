@@ -44,7 +44,10 @@ export class AddressLookupService {
   }
 
   find(address: string): Observable<Address[]> {
-    return this.search(`${BASE_URL}/addresses`, REQUEST_TYPES.addresses, { address });
+    return this.search(`${BASE_URL}/addresses`, REQUEST_TYPES.addresses, {
+      address,
+      include: 'dpa'
+    });
   }
 
   match(address: string, minMatch = 0.7): Observable<ScoredAddress[]> {

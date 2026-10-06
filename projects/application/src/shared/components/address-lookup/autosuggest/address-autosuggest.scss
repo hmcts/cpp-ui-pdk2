@@ -1,10 +1,27 @@
 .cpp-address-autosuggest {
   // ~10 rows visible, then scroll.
   $visible-rows: 10;
-  $row-height: 2.5rem;
+  $row-height: 3.5rem;
 
-  pdk-autosuggest-lite .pdk-autosuggest__suggestions-container--open {
+  .pdk-autosuggest__suggestions-container--open {
     max-height: $visible-rows * $row-height;
     overflow-y: auto;
+  }
+
+  &__suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__caret {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.5rem;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(45deg);
   }
 }

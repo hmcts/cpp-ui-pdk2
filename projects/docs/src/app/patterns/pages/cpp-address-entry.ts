@@ -151,7 +151,8 @@ const fieldsHtml = `
       Search <code docs-code>CV1 2AA</code> for a long list of Coventry addresses, or
       <code docs-code>CV32 5BB</code> for a short one in Leamington Spa. Search as you type matches
       on any part of an address, so try <code docs-code>Aylward</code> or
-      <code docs-code>Rosewood</code>.
+      <code docs-code>Rosewood</code>. Type <code docs-code>CV1 2AA</code> into search as you type
+      to see results grouped by street.
     </pdk-inset-text>
 
     <!-- Find by postcode -->
@@ -229,6 +230,13 @@ const fieldsHtml = `
       are using it to feed something else, such as a
       <code docs-code>cpp-address</code> or a list, set <code docs-code>clearOnSelection</code> and
       the box empties ready for the next search.
+    </p>
+
+    <p pdk-typography="body">
+      When more than three results share a postcode and street, they show as a single row with a
+      count. Choosing it lists those addresses in order, and a Back to all results row, or Escape,
+      returns to the full list. If every result is at the same place, the addresses are listed
+      straight away.
     </p>
 
     <docs-example [html]="autosuggestHtml">

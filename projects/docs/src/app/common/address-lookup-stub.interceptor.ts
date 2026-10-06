@@ -7,30 +7,36 @@ const BASE_URL = '/address-lookup-service';
 const LATENCY_MS = 250;
 
 const numbered = (
-  count: number,
+  numbers: number[],
   street: string,
   town: string,
   postcode: string,
   firstUprn: number
 ): Address[] =>
-  Array.from({ length: count }, (_, index) => ({
-    line1: `${index + 1} ${street}`,
+  numbers.map((number, index) => ({
+    line1: `${number} ${street}`,
     line4: town,
     postcode,
-    uprn: String(firstUprn + index)
+    uprn: String(firstUprn + index),
+    dpa: { THOROUGHFARE_NAME: street.toUpperCase(), POST_TOWN: town.toUpperCase() }
   }));
 
+const range = (from: number, to: number) =>
+  Array.from({ length: to - from + 1 }, (_, index) => from + index);
+
 const ADDRESSES: Address[] = [
-  ...numbered(15, 'Aylward Gardens', 'Coventry', 'CV1 2AA', 100010000001),
+  ...numbered(range(1, 15), 'Aylward Gardens', 'Coventry', 'CV1 2AA', 100010000001),
   {
     line1: 'Flat 1',
     line2: 'Rosewood House',
     line3: '12 Market Street',
     line4: 'Coventry',
     postcode: 'CV1 2AA',
-    uprn: '100010000101'
+    uprn: '100010000101',
+    dpa: { THOROUGHFARE_NAME: 'MARKET STREET', POST_TOWN: 'COVENTRY' }
   },
-  ...numbered(3, 'Rowan Close', 'Leamington Spa', 'CV32 5BB', 100010000201)
+  ...numbered(range(14, 17), 'Market Street', 'Coventry', 'CV1 2AA', 100010000102),
+  ...numbered(range(1, 3), 'Rowan Close', 'Leamington Spa', 'CV32 5BB', 100010000201)
 ];
 
 const matches = (address: Address, term: string) =>
@@ -39,6 +45,8 @@ const matches = (address: Address, term: string) =>
     .join(' ')
     .toLowerCase()
     .includes(term.toLowerCase());
+
+const withoutDpa = ({ dpa: _dpa, ...address }: ScoredAddress): ScoredAddress => address;
 
 const live = () => new URLSearchParams(location.search).has('live');
 
@@ -50,6 +58,7 @@ export const addressLookupStubInterceptor: HttpInterceptorFn = (request, next) =
   const postcode = request.params.get('postcode');
   const address = request.params.get('address');
   const minMatch = Number(request.params.get('minMatch') ?? 0);
+  const includeDpa = request.params.get('include') === 'dpa';
 
   let results: ScoredAddress[] = [];
 
@@ -63,7 +72,10 @@ export const addressLookupStubInterceptor: HttpInterceptorFn = (request, next) =
     results = address ? ADDRESSES.filter((entry) => matches(entry, address)) : [];
   }
 
-  return of(new HttpResponse({ status: 200, body: { results } })).pipe(
-    delay(LATENCY_MS)
-  ) as Observable<HttpEvent<unknown>>;
+  return of(
+    new HttpResponse({
+      status: 200,
+      body: { results: includeDpa ? results : results.map(withoutDpa) }
+    })
+  ).pipe(delay(LATENCY_MS)) as Observable<HttpEvent<unknown>>;
 };
