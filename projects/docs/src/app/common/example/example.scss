@@ -14,7 +14,7 @@ docs-example {
   }
 
   .govuk-width-container {
-    @include mq($from: desktop) {
+    @include govuk-media-query($from: desktop) {
       padding-left: 30px;
       padding-right: 30px;
     }

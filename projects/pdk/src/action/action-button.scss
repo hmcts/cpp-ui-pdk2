@@ -71,7 +71,7 @@ $module: 'pdk-action-button';
         background-size: 100%;
       }
 
-      @include mq($from: desktop) {
+      @include govuk-media-query($from: desktop) {
         top: 50%;
         transform: translateY(-50%);
       }

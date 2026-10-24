@@ -10,7 +10,7 @@ pdk-grid {
     .pdk-grid-column-offset-#{$width} {
       margin-left: 0;
 
-      @include mq($from: mobile) {
+      @include govuk-media-query($from: mobile) {
         margin-left: govuk-grid-width($width);
       }
     }

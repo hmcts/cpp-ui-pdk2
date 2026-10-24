@@ -97,14 +97,14 @@ body {
 @include build-colours;
 
 .pdk-media--mobile-visible {
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: none;
   }
 }
 
 .pdk-media--mobile-hidden {
   display: none;
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: initial;
   }
 }

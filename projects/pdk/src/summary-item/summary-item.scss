@@ -11,7 +11,8 @@ $module: 'pdk-summary-item';
   vertical-align: middle;
   width: 100%;
 
-  dd, dt {
+  dd,
+  dt {
     margin: 0;
   }
 
@@ -33,7 +34,7 @@ $module: 'pdk-summary-item';
 
   &--inline {
     .#{$module}__number {
-      @include mq($from: tablet) {
+      @include govuk-media-query($from: tablet) {
         float: left;
         margin-right: 10px;
       }

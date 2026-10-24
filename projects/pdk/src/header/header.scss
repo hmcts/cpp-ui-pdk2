@@ -5,7 +5,7 @@
 .pdk-header__content {
   padding-top: 40px;
 
-  @include mq($from: desktop) {
+  @include govuk-media-query($from: desktop) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -20,7 +20,7 @@
 pdk-header-nav-item {
   display: block;
 
-  @include mq($from: desktop) {
+  @include govuk-media-query($from: desktop) {
     display: inline-block;
   }
 }

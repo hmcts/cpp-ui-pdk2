@@ -2,7 +2,7 @@
 @import 'govuk-frontend/dist/govuk/helpers/index';
 
 .docs-sidebar-layout {
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: flex;
   }
   position: relative;
@@ -16,7 +16,7 @@
   &__content {
     padding: 15px 0;
 
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       flex: 1;
       overflow: hidden;
       padding: 30px 0 30px 30px;
