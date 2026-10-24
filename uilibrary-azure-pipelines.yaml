@@ -35,9 +35,9 @@ pool:
 
 variables:
   - name: NODE_VERSION
-    value: '18.20.x'
+    value: '22.23.x'
   - name: NPM_VERSION
-    value: '10.7.0'
+    value: '10.9.9'
   - name: sonarqubeProject
     value: 'uk.gov.moj.cpp.ui:ui-pdk2'
 
@@ -58,4 +58,3 @@ stages:
           SEMVER_VERSION_MANUAL: '${{ parameters.SEMVER_VERSION_MANUAL }}'
           NODE_VERSION: '${{ variables.NODE_VERSION }}'
           NPM_VERSION: '${{ variables.NPM_VERSION }}'
-          

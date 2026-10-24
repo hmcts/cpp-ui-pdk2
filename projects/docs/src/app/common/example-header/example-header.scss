@@ -8,7 +8,7 @@ $module: 'docs-header';
 .#{$module} {
   position: relative;
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     .#{$module}__tag {
       position: absolute;
       top: 0;

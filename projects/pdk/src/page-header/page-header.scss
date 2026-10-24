@@ -56,7 +56,7 @@ $module: 'pdk-page-header';
   }
 
   // desktop and up
-  @include mq($from: desktop) {
+  @include govuk-media-query($from: desktop) {
     &__links {
       > [role='listitem'] {
         margin-top: govuk-em(10, 16);
