@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { SystemAnnouncementsPageComponent } from './system-announcements-page.component';
 
-const routes: Routes = [
+export const SYSTEM_ANNOUNCEMENT_PAGE_ROUTES: Routes = [
   {
     path: 'notifications',
     component: SystemAnnouncementsPageComponent,
@@ -12,6 +12,6 @@ const routes: Routes = [
 export const SYSTEM_ANNOUNCEMENT_ROUTES: Routes = [
   {
     path: 'system-announcements',
-    loadChildren: () => routes
+    loadChildren: () => SYSTEM_ANNOUNCEMENT_PAGE_ROUTES
   }
 ];

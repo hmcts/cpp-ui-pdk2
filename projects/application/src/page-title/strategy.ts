@@ -1,0 +1,29 @@
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, TitleStrategy } from '@angular/router';
+import { COMPLETE_PAGE_TITLES } from './complete-page-titles';
+import { PageTitleService } from './service';
+
+/**
+ * Picks the page title on navigation: a route `title` if one is set, otherwise the `data.title`
+ * of the deepest route, which is how the apps declare their titles.
+ */
+@Injectable({ providedIn: 'root' })
+export class PageTitleStrategy extends TitleStrategy {
+  private readonly pageTitleService = inject(PageTitleService);
+
+  override updateTitle(snapshot: RouterStateSnapshot): void {
+    const pageTitle = this.buildTitle(snapshot) ?? getDeepestDataTitle(snapshot.root) ?? '';
+
+    this.pageTitleService.setPageTitle(pageTitle, {
+      complete: COMPLETE_PAGE_TITLES.includes(pageTitle)
+    });
+  }
+}
+
+const getDeepestDataTitle = (route: ActivatedRouteSnapshot): string | undefined => {
+  let deepest = route;
+  while (deepest.firstChild) {
+    deepest = deepest.firstChild;
+  }
+  return deepest.data?.['title'];
+};
