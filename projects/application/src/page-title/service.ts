@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ERROR_PAGES_ROUTES } from '../error-pages/error-pages.routes';
+import { SYSTEM_ANNOUNCEMENT_PAGE_ROUTES } from '../layout/system-announcements/system-announcements-route';
 import { CPP_PAGE_TITLE_OPTIONS } from './options';
 
 /** Anything that can go in a page title: a string, or an object with its own toString. */
@@ -19,12 +21,20 @@ export class PageTitleService {
 
   static readonly DEFAULT_SUFFIX = `Common Platform${PageTitleService.DELIMITER}HMCTS`;
 
+  /**
+   * Our error and system announcement pages already have a complete title, ending in their own
+   * "| Common platform", so the tab shows them exactly as they are, with no suffix added.
+   */
+  private static readonly COMPLETE_PAGE_TITLES: string[] = [
+    ...ERROR_PAGES_ROUTES,
+    ...SYSTEM_ANNOUNCEMENT_PAGE_ROUTES
+  ].map((route) => route.data?.['title']);
+
   private readonly title = inject(Title);
   private readonly options = inject(CPP_PAGE_TITLE_OPTIONS, { optional: true });
   private readonly suffix = this.options?.suffix ?? PageTitleService.DEFAULT_SUFFIX;
 
   private pageTitle = '';
-  private complete = false;
   private information: (PageTitleInformation | null | undefined)[] = [];
 
   /** Joins the parts with the delimiter. Empty parts are left out, so there is never a stray one. */
@@ -35,10 +45,8 @@ export class PageTitleService {
       .join(PageTitleService.DELIMITER);
   }
 
-  /** A complete page title is shown as it is, with no suffix added. */
-  setPageTitle(pageTitle: string, { complete = false }: { complete?: boolean } = {}): void {
+  setPageTitle(pageTitle: string): void {
     this.pageTitle = (pageTitle || '').trim();
-    this.complete = complete;
     this.render();
   }
 
@@ -55,7 +63,7 @@ export class PageTitleService {
     return PageTitleService.joinParts([
       ...this.information,
       this.pageTitle,
-      this.complete ? '' : this.suffix
+      PageTitleService.COMPLETE_PAGE_TITLES.includes(this.pageTitle) ? '' : this.suffix
     ]);
   }
 

@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, TitleStrategy } from '@angular/router';
-import { COMPLETE_PAGE_TITLES } from './complete-page-titles';
 import { PageTitleService } from './service';
 
 /**
@@ -14,9 +13,7 @@ export class PageTitleStrategy extends TitleStrategy {
   override updateTitle(snapshot: RouterStateSnapshot): void {
     const pageTitle = this.buildTitle(snapshot) ?? getDeepestDataTitle(snapshot.root) ?? '';
 
-    this.pageTitleService.setPageTitle(pageTitle, {
-      complete: COMPLETE_PAGE_TITLES.includes(pageTitle)
-    });
+    this.pageTitleService.setPageTitle(pageTitle);
   }
 }
 

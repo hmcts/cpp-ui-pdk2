@@ -107,15 +107,15 @@ describe('PageTitleService', () => {
       }
     );
 
-    it('should show a complete title as it is, with no suffix', () => {
+    it('should show the title of an error page as it is, with no suffix', () => {
       service.setInformation('Foo');
-      service.setPageTitle('Signed out | Common platform', { complete: true });
+      service.setPageTitle('Signed out | Common platform');
 
       expect(title.setTitle).toHaveBeenLastCalledWith('Foo – Signed out | Common platform');
     });
 
-    it('should add the suffix again once the page title is no longer complete', () => {
-      service.setPageTitle('Signed out | Common platform', { complete: true });
+    it('should add the suffix again after an error page', () => {
+      service.setPageTitle('Signed out | Common platform');
       service.setPageTitle('Case details');
 
       expect(title.setTitle).toHaveBeenLastCalledWith('Case details – Common Platform – HMCTS');
