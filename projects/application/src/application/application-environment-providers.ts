@@ -1,5 +1,10 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { EnvironmentProviders, ErrorHandler, makeEnvironmentProviders } from '@angular/core';
+import {
+  EnvironmentProviders,
+  ErrorHandler,
+  makeEnvironmentProviders,
+  Provider
+} from '@angular/core';
 import { ApplicationErrorHandlerService } from './application-error-handler/application-error-handling.service';
 import { ApplicationSignoutErrorInterceptor } from './application-error-handler/application-signout-error.interceptor';
 import {
@@ -11,9 +16,11 @@ import { provideCppCookieServices } from '@cpp/core';
 /**Provides services and interceptors on the cpp application top level
  * This should only be provided once - preferrably when consumer app is bootstrapped
  * or the top parent route
+ * @param overrideProviders - providers that override the defaults
  */
 export const provideCPPApplicationEnvironment = (
-  environment: EnvironmentConfig
+  environment: EnvironmentConfig,
+  overrideProviders: Provider[] = []
 ): EnvironmentProviders => {
   return makeEnvironmentProviders([
     {
@@ -29,6 +36,7 @@ export const provideCPPApplicationEnvironment = (
       useClass: ApplicationSignoutErrorInterceptor,
       multi: true
     },
-    provideCppCookieServices()
+    provideCppCookieServices(),
+    ...overrideProviders
   ]);
 };
