@@ -18,6 +18,7 @@ export abstract class FormFieldControl {
 
 export abstract class FormFieldControlV2 extends FormFieldControl {
   markForCheck: () => void;
+  suppressedRules?: string[];
 }
 
 export interface ValidationError {

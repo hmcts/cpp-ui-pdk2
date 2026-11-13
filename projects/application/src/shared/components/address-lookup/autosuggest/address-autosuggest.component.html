@@ -1,0 +1,21 @@
+<div class="cpp-address-autosuggest">
+  <pdk-autosuggest-lite
+    [ariaDescribedBy]="ariaDescribedBy"
+    [ariaLabel]="ariaLabel()"
+    [ariaLabelledBy]="ariaLabelledBy()"
+    [disabled]="isDisabled()"
+    [hasError]="hasError"
+    [id]="id"
+    [inputWidth]="inputWidth()"
+    [mapSuggestionToKey]="toKey"
+    [mapSuggestionToTitle]="toSingleLine"
+    [suggestions]="suggestions.value() ?? []"
+    (inputText)="searchText.set($event)"
+  ></pdk-autosuggest-lite>
+
+  @if (noResults()) {
+  <pdk-inset-text pdk-margin-top="2">No addresses found</pdk-inset-text>
+  } @if (failureMessage(); as message) {
+  <pdk-inset-text pdk-margin-top="2">{{ message }}</pdk-inset-text>
+  }
+</div>
